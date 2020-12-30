@@ -20,7 +20,6 @@ a {
 }
 
 .w-85 {
-  @apply bg-red-400;
   width: 85%;
 }
 
