@@ -14,3 +14,8 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.w-85 {
+  width: 85%;
+}
+
