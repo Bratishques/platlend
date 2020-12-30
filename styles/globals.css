@@ -32,15 +32,15 @@ a {
   opacity: 0;
 }
 .header-link::after{
-  border-bottom: 1.5px solid blue;
-  border-right:  1.5px solid blue;
+  border-bottom: 2px solid blue;
+  border-right:  2px solid blue;
   bottom: 0;
   right: 0;
 }
 
 .header-link::before {
- border-top: 1.5px solid blue;
- border-left:  1.5px solid blue;
+ border-top: 2px solid blue;
+ border-left:  2px solid blue;
  top: 0;
  left: 0;
 }
