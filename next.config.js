@@ -3,4 +3,6 @@ module.exports = {
       locales: ['en-US', 'fr', 'nl-NL'],
       defaultLocale: 'en-US',
     },
+    assetPrefix: "/platlend/",
+    basePath: '/platlend'
   }

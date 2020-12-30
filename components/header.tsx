@@ -1,7 +1,9 @@
+
 import { useCallback, useContext, useEffect, useState } from "react";
 import ScreenSizeContext from "../context/screenSizeContext";
 import SidebarContext from "../context/sidebarContext";
 import breakpoints from "../utils/breakpoints"
+import HeaderLink from "./headerLink";
 
 
 
@@ -49,21 +51,23 @@ const Header = () => {
                     } ${scrollState === 1 && "opacity-0"} z-10`}
             >
 
-                <div className={`w-85 bg-blue-400 h-full flex space-between`}>
+                <div className={`w-85 h-full flex space-between`}>
                     <div className={`bg-green-300 h-full flex items-center`}>
                         <div>LOGO</div>
                     </div>
-                    <div className={` bg-indigo-600 h-full flex items-center justify-end`}>
+                    {screenSize >= breakpoints.md && <div className={`w-full h-full flex items-center justify-end py-3`}>
+                    <HeaderLink text={"Link"} link={""}/>
+                    <HeaderLink text={"Konstantin Konstantinopolsky"} link={""}/>
 
-
-                    </div>
+                    </div> }
+                    
 
                 </div>
             </div>
 
             {screenSize < breakpoints.md ? <button className={`relative focus:outline-none bg-green-300 rounded-full z-30 right-3 ${scrollState === 1 && "opacity-0"} transition-all duration-300`} onClick={() => {
               sidebarData.setSidebarOpen()
-            }}>Open</button> : <div></div>}
+            }}>Open</button> : ""}
         </div>
     );
 }
