@@ -22,7 +22,7 @@ const Header = () => {
     } else {
       setScrollState(2);
     }
-  });
+  }, []);
 
   useEffect(() => {
     window.addEventListener("scroll", scrollListener);
