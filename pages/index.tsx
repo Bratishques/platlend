@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Header from '../components/header'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -10,7 +11,10 @@ export default function Home() {
       </Head>
 
       <main className={`w-full`}>
-        <section className={`h-screen w-full bg-green-500`}></section>
+        
+        <section className={`h-screen w-full bg-green-500`}>
+          <Header/>
+        </section>
         <section className={`h-screen w-full bg-purple-500`}></section>
       </main>
     </div>
