@@ -1,11 +1,6 @@
-import styles from '../styles/Home.module.css'
-
+import styles from "../styles/Home.module.css";
 const Footer = () => {
-    return (
-        <footer className={styles.footer}>
+  return <footer className={styles.footer}></footer>;
+};
 
-      </footer>
-    )
-}
-
-export default Footer
+export default Footer;

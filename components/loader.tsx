@@ -1,9 +1,5 @@
-const Loader = ({children}) => {
-    return (
-        <div>
-            {children}
-        </div>
-    )
-}
+const Loader = ({ children }) => {
+  return <div>{children}</div>;
+};
 
-export default Loader
+export default Loader;
