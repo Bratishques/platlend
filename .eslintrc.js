@@ -1,31 +1,28 @@
 module.exports = {
-  'env': {
-    'browser': true,
-    'es2021': true,
+  env: {
+    browser: true,
+    es2021: true,
   },
-  'extends': [
+  extends: [
     "eslint:recommended",
-    'plugin:react/recommended',
-    'prettier/@typescript-eslint', // Prettier plugin
-    'plugin:prettier/recommended', // Prettier recommended rules 
+    "plugin:react/recommended",
+    "prettier/@typescript-eslint", // Prettier plugin
+    "plugin:prettier/recommended", // Prettier recommended rules
   ],
-  'parser': '@typescript-eslint/parser',
-  'parserOptions': {
-    'ecmaFeatures': {
-      'jsx': true,
+  parser: "@typescript-eslint/parser",
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
     },
-    'ecmaVersion': 12,
-    'sourceType': 'module',
+    ecmaVersion: 12,
+    sourceType: "module",
   },
-  'plugins': [
-    'react',
-    '@typescript-eslint',
-  ],
-  "rules": {
+  plugins: ["react", "@typescript-eslint"],
+  rules: {
     "react/react-in-jsx-scope": "off",
-    'prettier/prettier': ['error', {}, { usePrettierrc: true }]
+    "prettier/prettier": ["error", {}, { usePrettierrc: true }],
   },
-  "globals": {
-    "React": "writable"
-  }
+  globals: {
+    React: "writable",
+  },
 };
