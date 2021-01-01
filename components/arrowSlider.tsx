@@ -78,10 +78,15 @@ const ArrowSlider = ({ children, rowsFull, rowsMobile, itemsOnScreen = 6 }) => {
   return (
     <div className={`w-10/12 h-6/12 sm:w-8/12 bg-red-300 overflow-hidden`}>
       <div
+
+      style = {{
+          gridTemplateColumns: `repeat(${colsAmount(
+            itemsUsed
+          )}, minmax(0, 1fr))`,
+          gridTemplateRows:`repeat(${itemsUsed}, minmax(0, 1fr))`
+      }}
         ref={innerRef}
-        className={`grid grid-cols-${colsAmount(
-          itemsUsed
-        )} grid-flow-col grid-rows-${itemsUsed} relative transition-left duration-500`}
+        className={`grid grid-flow-col  relative transition-left duration-500`}
         onTouchStart={(e) => {
           setXTouchStart(e.touches[0].clientX);
 
