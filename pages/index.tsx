@@ -32,6 +32,8 @@ export default function Home() {
             })}
           </ArrowSlider>
         </section>
+        <section className={`h-screen w-full bg-green-500`}>
+        </section>
       </main>
     </div>
   );

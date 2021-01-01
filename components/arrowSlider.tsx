@@ -40,9 +40,10 @@ const ArrowSlider = ({ children, rowsFull, rowsMobile, itemsOnScreen = 6 }) => {
   let xMoved = 0;
   const endTouch = () => {
     const gridCheck = Math.ceil(children.length / itemsOnScreen);
-    if (xTouchStart > xTouchEnd && scrollState < gridCheck) {
+    console.log(xTouchStart,xTouchEnd)
+    if (xTouchStart - xTouchEnd > screenSize/10 && scrollState < gridCheck ) {
       setScrollState(scrollState + 1);
-    } else if (xTouchStart < xTouchEnd && scrollState > 1) {
+    } else if (xTouchEnd - xTouchStart > screenSize/10 && scrollState > 1) {
       setScrollState(scrollState - 1);
     }
     setXTouchStart(0);
