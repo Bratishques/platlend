@@ -140,7 +140,7 @@ export default function Home() {
             <h2 className={`text-4xl md:text-7xl mb-12 md:text-shadow-blue-offset text-shadow-none md:text-left`}>
               WE OFFER
         </h2>
-            <div className={`grid grid-cols-4 gap-8`}>
+            <div className={`grid md:grid-cols-4 grid-cols-2 gap-8`}>
             {offerings.map((item,i) => {
 
               return (
