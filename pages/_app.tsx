@@ -1,4 +1,5 @@
 import "tailwindcss/tailwind.css";
+import PropTypes from "prop-types";
 import "../styles/globals.css";
 import Layout from "../components/layout";
 import { ScreenSizeProvider } from "../context/screenSizeContext";
@@ -16,4 +17,8 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
+MyApp.propTypes = {
+  Component: PropTypes.any,
+  pageProps: PropTypes.any,
+};
 export default MyApp;

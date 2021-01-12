@@ -9,7 +9,12 @@ const ArrowSlider = ({ children, rowsFull, rowsMobile, itemsOnScreen = 6 }) => {
   const [scrollState, setScrollState] = useState(1);
   const [isTouched, setIsTouched] = useState(false);
   const [xTouchStart, setXTouchStart] = useState(0);
-
+  const [progress, setProgress] = useState(
+    (scrollState / Math.ceil(children.length / itemsOnScreen)) * 100
+  );
+  let xTouchEnd = 0;
+  let xMoved = 0;
+  const gridCheck = Math.ceil(children.length / itemsOnScreen);
   const innerRef = useRef<HTMLDivElement | null>();
 
   const colsAmount = (items) => {
@@ -36,14 +41,13 @@ const ArrowSlider = ({ children, rowsFull, rowsMobile, itemsOnScreen = 6 }) => {
       setScrollState(scrollState + 1);
     }
   };
-  let xTouchEnd = 0;
-  let xMoved = 0;
+
   const endTouch = () => {
     const gridCheck = Math.ceil(children.length / itemsOnScreen);
-    console.log(xTouchStart,xTouchEnd)
-    if (xTouchStart - xTouchEnd > screenSize/10 && scrollState < gridCheck ) {
+    console.log(xTouchStart, xTouchEnd);
+    if (xTouchStart - xTouchEnd > screenSize / 10 && scrollState < gridCheck) {
       setScrollState(scrollState + 1);
-    } else if (xTouchEnd - xTouchStart > screenSize/10 && scrollState > 1) {
+    } else if (xTouchEnd - xTouchStart > screenSize / 10 && scrollState > 1) {
       setScrollState(scrollState - 1);
     }
     setXTouchStart(0);
@@ -51,41 +55,38 @@ const ArrowSlider = ({ children, rowsFull, rowsMobile, itemsOnScreen = 6 }) => {
     xMoved = 0;
   };
 
+  // remove transition for moving on touch/drag
+  useEffect(() => {
+    if (isTouched) {
+      innerRef.current.style.transition = "none";
+    } else {
+      innerRef.current.style.transition = "";
+    }
+  }, [isTouched]);
+
+  //set the offset to the scroll state level
   useEffect(() => {
     innerRef.current.style.left = String(-100 * (scrollState - 1)) + "%";
-  }, [scrollState, itemsUsed]);
+  }, [scrollState, itemsUsed, xTouchStart]);
+
+  useEffect(() => {
+    setProgress((scrollState / gridCheck) * 100);
+  }, [scrollState]);
 
   useEffect(() => {
     innerRef.current.style.width =
       String((colsAmount(itemsUsed) * 100) / (itemsOnScreen / itemsUsed)) + "%";
   }, [itemsUsed]);
 
-  // useEffect(() => {
-  //     const moveTimer = setInterval(() => {
-  //         const gridCheck = Math.ceil(children.length / itemsOnScreen)
-  //         const currentLeft = -100 * (scrollState - 1)
-  //         if (scrollState < gridCheck && xMoved < 0) {
-  //             innerRef.current.style.left = String(Number(currentLeft) + Number((xMoved / 2))) + "%"
-  //         }
-  //         if (scrollState > 1 && xMoved > 0) {
-  //             innerRef.current.style.left = String(Number(currentLeft) + Number((xMoved / 2))) + "%"
-  //         }
-  //     }, 100)
-
-  //     clearInterval(moveTimer)
-
-  // }, [isTouched])
-
   return (
     <div className={`w-10/12 h-6/12 sm:w-8/12 bg-red-300 overflow-hidden`}>
       <div
-
-      style = {{
+        style={{
           gridTemplateColumns: `repeat(${colsAmount(
             itemsUsed
           )}, minmax(0, 1fr))`,
-          gridTemplateRows:`repeat(${itemsUsed}, minmax(0, 1fr))`
-      }}
+          gridTemplateRows: `repeat(${itemsUsed}, minmax(0, 1fr))`,
+        }}
         ref={innerRef}
         className={`grid grid-flow-col  relative transition-left duration-500`}
         onTouchStart={(e) => {
@@ -95,6 +96,16 @@ const ArrowSlider = ({ children, rowsFull, rowsMobile, itemsOnScreen = 6 }) => {
         }}
         onTouchMove={(e) => {
           xMoved = e.touches[0].clientX - xTouchStart;
+          const gridCheck = Math.ceil(children.length / itemsOnScreen);
+          const currentLeft = -100 * (scrollState - 1);
+          if (scrollState < gridCheck && xMoved < 0) {
+            innerRef.current.style.left =
+              String(Number(currentLeft) + Number(xMoved / 2)) + "%";
+          }
+          if (scrollState > 1 && xMoved > 0) {
+            innerRef.current.style.left =
+              String(Number(currentLeft) + Number(xMoved / 2)) + "%";
+          }
         }}
         onTouchEnd={(e) => {
           xTouchEnd = e.changedTouches[0].clientX;
@@ -108,7 +119,14 @@ const ArrowSlider = ({ children, rowsFull, rowsMobile, itemsOnScreen = 6 }) => {
           </div>
         ))}
       </div>
-      <div>Progess Bar!</div>
+      <div className={`bg-red-200 w-full h-6`}>
+        <div
+          className={`h-full bg-red-600 trasition-width duration-300`}
+          style={{
+            width: progress + "%",
+          }}
+        ></div>
+      </div>
       <div className={`flex justify-center space-x-4`}>
         <button onClick={slideLeftFunc} name="left">
           Scroll left
@@ -125,7 +143,7 @@ ArrowSlider.propTypes = {
   children: PropTypes.node,
   rowsMobile: PropTypes.number,
   rowsFull: PropTypes.number,
-  itemsOnScreen: PropTypes.number
+  itemsOnScreen: PropTypes.number,
 };
 
 export default ArrowSlider;
