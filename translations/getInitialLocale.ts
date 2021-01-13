@@ -1,4 +1,5 @@
 import { defaultLocale } from "./config";
+import {locales} from "./config";
 
 export function getInitialLocale(){
     const localSetting = localStorage.getItem("locale");
@@ -6,7 +7,7 @@ export function getInitialLocale(){
       return JSON.parse(localSetting);
     }
     const [browserSetting] = navigator.language.split("-");
-    if (browserSetting) {
+    if (browserSetting && browserSetting in locales) {
       return browserSetting;
     }
     return defaultLocale;

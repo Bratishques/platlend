@@ -32,8 +32,9 @@ export const LanguageContextProvider = ({ localization, children }) => {
     }, [localizationState]);
 
     useEffect(() => {
+        const language: any = query.lang
         if (
-          localization?.locale !== query.lang
+          localization?.locale !== query.lang && language in ["en", "ja"]
         ) {
        
           setLocalizationState({
