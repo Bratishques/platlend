@@ -1,5 +1,0 @@
-const services = [
-    {
-        text: ""
-    }
-]

@@ -4,11 +4,11 @@ import { getInitialLocale } from "../translations/getInitialLocale";
 import { useRouter } from "next/router";
 
 const Index: React.FC = () => {
-    const router = useRouter()
+  const router = useRouter();
   useEffect(() => {
-      console.log(getInitialLocale())
-     
-     router.push(`/${getInitialLocale()}`)
+    console.log(getInitialLocale());
+
+    router.push(`/${getInitialLocale()}`);
   });
 
   return (
@@ -18,4 +18,4 @@ const Index: React.FC = () => {
   );
 };
 
-export default Index
+export default Index;

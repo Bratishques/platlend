@@ -3,7 +3,14 @@ import { useContext, useEffect, useRef, useState } from "react";
 import ScreenSizeContext from "../context/screenSizeContext";
 import breakpoints from "../utils/breakpoints";
 
-const ArrowSlider = ({ children, rowsFull, rowsMobile, itemsOnScreen = 6, buttons=true, circles=false }) => {
+const ArrowSlider = ({
+  children,
+  rowsFull,
+  rowsMobile,
+  itemsOnScreen = 6,
+  buttons = true,
+  circles = false,
+}) => {
   const screenSize = useContext(ScreenSizeContext);
   const [itemsUsed, setItemsUsed] = useState(rowsFull);
   const [scrollState, setScrollState] = useState(1);
@@ -114,7 +121,10 @@ const ArrowSlider = ({ children, rowsFull, rowsMobile, itemsOnScreen = 6, button
         }}
       >
         {children.map((child, i) => (
-          <div key={i} className={`flex items-center justify-center p-3 w-full`}>
+          <div
+            key={i}
+            className={`flex items-center justify-center p-3 w-full`}
+          >
             {child}
           </div>
         ))}
@@ -127,15 +137,16 @@ const ArrowSlider = ({ children, rowsFull, rowsMobile, itemsOnScreen = 6, button
           }}
         ></div>
       </div>
-      {buttons && <div className={`flex justify-center space-x-4`}>
-        <button onClick={slideLeftFunc} name="left">
-          Scroll left
-        </button>
-        <button onClick={slideRightFunc} name="right">
-          Scroll right
-        </button>
-      </div>}
-      
+      {buttons && (
+        <div className={`flex justify-center space-x-4`}>
+          <button onClick={slideLeftFunc} name="left">
+            Scroll left
+          </button>
+          <button onClick={slideRightFunc} name="right">
+            Scroll right
+          </button>
+        </div>
+      )}
     </div>
   );
 };
@@ -145,6 +156,8 @@ ArrowSlider.propTypes = {
   rowsMobile: PropTypes.number,
   rowsFull: PropTypes.number,
   itemsOnScreen: PropTypes.number,
+  buttons: PropTypes.bool,
+  circles: PropTypes.bool,
 };
 
 export default ArrowSlider;

@@ -1,7 +1,7 @@
 import en from "./en";
-import ja from "./ja"
+import ja from "./ja";
 
 export default {
-    ja,
-    en,
-  };
+  ja,
+  en,
+};

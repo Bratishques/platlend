@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 const Offering = ({
   title = "Hello",
   items = ["hello, i'm item1", "hello, i'm item1", "hello, i'm item1"],
@@ -28,4 +29,9 @@ const Offering = ({
   );
 };
 
+Offering.propTypes = {
+  title: PropTypes.string,
+  icon: PropTypes.string,
+  items: PropTypes.array,
+};
 export default Offering;

@@ -2,7 +2,6 @@ import { useContext } from "react";
 import LanguageContext from "../context/languageContext";
 
 export default function useTranslation(localization) {
-
   function t(key: string) {
     if (!localization.translations[key]) {
       console.warn(

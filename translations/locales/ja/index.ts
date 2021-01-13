@@ -1,5 +1,5 @@
-import hero from "./hero"
+import hero from "./hero";
 
 export default {
-    hero
-}
+  hero,
+};

@@ -5,14 +5,14 @@ import useTranslation from "../hooks/useTranslation";
 import breakpoints from "../utils/breakpoints";
 import HeaderLink from "./headerLink";
 
-const Header = ({ctx}) => {
+const Header = ({ ctx }) => {
   const [scrollState, setScrollState] = useState(0);
   const sidebarData = useContext(SidebarContext);
   const sidebarOpen = sidebarData.sidebarOpen;
   const screenSize = useContext(ScreenSizeContext);
-  const {t} = useTranslation(ctx)
-  const services = t("services")
- 
+  const { t } = useTranslation(ctx);
+  const services = t("services");
+
   const scrollListener = useCallback(() => {
     const position = window.scrollY;
     const header = document.getElementById("header");
@@ -27,18 +27,17 @@ const Header = ({ctx}) => {
     }
   }, []);
 
-
   const links = [
     <HeaderLink text={"Q Defi Rating"} link={""} />,
-      <HeaderLink text={"NFT"} link={""} />,
-      <HeaderLink text={"Careers"} link={""} />,
-      <HeaderLink text={"About us"} link={""} />,
-      <HeaderLink text={"Our other services"} link={""} dropdown={services}/>,
-      <HeaderLink text={"Blog"} link={""} />,
-      <HeaderLink text={"Link"} link={""} />,
-      <HeaderLink text={"en"} link={"/en"} />,
-      <HeaderLink text={"ja"} link={"/ja"} />,
-  ]
+    <HeaderLink text={"NFT"} link={""} />,
+    <HeaderLink text={"Careers"} link={""} />,
+    <HeaderLink text={"About us"} link={""} />,
+    <HeaderLink text={"Our other services"} link={""} dropdown={services} />,
+    <HeaderLink text={"Blog"} link={""} />,
+    <HeaderLink text={"Link"} link={""} />,
+    <HeaderLink text={"en"} link={"/en"} />,
+    <HeaderLink text={"ja"} link={"/ja"} />,
+  ];
 
   useEffect(() => {
     window.addEventListener("scroll", scrollListener);
@@ -48,7 +47,7 @@ const Header = ({ctx}) => {
     };
   }, []);
 
-    console.log(services)
+  console.log(services);
   return (
     <div id="header-wrap" className={`w-full absolute flex justify-end`}>
       <div
@@ -67,9 +66,9 @@ const Header = ({ctx}) => {
           }}
           className={`fixed flex flex-col bg-primary-bg h-screen w-full transition-all duration-500 z-20 flex flex-col justify-center align-center overflow-y-scroll`}
         >
-         {links.map((a) => {
-           return a
-         })}
+          {links.map((a) => {
+            return a;
+          })}
         </div>
         <div className={`w-85 h-full flex justify-between`}>
           <div className={` flex items-center`}>
@@ -78,15 +77,14 @@ const Header = ({ctx}) => {
             </div>
           </div>
           {screenSize >= breakpoints.lg && (
-            <div
-              className={`max-w-96 w-4/5 h-full `}
-            >
-               <div className={`relative w-full flex items-center justify-between py-3 h-full`}>
-      {links.map(a => {
-        return a
-      })}
-      </div>
-            
+            <div className={`max-w-96 w-4/5 h-full `}>
+              <div
+                className={`relative w-full flex items-center justify-between py-3 h-full`}
+              >
+                {links.map((a) => {
+                  return a;
+                })}
+              </div>
             </div>
           )}
         </div>

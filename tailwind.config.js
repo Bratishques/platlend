@@ -3,7 +3,7 @@ module.exports = {
   theme: {
     minHeight: {
       40: "10rem",
-      56: "6rem"
+      56: "6rem",
     },
     textShadow: {
       "blue-offset": "0.5rem 0.3rem 0 rgba(0, 102, 255, 0.7)",
@@ -22,8 +22,8 @@ module.exports = {
       colors: {
         "primary-bg": "#111",
         "glowy-blue": "#0066FF",
-        "subtext": "#c7c7c7",
-        "offer-cards-hover": "#151515"
+        subtext: "#c7c7c7",
+        "offer-cards-hover": "#151515",
       },
       maxWidth: {
         96: "96rem",
