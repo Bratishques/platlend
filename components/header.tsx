@@ -37,10 +37,12 @@ const Header = () => {
       <div
         id="header"
         className={`w-full top-0 ${
-          scrollState === 2 ? "bg-primary-bg border-b-2 border-glowy-blue shadow-blue-glow" : "bg-transparent"
+          scrollState === 2
+            ? "bg-primary-bg border-b-2 border-glowy-blue shadow-blue-glow"
+            : "bg-transparent"
         } h-7.5 flex justify-center transition-opacity duration-300 ${
           scrollState === 2 ? "fixed" : "relative"
-        } ${scrollState === 1 && "opacity-0"} z-30`}
+        } ${scrollState === 1 && "opacity-0"} z-50`}
       >
         <div
           style={{
@@ -49,13 +51,13 @@ const Header = () => {
           className={`fixed bg-purple-500 h-screen w-full transition-all duration-500 z-20`}
         >
           <HeaderLink text={"Q Defi Rating"} link={""} />
-              <HeaderLink text={"NFT"} link={""} />
-              <HeaderLink text={"Careers"} link={""} />
-              <HeaderLink text={"About us"} link={""} />
-              <HeaderLink text={"Our other services"} link={""} />
-              <HeaderLink text={"Blog"} link={""} />
-              <HeaderLink text={"Link"} link={""} />
-              <HeaderLink text={"Konstantin Konstantinopolsky"} link={""} />
+          <HeaderLink text={"NFT"} link={""} />
+          <HeaderLink text={"Careers"} link={""} />
+          <HeaderLink text={"About us"} link={""} />
+          <HeaderLink text={"Our other services"} link={""} />
+          <HeaderLink text={"Blog"} link={""} />
+          <HeaderLink text={"Link"} link={""} />
+          <HeaderLink text={"Konstantin Konstantinopolsky"} link={""} />
         </div>
         <div className={`w-85 h-full flex justify-between`}>
           <div className={` flex items-center`}>
@@ -64,7 +66,9 @@ const Header = () => {
             </div>
           </div>
           {screenSize >= breakpoints.lg && (
-            <div className={`max-w-96 w-4/5 h-full flex items-center justify-between py-3`}>
+            <div
+              className={`max-w-96 w-4/5 h-full flex items-center justify-between py-3`}
+            >
               <HeaderLink text={"Q Defi Rating"} link={""} />
               <HeaderLink text={"NFT"} link={""} />
               <HeaderLink text={"Careers"} link={""} />
@@ -72,7 +76,8 @@ const Header = () => {
               <HeaderLink text={"Our other services"} link={""} />
               <HeaderLink text={"Blog"} link={""} />
               <HeaderLink text={"Link"} link={""} />
-              <HeaderLink text={"Konstantin Konstantinopolsky"} link={""} />
+              <HeaderLink text={"en"} link={"/en"} />
+              <HeaderLink text={"ja"} link={"/ja"} />
             </div>
           )}
         </div>

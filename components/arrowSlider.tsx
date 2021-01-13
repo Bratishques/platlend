@@ -3,7 +3,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import ScreenSizeContext from "../context/screenSizeContext";
 import breakpoints from "../utils/breakpoints";
 
-const ArrowSlider = ({ children, rowsFull, rowsMobile, itemsOnScreen = 6 }) => {
+const ArrowSlider = ({ children, rowsFull, rowsMobile, itemsOnScreen = 6, buttons=true, circles=false }) => {
   const screenSize = useContext(ScreenSizeContext);
   const [itemsUsed, setItemsUsed] = useState(rowsFull);
   const [scrollState, setScrollState] = useState(1);
@@ -79,7 +79,7 @@ const ArrowSlider = ({ children, rowsFull, rowsMobile, itemsOnScreen = 6 }) => {
   }, [itemsUsed]);
 
   return (
-    <div className={`w-10/12 h-6/12 sm:w-8/12 bg-red-300 overflow-hidden`}>
+    <div className={`sm:w-10/12 h-6/12 w-full overflow-hidden`}>
       <div
         style={{
           gridTemplateColumns: `repeat(${colsAmount(
@@ -119,22 +119,23 @@ const ArrowSlider = ({ children, rowsFull, rowsMobile, itemsOnScreen = 6 }) => {
           </div>
         ))}
       </div>
-      <div className={`bg-red-200 w-full h-6`}>
+      <div className={`bg-white w-full h-3 mt-12`}>
         <div
-          className={`h-full bg-red-600 trasition-width duration-300`}
+          className={`h-full bg-glowy-blue shadow-blue-glow trasition-width duration-300`}
           style={{
             width: progress + "%",
           }}
         ></div>
       </div>
-      <div className={`flex justify-center space-x-4`}>
+      {buttons && <div className={`flex justify-center space-x-4`}>
         <button onClick={slideLeftFunc} name="left">
           Scroll left
         </button>
         <button onClick={slideRightFunc} name="right">
           Scroll right
         </button>
-      </div>
+      </div>}
+      
     </div>
   );
 };

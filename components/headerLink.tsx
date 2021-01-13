@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
-const HeaderLink = ({ text, link, dropdown="" }) => {
-  const [isDropped, setIsDropped] = useState(false)
+const HeaderLink = ({ text, link, dropdown = "" }) => {
+  const [isDropped, setIsDropped] = useState(false);
   return (
     <div className={`p-3 text-2xl text-white`}>
       <a href={link} className={`header-link relative`}>
