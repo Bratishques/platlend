@@ -31,7 +31,7 @@ export default function Home({ localization }) {
           }}
           className={`h-screen w-full`}
         >
-          <Header />
+          <Header ctx={localization} />
           <div
             id="ellipse-div"
             className={`w-1/3 h-3/4 bg-auto top-64 `}

@@ -1,15 +1,18 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 import ScreenSizeContext from "../context/screenSizeContext";
 import SidebarContext from "../context/sidebarContext";
+import useTranslation from "../hooks/useTranslation";
 import breakpoints from "../utils/breakpoints";
 import HeaderLink from "./headerLink";
 
-const Header = () => {
+const Header = ({ctx}) => {
   const [scrollState, setScrollState] = useState(0);
   const sidebarData = useContext(SidebarContext);
   const sidebarOpen = sidebarData.sidebarOpen;
   const screenSize = useContext(ScreenSizeContext);
-
+  const {t} = useTranslation(ctx)
+  const services = t("services")
+ 
   const scrollListener = useCallback(() => {
     const position = window.scrollY;
     const header = document.getElementById("header");
@@ -23,6 +26,21 @@ const Header = () => {
       setScrollState(2);
     }
   }, []);
+  const Links = () => {
+    return (
+      <div className={`relative w-full flex items-center justify-between py-3 h-full`}>
+      <HeaderLink text={"Q Defi Rating"} link={""} />
+      <HeaderLink text={"NFT"} link={""} />
+      <HeaderLink text={"Careers"} link={""} />
+      <HeaderLink text={"About us"} link={""} />
+      <HeaderLink text={"Our other services"} link={""} dropdown={services}/>
+      <HeaderLink text={"Blog"} link={""} />
+      <HeaderLink text={"Link"} link={""} />
+      <HeaderLink text={"en"} link={"/en"} />
+      <HeaderLink text={"ja"} link={"/ja"} />
+      </div>
+    )
+  }
 
   useEffect(() => {
     window.addEventListener("scroll", scrollListener);
@@ -32,6 +50,7 @@ const Header = () => {
     };
   }, []);
 
+    console.log(services)
   return (
     <div id="header-wrap" className={`w-full absolute flex justify-end`}>
       <div
@@ -50,14 +69,7 @@ const Header = () => {
           }}
           className={`fixed bg-purple-500 h-screen w-full transition-all duration-500 z-20`}
         >
-          <HeaderLink text={"Q Defi Rating"} link={""} />
-          <HeaderLink text={"NFT"} link={""} />
-          <HeaderLink text={"Careers"} link={""} />
-          <HeaderLink text={"About us"} link={""} />
-          <HeaderLink text={"Our other services"} link={""} />
-          <HeaderLink text={"Blog"} link={""} />
-          <HeaderLink text={"Link"} link={""} />
-          <HeaderLink text={"Konstantin Konstantinopolsky"} link={""} />
+         
         </div>
         <div className={`w-85 h-full flex justify-between`}>
           <div className={` flex items-center`}>
@@ -67,17 +79,9 @@ const Header = () => {
           </div>
           {screenSize >= breakpoints.lg && (
             <div
-              className={`max-w-96 w-4/5 h-full flex items-center justify-between py-3`}
+              className={`max-w-96 w-4/5 h-full `}
             >
-              <HeaderLink text={"Q Defi Rating"} link={""} />
-              <HeaderLink text={"NFT"} link={""} />
-              <HeaderLink text={"Careers"} link={""} />
-              <HeaderLink text={"About us"} link={""} />
-              <HeaderLink text={"Our other services"} link={""} />
-              <HeaderLink text={"Blog"} link={""} />
-              <HeaderLink text={"Link"} link={""} />
-              <HeaderLink text={"en"} link={"/en"} />
-              <HeaderLink text={"ja"} link={"/ja"} />
+              {Links()}
             </div>
           )}
         </div>
