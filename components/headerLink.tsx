@@ -14,7 +14,7 @@ const HeaderLink = ({ dropdown = [], text, link }) => {
       mainRef.current.style.marginBottom = dropdownRef.current.getBoundingClientRect().height + 10 + "px"
     }
     else {
-      mainRef.current.style.marginBottom = "0px"
+      mainRef.current.style.marginBottom = ""
     }
   }, [isDropped, dropdownRef.current, screenSize])
   return (
@@ -30,18 +30,23 @@ const HeaderLink = ({ dropdown = [], text, link }) => {
           setIsDropped(false)
         }
       }}
+      onClick = {() => {
+        if (screenSize < breakpoints.lg) {
+          setIsDropped(true)
+        }
+      }}
       onTouchStart = {() => {
         if (screenSize < breakpoints.lg) {
           setIsDropped(true)
         }
       }}
-      className={`relative p-3 text-2xl text-white flex h-full justify-center`}>
+      className={`relative w-100 p-3 text-2xl text-white flex lg:h-full justify-center h-16 lg:mb-0`}>
       {!(dropdown.length > 0) ?
-        <a href={link} className={`flex header-link relative  justify-self-center self-center justify-center`}>
-          {text}
+        <a href={link} className={` whitespace-nowrap flex header-link relative  justify-self-center self-center `}>
+          {text} 
         </a> :
-        <p className={`flex header-link relative  justify-self-center self-center justify-center`}>
-          {text}
+        <p className={`whitespace-nowrap flex header-link relative  justify-self-center self-center `}>
+          {text} 
         </p>
       }
 
@@ -51,7 +56,7 @@ const HeaderLink = ({ dropdown = [], text, link }) => {
           onMouseLeave={() => {
             setIsDropped(false)
           }}
-          className={` absolute p-3 bg-glowy-blue px-24 mt-16  align-center z-30`}>
+          className={` absolute lg:p-6 lg:px-24 bg-glowy-blue px-24 mt-16 flex flex-col align-center z-30`}>
           {dropdown.map((a, i) => {
             return <HeaderLink text={a.text} link={a.link} />
           })}

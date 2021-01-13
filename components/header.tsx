@@ -65,7 +65,7 @@ const Header = ({ctx}) => {
           style={{
             left: screenSize < breakpoints.lg && sidebarOpen ? "0%" : "-100%",
           }}
-          className={`fixed flex flex-col bg-primary-bg h-screen w-full transition-all duration-500 z-20 px-48 py-64 overflow-y-scroll`}
+          className={`fixed flex flex-col bg-primary-bg h-screen w-full transition-all duration-500 z-20 flex flex-col justify-center align-center overflow-y-scroll`}
         >
          {links.map((a) => {
            return a
