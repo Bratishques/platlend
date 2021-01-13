@@ -5,7 +5,7 @@ const Offering = ({
 }) => {
   return (
     <div
-      className={`group hover:bg-offer-cards-hover hover:border-offer-cards-hover transition-all duration-300 -w-full h-full py-12 px-8 text-white border-glowy-blue border-2 rounded-lg`}
+      className={`group hover:bg-offer-cards-hover hover:border-offer-cards-hover transition-all duration-300 -w-full h-full py-12 px-8 text-white border-glowy-blue border-2 rounded-lg w-full`}
     >
       <div
         className={`relative mb-8 h-20 w-20 flex justify-center items-center`}

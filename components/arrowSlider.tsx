@@ -114,7 +114,7 @@ const ArrowSlider = ({ children, rowsFull, rowsMobile, itemsOnScreen = 6, button
         }}
       >
         {children.map((child, i) => (
-          <div key={i} className={`flex items-center justify-center p-3`}>
+          <div key={i} className={`flex items-center justify-center p-3 w-full`}>
             {child}
           </div>
         ))}

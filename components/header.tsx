@@ -26,21 +26,19 @@ const Header = ({ctx}) => {
       setScrollState(2);
     }
   }, []);
-  const Links = () => {
-    return (
-      <div className={`relative w-full flex items-center justify-between py-3 h-full`}>
-      <HeaderLink text={"Q Defi Rating"} link={""} />
-      <HeaderLink text={"NFT"} link={""} />
-      <HeaderLink text={"Careers"} link={""} />
-      <HeaderLink text={"About us"} link={""} />
-      <HeaderLink text={"Our other services"} link={""} dropdown={services}/>
-      <HeaderLink text={"Blog"} link={""} />
-      <HeaderLink text={"Link"} link={""} />
-      <HeaderLink text={"en"} link={"/en"} />
-      <HeaderLink text={"ja"} link={"/ja"} />
-      </div>
-    )
-  }
+
+
+  const links = [
+    <HeaderLink text={"Q Defi Rating"} link={""} />,
+      <HeaderLink text={"NFT"} link={""} />,
+      <HeaderLink text={"Careers"} link={""} />,
+      <HeaderLink text={"About us"} link={""} />,
+      <HeaderLink text={"Our other services"} link={""} dropdown={services}/>,
+      <HeaderLink text={"Blog"} link={""} />,
+      <HeaderLink text={"Link"} link={""} />,
+      <HeaderLink text={"en"} link={"/en"} />,
+      <HeaderLink text={"ja"} link={"/ja"} />,
+  ]
 
   useEffect(() => {
     window.addEventListener("scroll", scrollListener);
@@ -67,9 +65,11 @@ const Header = ({ctx}) => {
           style={{
             left: screenSize < breakpoints.lg && sidebarOpen ? "0%" : "-100%",
           }}
-          className={`fixed bg-purple-500 h-screen w-full transition-all duration-500 z-20`}
+          className={`fixed flex flex-col bg-primary-bg h-screen w-full transition-all duration-500 z-20 px-48 py-64 overflow-y-scroll`}
         >
-         
+         {links.map((a) => {
+           return a
+         })}
         </div>
         <div className={`w-85 h-full flex justify-between`}>
           <div className={` flex items-center`}>
@@ -81,13 +81,18 @@ const Header = ({ctx}) => {
             <div
               className={`max-w-96 w-4/5 h-full `}
             >
-              {Links()}
+               <div className={`relative w-full flex items-center justify-between py-3 h-full`}>
+      {links.map(a => {
+        return a
+      })}
+      </div>
+            
             </div>
           )}
         </div>
         {screenSize < breakpoints.lg ? (
           <button
-            className={`relative focus:outline-none bg-green-300 rounded-full z-30 right-3 h-16 w-16 transition-all duration-300 self-center flex justify-center items-center p-2`}
+            className={`relative focus:outline-none rounded-full z-30 right-3 h-16 w-16 transition-all duration-300 self-center flex justify-center items-center p-2`}
             onClick={() => {
               sidebarData.setSidebarOpen();
             }}
