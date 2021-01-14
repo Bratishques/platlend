@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import LanguageContext from "../context/languageContext";
+import defaultStrings from "../translations/locales/en";
 
 export default function useTranslation(localization) {
   function t(key: string) {
@@ -7,7 +8,7 @@ export default function useTranslation(localization) {
       console.warn(
         `Translation '${key}' for locale '${localization.locale}' not found.`
       );
-      return localization.en[key]
+      return defaultStrings[key]
     }
     return localization.translations[key] || "";
   }
