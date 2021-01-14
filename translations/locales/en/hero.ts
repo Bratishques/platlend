@@ -1,6 +1,7 @@
 const basePath = "/images/items/";
 const techPath = '/images/techStack/'
 const frontPath = `${techPath}frontend/`
+const backPath = `${techPath}backend/`
 const hero = {
   heroText: "PLATINUM SOFTWARE DEVELOPMENT:",
   heroSubText: "LEADERS IN THE DEFI AND BLOCKCHAIN SOFTWARE SOLUTIONS",
@@ -146,7 +147,14 @@ const hero = {
       yarn: `${frontPath}yarn.svg`
     },
     'Backend': {
-      
+      java: `${backPath}java.svg`,
+      php: `${backPath}php.svg`,
+      nodejs: `${backPath}nodejs.svg`,
+      websocket: `${backPath}websocket.svg`,
+      spring: `${backPath}spring.svg`,
+      yii: `${backPath}yii.svg`,
+      python: `${backPath}python.svg`,
+      phalcon: `${backPath}phalcon.svg`,   
     },
     'Infrastructure': {
       

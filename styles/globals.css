@@ -120,7 +120,7 @@ a {
   }
 }
 
-.Frontend-grid {
+.frontend-grid {
     display: grid;
     grid-template-columns: 0.5fr 1.5fr 1fr 1fr 1fr 1fr 2fr;
     grid-template-rows: 5rem 6rem 7rem;
@@ -130,3 +130,28 @@ a {
       "bem css responsive sass less npm animation"
       ". angular gulp babel eslint composer yarn";
 }
+
+.frontend-mobile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 5rem 5rem 6rem 6rem 5rem;
+  gap: 4rem 4rem;
+  grid-template-areas:
+    "vue react js jQuery"
+    "sass less npm css"
+    "ts gulp composer bem"
+    "angular animation babel eslint"
+    "mobile-first mobile-first responsive yarn";
+}
+
+.backend-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 7rem 6rem;
+  gap: 5rem 5rem;
+  grid-template-areas:
+    "java php nodejs websocket"
+    "spring yii python phalcon"
+}
+
+

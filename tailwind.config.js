@@ -1,6 +1,9 @@
 module.exports = {
   purge: ["./components/**/*.{js,ts,jsx,tsx}", "./pages/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    filter: {
+      "tech-hover": "invert(53%) sepia(68%) saturate(2878%) hue-rotate(567deg) brightness(104%) contrast(97%) drop-shadow(0px 0px 17px rgba(0, 102, 255, 0.8))"
+    },
     minHeight: {
       40: "10rem",
       56: "6rem",
@@ -13,6 +16,15 @@ module.exports = {
       "blue-glow": "0 0.2rem 0.5rem rgba(0, 102, 255, 0.35)",
     },
     extend: {
+      animation: {
+        "appear-tech": "appear 1s ease-in-out"
+      },
+      keyframes: {
+        appear: {
+          "0%": {opacity: "0"},
+          "100%": {opacity: "1"}
+        }
+      },
       spacing: {
         "95%": "95%",
         7.5: "7.5rem",
@@ -35,6 +47,7 @@ module.exports = {
     },
   },
   variants: {
+    filter: ["hover"],
     extend: {
       scale: ["active", "group-hover"],
       width: ["group-hover"],
@@ -51,5 +64,6 @@ module.exports = {
       textUnset: true, // whether to generate utilities to unset text properties
       componentPrefix: "c-", // the prefix to use for text style classes
     }),
+    require('tailwindcss-filters'),
   ],
 };

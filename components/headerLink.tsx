@@ -8,7 +8,6 @@ const HeaderLink = ({ dropdown = [], text, link }) => {
   const screenSize = useContext(ScreenSizeContext);
   const [isDropped, setIsDropped] = useState(false);
   useEffect(() => {
-    console.log(isDropped);
     if (isDropped && dropdownRef.current && screenSize < breakpoints.lg) {
       mainRef.current.style.marginBottom =
         dropdownRef.current.getBoundingClientRect().height + 10 + "px";
