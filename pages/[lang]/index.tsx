@@ -11,6 +11,7 @@ import {
   LanguageContextProvider,
 } from "../../context/languageContext";
 import useTranslation from "../../hooks/useTranslation";
+import TechGrid from "../../components/techGrid";
 
 export default function Home({ localization }) {
   const { t } = useTranslation(localization);
@@ -215,7 +216,7 @@ export default function Home({ localization }) {
           >
             <div className={`w-95%`}>
               <h2
-                className={`text-4xl md:text-7xl mb-12 md:text-shadow-blue-offset text-shadow-none md:text-left`}
+                className={`text-7xl mb-12 text-shadow-blue-offset md:text-left`}
               >
                 WE OFFER
               </h2>
@@ -235,43 +236,35 @@ export default function Home({ localization }) {
                   })}
                 </div>
               ) : (
-                <ArrowSlider
-                  rowsFull={3}
-                  rowsMobile={2}
-                  itemsOnScreen={2}
-                  buttons={false}
-                >
-                  {offerings.map((item, i) => {
-                    return (
-                      <Offering
-                        title={item.title}
-                        items={item.items}
-                        icon={item.icon}
-                        key={`${item.title}`}
-                      />
-                    );
-                  })}
-                </ArrowSlider>
-              )}
+                  <ArrowSlider
+                    rowsFull={3}
+                    rowsMobile={2}
+                    itemsOnScreen={2}
+                    buttons={false}
+                  >
+                    {offerings.map((item, i) => {
+                      return (
+                        <Offering
+                          title={item.title}
+                          items={item.items}
+                          icon={item.icon}
+                          key={`${item.title}`}
+                        />
+                      );
+                    })}
+                  </ArrowSlider>
+                )}
             </div>
           </section>
-          {/* <section
-          className={`min-h-screen w-full bg-purple-500 flex flex-col items-center p-6 `}
-        >
-          <h2 className={`mb-48`}>Our clients</h2>
-          <ArrowSlider rowsFull={3} rowsMobile={6} itemsOnScreen={6}>
-            {items.map((item, i) => {
-              return (
-                <div
-                  key={i}
-                  className={`w-full h-full bg-red-500 p-6 flex items-center justify-center `}
-                >
-                  {item}
-                </div>
-              );
-            })}
-          </ArrowSlider>
-        </section> */}
+          {/* TECH STACK */}
+          <section className={`w-full bg-primary-bg flex justify-center`}>
+            <div className={`px-6 w-full md:w-10/12 lg:w-18 flex flex-col`}>
+              <h2 className={`w-full text-center text-7xl mb-12 text-shadow-blue-offset text-white`}>
+                TECHNOLOGY STACK
+            </h2>
+            <TechGrid techStack={t('techStack')} stacks={t('stacks')}/>
+            </div>
+          </section>
         </main>
       </div>
     </LanguageContextProvider>

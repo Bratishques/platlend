@@ -7,6 +7,7 @@ export default function useTranslation(localization) {
       console.warn(
         `Translation '${key}' for locale '${localization.locale}' not found.`
       );
+      return localization.en[key]
     }
     return localization.translations[key] || "";
   }

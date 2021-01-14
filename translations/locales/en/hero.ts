@@ -1,4 +1,6 @@
 const basePath = "/images/items/";
+const techPath = '/images/techStack/'
+const frontPath = `${techPath}frontend/`
 const hero = {
   heroText: "PLATINUM SOFTWARE DEVELOPMENT:",
   heroSubText: "LEADERS IN THE DEFI AND BLOCKCHAIN SOFTWARE SOLUTIONS",
@@ -114,6 +116,48 @@ const hero = {
       icon: `${basePath}blockchain.svg`,
     },
   ],
+  techStack: [
+     'Frontend',
+     'Backend',
+     'Infrastructure' ,
+     'Database',
+     'Automation Testing'  
+  ],
+  stacks: {
+    'Frontend': {
+      vue: `${frontPath}vue.svg`,
+      react: `${frontPath}react.svg`,
+      js: `${frontPath}js.svg`,
+      jQuery: `${frontPath}jQuery.svg`,
+      ts: `${frontPath}ts.svg`,
+      'mobile-first':  `${frontPath}mobile-first.svg`,
+      bem: `${frontPath}bem.svg`,
+      css: `${frontPath}css.svg`,
+      responsive: `${frontPath}responsive.svg`,
+      sass: `${frontPath}sass.svg`,
+      less: `${frontPath}less.svg`,
+      npm: `${frontPath}npm.svg`,
+      animation: `${frontPath}animation.svg`,
+      angular: `${frontPath}angular.svg`,
+      gulp: `${frontPath}gulp.svg`,
+      babel: `${frontPath}babel.svg`,
+      eslint: `${frontPath}eslint.svg`,
+      composer: `${frontPath}composer.svg`,
+      yarn: `${frontPath}yarn.svg`
+    },
+    'Backend': {
+      
+    },
+    'Infrastructure': {
+      
+    },
+    'Database': {
+      
+    },
+    'Automation Testing': {
+      
+    },
+  }
 };
 
 export default hero;
