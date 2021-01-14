@@ -148,10 +148,21 @@ a {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 7rem 6rem;
-  gap: 5rem 5rem;
+  gap: 3rem 3rem;
   grid-template-areas:
     "java php nodejs websocket"
     "spring yii python phalcon"
+}
+
+.backend-mobile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 7rem 5rem 7rem;
+  gap: 4rem 4rem;
+  grid-template-areas:
+    "java php nodejs "
+    "websocket spring yii"
+    "python . phalcon"
 }
 
 
