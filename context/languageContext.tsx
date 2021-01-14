@@ -7,8 +7,8 @@ import locales from "../translations/locales";
 const LanguageContext = React.createContext({
   localization: {
     locale: "en",
-    translations: defaultStrings.hero,
-    namespace: "common",
+    translations: defaultStrings.hero, //Useless
+    namespace: "common", //Useless
   },
   setLocale: (state) => {},
 });
