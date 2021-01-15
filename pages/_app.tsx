@@ -7,6 +7,7 @@ import { SidebarContextProvider } from "../context/sidebarContext";
 import Loader from "../components/loader";
 import { useEffect, useState } from "react";
 
+
 function MyApp({ Component, pageProps }) {
   const [isLoaded, setIsLoaded] = useState(false)
   useEffect(() => {

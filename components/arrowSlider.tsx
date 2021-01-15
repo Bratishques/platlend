@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { useContext, useEffect, useRef, useState } from "react";
 import ScreenSizeContext from "../context/screenSizeContext";
 import breakpoints from "../utils/breakpoints";
+import { gsap } from "gsap";
 
 const ArrowSlider = ({
   children,
@@ -92,7 +93,7 @@ const ArrowSlider = ({
 
   //set the offset to the scroll state level
   useEffect(() => {
-    innerRef.current.style.transform = `translateX(${String((-scrollState+1) * (100*itemsOnScreen/children.length))}%)`;
+    gsap.to(`#slider${children.length}`, {x: (-scrollState+1) * (itemsOnScreen/children.length) * document.getElementById(`slider${children.length}`).getBoundingClientRect().width})
   }, [scrollState, itemsUsed, itemsOnScreen]);
 
   useEffect(() => {
@@ -130,6 +131,7 @@ const ArrowSlider = ({
   return (
     <div className={`h-6/12 w-full overflow-hidden`}>
       <div
+        id={`slider${children.length}`}
         style={{
           gridTemplateColumns: `repeat(${colsAmount(
             itemsUsed
@@ -137,7 +139,7 @@ const ArrowSlider = ({
           gridTemplateRows: `repeat(${itemsUsed}, minmax(0, 1fr))`,
         }}
         ref={innerRef}
-        className={`grid grid-flow-col relative transition-transfrom duration-500`}
+        className={`slider${children.length} grid grid-flow-col relative`}
         onTouchStart={(e) => {
           setXTouchStart(e.touches[0].clientX);
           setYTouchStart(e.touches[0].clientY)
@@ -147,16 +149,19 @@ const ArrowSlider = ({
           xMoved = e.touches[0].clientX - xTouchStart;
           yMoved = e.touches[0].clientY - yTouchStart
           const gridCheck = Math.ceil(children.length / itemsOnScreen);
-          const currentLeft = (-scrollState+1) * (100*itemsOnScreen/children.length);
+          const currentLeft = (-scrollState+1) * (itemsOnScreen/children.length) * document.getElementById(`slider${children.length}`).getBoundingClientRect().width;
           if (yMoved > 10 || yMoved < -10) {
             return
           }
           if (scrollState < gridCheck && xMoved < 0) {
-            innerRef.current.style.transform = `translateX(${String(Number(currentLeft) + Number(xMoved*100*itemsOnScreen/children.length/screenSize))}%)`
+            gsap.to(`#slider${children.length}`, {x: currentLeft + xMoved})
+            //innerRef.current.style.transform = `translateX(${String(Number(currentLeft) + Number(xMoved*100*itemsOnScreen/children.length/screenSize))}%)`
               ;
           }
           if (scrollState > 1 && xMoved > 0) {
-            innerRef.current.style.transform = `translateX(${String(Number(currentLeft) + Number(xMoved*100*itemsOnScreen/children.length/screenSize))}%)`
+
+            gsap.to(`#slider${children.length}`, {x: currentLeft + xMoved})
+            //innerRef.current.style.transform = `translateX(${String(Number(currentLeft) + Number(xMoved*100*itemsOnScreen/children.length/screenSize))}%)`
           }
         }}
         onTouchEnd={(e) => {
