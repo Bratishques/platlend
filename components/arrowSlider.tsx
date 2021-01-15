@@ -137,7 +137,7 @@ const ArrowSlider = ({
           gridTemplateRows: `repeat(${itemsUsed}, minmax(0, 1fr))`,
         }}
         ref={innerRef}
-        className={`grid grid-flow-col  relative transition-left duration-500`}
+        className={`grid grid-flow-col relative transition-transform duration-500`}
         onTouchStart={(e) => {
           setXTouchStart(e.touches[0].clientX);
           setYTouchStart(e.touches[0].clientY)
@@ -155,11 +155,11 @@ const ArrowSlider = ({
             return
           }
           if (scrollState < gridCheck && xMoved < 0) {
-            innerRef.current.style.transform = `translateX(${String(Number(currentLeft) + Number(xMoved*children.length/screenSize))}%)`
+            innerRef.current.style.transform = `translateX(${String(Number(currentLeft) + Number(xMoved*100*itemsOnScreen/children.length/screenSize))}%)`
               ;
           }
           if (scrollState > 1 && xMoved > 0) {
-            innerRef.current.style.transform = `translateX(${String(Number(currentLeft) + Number(xMoved*children.length/screenSize))}%)`
+            innerRef.current.style.transform = `translateX(${String(Number(currentLeft) + Number(xMoved*100*itemsOnScreen/children.length/screenSize))}%)`
           }
         }}
         onTouchEnd={(e) => {
