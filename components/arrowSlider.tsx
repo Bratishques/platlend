@@ -35,11 +35,10 @@ const ArrowSlider = ({
   };
 
   useEffect(() => {
-    if (screenSize <= breakpoints.lg && itemsOnScreen !== itemsTablet) {
+    if (screenSize <= breakpoints.lg && screenSize > breakpoints.md) {
       setItemsOnScreen(itemsTablet)
     }
-    else if (screenSize <= breakpoints.md && itemsOnScreen !== itemsMobile) {
-      console.log(itemsTablet)
+    else if (screenSize <= breakpoints.md) {
       setItemsOnScreen(itemsMobile)
     }
     else {
@@ -93,7 +92,7 @@ const ArrowSlider = ({
 
   //set the offset to the scroll state level
   useEffect(() => {
-    innerRef.current.style.left = String(-100 * (scrollState - 1)) + "%";
+    innerRef.current.style.transform = `translateX(${String((-scrollState+1) * (100*itemsOnScreen/children.length))}%)`;
   }, [scrollState, itemsUsed, xTouchStart, itemsOnScreen]);
 
   useEffect(() => {
