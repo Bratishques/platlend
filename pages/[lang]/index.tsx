@@ -289,9 +289,10 @@ export default function Home({ localization }) {
                   <div
                   className={`lg:px-24 md:px-16 px-2`}
                   >
-                  <img 
+                  <img
+                  draggable={false}
                   src={`${a[1]}`}
-                  className={`mb-12 md:w-22r md:h-34r h-22r w-64  rounded-full object-cover filter-grayed`}
+                  className={`mb-12 md:w-22r md:h-34r h-22r w-64  rounded-full object-cover filter-grayed cursor-move`}
                   alt={`${a[0]}`}
                   />
                   

@@ -70,7 +70,6 @@ const ArrowSlider = ({
 
   const endTouch = () => {
     const gridCheck = Math.ceil(children.length / itemsOnScreen);
-    console.log(xTouchStart, xTouchEnd);
     if (xTouchStart - xTouchEnd > screenSize / 10 && scrollState < gridCheck) {
       setScrollState(scrollState + 1);
     } else if (xTouchEnd - xTouchStart > screenSize / 10 && scrollState > 1) {
@@ -94,7 +93,7 @@ const ArrowSlider = ({
   //set the offset to the scroll state level
   useEffect(() => {
     gsap.to(`#slider${children.length}`, {x: (-scrollState+1) * (itemsOnScreen/children.length) * document.getElementById(`slider${children.length}`).getBoundingClientRect().width, duration: 0.5})
-  }, [scrollState, itemsUsed, itemsOnScreen,screenSize]);
+  }, [scrollState, itemsUsed, itemsOnScreen,screenSize, xTouchStart]);
 
   useEffect(() => {
     if (scrollState > gridCheck) {
@@ -137,9 +136,41 @@ const ArrowSlider = ({
             itemsUsed
           )}, minmax(0, 1fr))`,
           gridTemplateRows: `repeat(${itemsUsed}, minmax(0, 1fr))`,
+          MozUserSelect: "none",
+          WebkitUserSelect: "none",
+          msUserSelect: "none"
         }}
+        
         ref={innerRef}
         className={`slider${children.length} grid grid-flow-col relative`}
+        onMouseDown={(e) => {
+          setXTouchStart(e.clientX)
+          setIsTouched(true);
+        }}
+        onMouseMove={(e) => {
+          if (isTouched) {
+            const currentLeft = (-scrollState+1) * (itemsOnScreen/children.length) * document.getElementById(`slider${children.length}`).getBoundingClientRect().width;
+            xMoved = e.clientX - xTouchStart
+            const gridCheck = Math.ceil(children.length / itemsOnScreen);
+            if (scrollState < gridCheck && xMoved < 0) {
+              gsap.to(`#slider${children.length}`, {x: currentLeft + xMoved})
+              //innerRef.current.style.transform = `translateX(${String(Number(currentLeft) + Number(xMoved*100*itemsOnScreen/children.length/screenSize))}%)`
+                ;
+            }
+            if (scrollState > 1 && xMoved > 0) {
+  
+              gsap.to(`#slider${children.length}`, {x: currentLeft + xMoved})
+              //innerRef.current.style.transform = `translateX(${String(Number(currentLeft) + Number(xMoved*100*itemsOnScreen/children.length/screenSize))}%)`
+            }
+          }
+
+        }}
+
+        onMouseUp ={(e) => {
+          xTouchEnd = e.clientX
+          setIsTouched(false);
+          endTouch();
+        }}
         onTouchStart={(e) => {
           setXTouchStart(e.touches[0].clientX);
           setYTouchStart(e.touches[0].clientY)
