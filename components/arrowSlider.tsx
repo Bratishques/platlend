@@ -93,7 +93,7 @@ const ArrowSlider = ({
   //set the offset to the scroll state level
   useEffect(() => {
     innerRef.current.style.transform = `translateX(${String((-scrollState+1) * (100*itemsOnScreen/children.length))}%)`;
-  }, [scrollState, itemsUsed, xTouchStart, itemsOnScreen]);
+  }, [scrollState, itemsUsed, itemsOnScreen]);
 
   useEffect(() => {
     if (scrollState > gridCheck) {
@@ -137,7 +137,7 @@ const ArrowSlider = ({
           gridTemplateRows: `repeat(${itemsUsed}, minmax(0, 1fr))`,
         }}
         ref={innerRef}
-        className={`grid grid-flow-col relative`}
+        className={`grid grid-flow-col relative transition-transfrom duration-500`}
         onTouchStart={(e) => {
           setXTouchStart(e.touches[0].clientX);
           setYTouchStart(e.touches[0].clientY)
@@ -174,10 +174,11 @@ const ArrowSlider = ({
           </div>
         ))}
       </div>
-      {progressBar && <div className={`bg-white w-full h-3 mt-12`}>
+      {progressBar && <div className={`bg-white w-full mt-12`}>
         <div
           className={`h-full bg-glowy-blue shadow-blue-glow trasition-width duration-300`}
           style={{
+            height: "2px",
             width: progress + "%",
           }}
         ></div></div>}
