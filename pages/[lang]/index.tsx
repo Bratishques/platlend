@@ -12,6 +12,7 @@ import {
 } from "../../context/languageContext";
 import useTranslation from "../../hooks/useTranslation";
 import TechGrid from "../../components/techGrid";
+import { relative } from "path";
 
 
 export default function Home({ localization }) {
@@ -288,11 +289,12 @@ export default function Home({ localization }) {
                 return (
                   <div
                   className={`lg:px-24 md:px-16 px-2`}
+                  key={`${a[0]}`}
                   >
                   <img
                   draggable={false}
                   src={`${a[1]}`}
-                  className={`mb-12 md:w-22r md:h-34r h-22r w-64  rounded-full object-cover filter-grayed cursor-move`}
+                  className={`mb-12 md:w-22r md:h-34r h-22r w-64  rounded-full object-cover filter-grayed`}
                   alt={`${a[0]}`}
                   />
                   
@@ -302,6 +304,47 @@ export default function Home({ localization }) {
                 )
               })}
             </ArrowSlider>
+          </section>
+          <section className={`w-full bg-primary-bg flex justify-center px-12 md:px-24 text-white`}>
+              <ArrowSlider
+              itemsDesktop={2}
+              itemsTablet={1}
+              itemsMobile={1}
+              rowsFull={1}
+              rowsMobile={1}
+              progressBar={true}
+              buttons={true}
+              >
+                {Object.entries(t("testimonials")).map((testimonal, i) => {
+                  interface TestimonalData {
+                    photo: string;
+                    text: string;
+                    role?: string;
+                    firm?: string;
+                  }
+                  const testimonalData = testimonal[1] as TestimonalData
+
+                  return (
+
+                  <div className={`w-full bg-primary-bg relative pt-100px `}>
+                  <div key={`${testimonal[0]}`}className={`bg-testimonial-card w-full flex flex-col items-center px-12 md:px-24 h-full pb-16 border-glowy-blue border-2 shadow-blue-glow`}>
+                  <img src={`${testimonalData.photo}`} className={`relative object-contain rounded-full z-10 mt-min100 border-glowy-blue border-2 shadow-blue-glow`} draggable={false}/> 
+                    <h3 className={`text-5xl mt-8 mb-8 text-center`}>
+                      {testimonal[0]}
+                    </h3>
+                    {
+                    <p className={`text-2xl text-center mb-8 h-6`}>
+                      {testimonalData.role && testimonalData.role}
+                    </p>
+                    }
+                    <p className={`text-2xl  text-center mb-12`}>
+                      {testimonalData.text}
+                    </p>
+                    <img src={`${testimonalData.firm}`} className={`relative bottom-0 max-h-7.5`}/>
+                    </div>
+                  </div>)
+                })}
+              </ArrowSlider>
           </section>
         </main>
       </div>

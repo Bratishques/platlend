@@ -33,13 +33,16 @@ module.exports = {
         3.3: "3.3rem",
         "95vh": "95vh",
         "22r": "22rem",
-        "34r": "34rem"
+        "34r": "34rem",
+        'min100': "-100px",
+        "100px" : "100px"
       },
       colors: {
         "primary-bg": "#111",
         "glowy-blue": "#0066FF",
         subtext: "#c7c7c7",
         "offer-cards-hover": "#151515",
+        "testimonial-card": "rgba(0, 102, 255, 0.2)"
       },
       maxWidth: {
         96: "96rem",
@@ -47,6 +50,7 @@ module.exports = {
       },
       width: {
         "4/5": "80%",
+        "51.9r": "51.9rem"
       },
     },
   },

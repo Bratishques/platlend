@@ -2,6 +2,7 @@ const basePath = "/images/items/";
 const techPath = '/images/techStack/'
 const frontPath = `${techPath}frontend/`
 const backPath = `${techPath}backend/`
+const testimonialsPath = `/images/testimonials/`
 const casesPath =`/images/cases/`
 const hero = {
   heroText: "PLATINUM SOFTWARE DEVELOPMENT:",
@@ -180,6 +181,44 @@ const hero = {
     "UBAI - Online Educational Platfom": `${casesPath}ubai.svg`,
     "Embily Mobile Banking App": `${casesPath}embily.svg`,
     "QDAO DEFI Platform": `${casesPath}qdaodefi.png`
+  },
+  testimonials: {
+    "ANDREW PLOTNIKOV": {
+      role: "Chief Risk Officer",
+      text: "We ordered Legal opinion, and the team made everything great and in short terms. They also provided additional services as a bonus. Thank you very much for a good-quality service.",
+      firm: `${testimonialsPath}hyperquant.png`,
+      photo: `${testimonialsPath}andrew-plotnikov.png`
+    },
+    "GUSTAVO ASTIAZARAN": {
+      role: `CMO`,
+      text: `The work from Platinum was of the highest quality and the service by there team was excellent. They always kept me informed about every step in the process and delivered on time.`,
+      firm: `${testimonialsPath}docademic.png`,
+      photo: `${testimonialsPath}gustavo-astiazaran.png`
+    },
+    "INA SAMOVICH": {
+      role: "CEO",
+      text: "I consider Platinum a good project partner with lots of experience in PR, marketing and product development. They listen to the needs of a client and bring their expertise for the best decision. This wonderful team is able to implement related activities on a proper level and contribute to the project results.",
+      firm: `${testimonialsPath}coppay.png`,
+      photo: `${testimonialsPath}ina-samovich.png`
+    },
+    "DAVID": {
+      role: "",
+      text: "Service was good, wish we had engaged you guys earlier. Happy to be a reference point for other clients.",
+      firm: `${testimonialsPath}h.png`,
+      photo: `${testimonialsPath}david.png`
+    },
+    "PERSIO FLEXA": {
+      role: "",
+      text: "It was great to work with your team, pass confidence, respond quickly, everything done correctly and with deadlines. We will negotiate again with certainty.",
+      firm: `${testimonialsPath}gimmer.png`,
+      photo: `${testimonialsPath}persio-flexa.png`
+    },
+    "FLAVIUS BURCA": {
+      role: "CTO",
+      text: "I am happy with your services so far. The feedback is great!",
+      firm: `${testimonialsPath}s.png`,
+      photo: `${testimonialsPath}flavius-burca.png`
+    }
   }
 };
 

@@ -138,7 +138,8 @@ const ArrowSlider = ({
           gridTemplateRows: `repeat(${itemsUsed}, minmax(0, 1fr))`,
           MozUserSelect: "none",
           WebkitUserSelect: "none",
-          msUserSelect: "none"
+          msUserSelect: "none",
+          cursor: "grab",
         }}
         
         ref={innerRef}
