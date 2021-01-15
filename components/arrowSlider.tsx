@@ -137,7 +137,7 @@ const ArrowSlider = ({
           gridTemplateRows: `repeat(${itemsUsed}, minmax(0, 1fr))`,
         }}
         ref={innerRef}
-        className={`grid grid-flow-col relative transition-transform duration-500`}
+        className={`grid grid-flow-col relative`}
         onTouchStart={(e) => {
           setXTouchStart(e.touches[0].clientX);
           setYTouchStart(e.touches[0].clientY)
@@ -147,11 +147,8 @@ const ArrowSlider = ({
           xMoved = e.touches[0].clientX - xTouchStart;
           yMoved = e.touches[0].clientY - yTouchStart
           const gridCheck = Math.ceil(children.length / itemsOnScreen);
-          
           const currentLeft = (-scrollState+1) * (100*itemsOnScreen/children.length);
-          console.log(currentLeft)
           if (yMoved > 10 || yMoved < -10) {
-            console.log(yMoved)
             return
           }
           if (scrollState < gridCheck && xMoved < 0) {
