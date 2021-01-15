@@ -13,18 +13,23 @@ import {
 import useTranslation from "../../hooks/useTranslation";
 import TechGrid from "../../components/techGrid";
 
+
 export default function Home({ localization }) {
   const { t } = useTranslation(localization);
   const screenSize = useContext(ScreenSizeContext);
   const offerings = t("offerings");
   console.log(screenSize);
+  
   return (
     <LanguageContextProvider localization={localization}>
+    
       <div>
+     
         <Head>
           <title>Plat Land</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
+        
 
         <main className={`w-full`}>
           <section

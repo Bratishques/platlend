@@ -57,7 +57,7 @@ const Header = ({ ctx }) => {
             : "bg-transparent"
         } h-7.5 flex justify-center transition-opacity duration-300 ${
           scrollState === 2 ? "fixed" : "relative"
-        } ${scrollState === 1 && "opacity-0"} z-50`}
+        } ${scrollState === 1 && "opacity-0"} z-40`}
       >
         <div
           style={{
