@@ -93,7 +93,7 @@ const ArrowSlider = ({
 
   //set the offset to the scroll state level
   useEffect(() => {
-    gsap.to(`#slider${children.length}`, {x: (-scrollState+1) * (itemsOnScreen/children.length) * document.getElementById(`slider${children.length}`).getBoundingClientRect().width})
+    gsap.to(`#slider${children.length}`, {x: (-scrollState+1) * (itemsOnScreen/children.length) * document.getElementById(`slider${children.length}`).getBoundingClientRect().width, duration: 0.5})
   }, [scrollState, itemsUsed, itemsOnScreen,screenSize]);
 
   useEffect(() => {
