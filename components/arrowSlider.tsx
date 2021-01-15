@@ -94,11 +94,15 @@ const ArrowSlider = ({
   //set the offset to the scroll state level
   useEffect(() => {
     innerRef.current.style.left = String(-100 * (scrollState - 1)) + "%";
-  }, [scrollState, itemsUsed, xTouchStart]);
+  }, [scrollState, itemsUsed, xTouchStart, itemsOnScreen]);
 
   useEffect(() => {
+    if (scrollState > gridCheck) {
+      setScrollState(gridCheck)
+    }
     setProgress((scrollState / gridCheck) * 100);
-  }, [scrollState]);
+   
+  }, [scrollState, itemsOnScreen]);
 
   useEffect(() => {
     innerRef.current.style.width =
