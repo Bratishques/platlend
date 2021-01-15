@@ -17,7 +17,6 @@ const Header = ({ ctx }) => {
     const position = window.scrollY;
     const header = document.getElementById("header");
     const headerHeight = header.getBoundingClientRect().height;
-    console.log(position);
     if (position <= headerHeight) {
       setScrollState(0);
     } else if (position > headerHeight && position < 150) {

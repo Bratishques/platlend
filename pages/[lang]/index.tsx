@@ -17,8 +17,7 @@ export default function Home({ localization }) {
   const { t } = useTranslation(localization);
   const screenSize = useContext(ScreenSizeContext);
   const offerings = t("offerings");
-  console.log(offerings);
-
+  console.log(screenSize);
   return (
     <LanguageContextProvider localization={localization}>
       <div>
@@ -33,7 +32,7 @@ export default function Home({ localization }) {
             style={{
               backgroundImage: `url("/images/hero-back.jpg")`,
             }}
-            className={`h-screen w-full`}
+            className={`relative h-95vh md:h-screen w-full`}
           >
             <Header ctx={localization} />
             <div
@@ -70,7 +69,7 @@ export default function Home({ localization }) {
               className={`w-full md:w-8/12 flex items-center flex-col text-white text-center`}
             >
               <img src={`/images/logo-squares.svg`} className={`mb-16`}></img>
-              <h2 className={`text-4xl md:text-7xl mb-12`}>WHO WE ARE</h2>
+              <h2 className={`text-7xl mb-12`}>WHO WE ARE</h2>
               <p className={`text-3xl text-left leading-normal mb-12`}>
                 Platinum Software Development company provides unmatched
                 solutions for the clients. We give real business value through
@@ -239,8 +238,10 @@ export default function Home({ localization }) {
                   <ArrowSlider
                     rowsFull={3}
                     rowsMobile={2}
-                    itemsOnScreen={2}
+                    itemsDesktop={2}
                     buttons={false}
+                    circles={false}
+                    progressBar={true}
                   >
                     {offerings.map((item, i) => {
                       return (
@@ -264,6 +265,37 @@ export default function Home({ localization }) {
             </h2>
             <TechGrid techStack={t('techStack')} stacks={t('stacks')}/>
             </div>
+          </section>
+          <section className={`w-full bg-primary-bg flex justify-center items-center text-white flex-col md:px-24 px-12 h-full`}>
+            <h2  className={`text-7xl mb-12 text-shadow-blue-offset text-left align-start w-full`}>
+              {t("caseStudy")}
+            </h2>
+            <ArrowSlider
+            rowsFull={1}
+            rowsMobile={1}
+            itemsDesktop={4}
+            itemsTablet={3}
+            itemsMobile={2}
+            progressBar={true}
+            buttons={true}
+            >
+              {Object.entries(t("cases")).map((a, i) => {
+                return (
+                  <div
+                  className={`lg:px-24 md:px-16 px-2`}
+                  >
+                  <img 
+                  src={`${a[1]}`}
+                  className={`mb-12 md:w-22r md:h-34r h-22r w-64  rounded-full object-cover filter-grayed`}
+                  alt={`${a[0]}`}
+                  />
+                  
+                  <h2 className={`text-4xl`}
+                  >{a[0]}</h2>
+                </div>
+                )
+              })}
+            </ArrowSlider>
           </section>
         </main>
       </div>

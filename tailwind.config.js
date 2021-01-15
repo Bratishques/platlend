@@ -2,7 +2,8 @@ module.exports = {
   purge: ["./components/**/*.{js,ts,jsx,tsx}", "./pages/**/*.{js,ts,jsx,tsx}"],
   theme: {
     filter: {
-      "tech-hover": "invert(53%) sepia(68%) saturate(2878%) hue-rotate(567deg) brightness(104%) contrast(97%) drop-shadow(0px 0px 17px rgba(0, 102, 255, 0.8))"
+      "tech-hover": "invert(53%) sepia(68%) saturate(2878%) hue-rotate(567deg) brightness(104%) contrast(97%) drop-shadow(0px 0px 17px rgba(0, 102, 255, 0.8))",
+      'grayed': "grayscale(100%)"
     },
     minHeight: {
       40: "10rem",
@@ -30,6 +31,9 @@ module.exports = {
         7.5: "7.5rem",
         6.6: "6.6rem",
         3.3: "3.3rem",
+        "95vh": "95vh",
+        "22r": "22rem",
+        "34r": "34rem"
       },
       colors: {
         "primary-bg": "#111",
@@ -47,7 +51,7 @@ module.exports = {
     },
   },
   variants: {
-    filter: ["hover"],
+    filter: ["hover", "responsive", "group-hover"],
     extend: {
       scale: ["active", "group-hover"],
       width: ["group-hover"],

@@ -7,26 +7,45 @@ const ArrowSlider = ({
   children,
   rowsFull,
   rowsMobile,
-  itemsOnScreen = 6,
+  itemsDesktop,
+  itemsTablet = itemsDesktop,
+  itemsMobile = itemsDesktop,
   buttons = true,
   circles = false,
+  progressBar = true
 }) => {
   const screenSize = useContext(ScreenSizeContext);
   const [itemsUsed, setItemsUsed] = useState(rowsFull);
   const [scrollState, setScrollState] = useState(1);
   const [isTouched, setIsTouched] = useState(false);
   const [xTouchStart, setXTouchStart] = useState(0);
+  const [yTouchStart, setYTouchStart] = useState(0)
+  const [itemsOnScreen, setItemsOnScreen] = useState(itemsDesktop)
   const [progress, setProgress] = useState(
     (scrollState / Math.ceil(children.length / itemsOnScreen)) * 100
   );
   let xTouchEnd = 0;
   let xMoved = 0;
+  let yMoved = 0
   const gridCheck = Math.ceil(children.length / itemsOnScreen);
   const innerRef = useRef<HTMLDivElement | null>();
 
   const colsAmount = (items) => {
     return Math.ceil(children.length / items);
   };
+
+  useEffect(() => {
+    if (screenSize <= breakpoints.lg && itemsOnScreen !== itemsTablet) {
+      setItemsOnScreen(itemsTablet)
+    }
+    else if (screenSize <= breakpoints.md && itemsOnScreen !== itemsMobile) {
+      console.log(itemsTablet)
+      setItemsOnScreen(itemsMobile)
+    }
+    else {
+      setItemsOnScreen(itemsDesktop)
+    }
+  }, [screenSize])
 
   useEffect(() => {
     if (itemsUsed !== rowsFull && screenSize > breakpoints.md) {
@@ -58,6 +77,7 @@ const ArrowSlider = ({
       setScrollState(scrollState - 1);
     }
     setXTouchStart(0);
+    setYTouchStart(0);
     xTouchEnd = 0;
     xMoved = 0;
   };
@@ -83,10 +103,29 @@ const ArrowSlider = ({
   useEffect(() => {
     innerRef.current.style.width =
       String((colsAmount(itemsUsed) * 100) / (itemsOnScreen / itemsUsed)) + "%";
-  }, [itemsUsed]);
+  }, [itemsUsed, itemsOnScreen]);
+
+  const circlesDivs = () => {
+    const gridCheck = Math.ceil(children.length / itemsOnScreen)
+    const circleArr = []
+    for (let i = 1; i <= gridCheck; i++) {
+      circleArr.push(
+        <div
+        onClick={() => {
+          setScrollState(i)
+        }}
+        className={`w-8 h-8 bg-white transition-all rounded-full ${scrollState===i ? "opacity-100" : "opacity-50"}`}>
+
+        </div>
+      )
+    }
+    return (
+      circleArr
+    )
+  }
 
   return (
-    <div className={`sm:w-10/12 h-6/12 w-full overflow-hidden`}>
+    <div className={`h-6/12 w-full overflow-hidden`}>
       <div
         style={{
           gridTemplateColumns: `repeat(${colsAmount(
@@ -98,13 +137,18 @@ const ArrowSlider = ({
         className={`grid grid-flow-col  relative transition-left duration-500`}
         onTouchStart={(e) => {
           setXTouchStart(e.touches[0].clientX);
-
+          setYTouchStart(e.touches[0].clientY)
           setIsTouched(true);
         }}
         onTouchMove={(e) => {
           xMoved = e.touches[0].clientX - xTouchStart;
+          yMoved = e.touches[0].clientY - yTouchStart
           const gridCheck = Math.ceil(children.length / itemsOnScreen);
           const currentLeft = -100 * (scrollState - 1);
+          if (yMoved > 10 || yMoved < -10) {
+            console.log(yMoved)
+            return
+          }
           if (scrollState < gridCheck && xMoved < 0) {
             innerRef.current.style.left =
               String(Number(currentLeft) + Number(xMoved / 2)) + "%";
@@ -123,22 +167,23 @@ const ArrowSlider = ({
         {children.map((child, i) => (
           <div
             key={i}
-            className={`flex items-center justify-center p-3 w-full`}
+            className={`flex justify-center p-3 w-full`}
           >
             {child}
           </div>
         ))}
       </div>
-      <div className={`bg-white w-full h-3 mt-12`}>
+      {progressBar && <div className={`bg-white w-full h-3 mt-12`}>
         <div
           className={`h-full bg-glowy-blue shadow-blue-glow trasition-width duration-300`}
           style={{
             width: progress + "%",
           }}
-        ></div>
-      </div>
+        ></div></div>}
+      
+      
       {buttons && (
-        <div className={`flex justify-center space-x-4`}>
+        <div className={`flex justify-end space-x-4`}>
           <button onClick={slideLeftFunc} name="left">
             Scroll left
           </button>
@@ -147,6 +192,12 @@ const ArrowSlider = ({
           </button>
         </div>
       )}
+      {circles && (
+        <div className={`flex justify-center space-x-4`}>
+        {circlesDivs()}
+      </div>
+      )
+      }
     </div>
   );
 };

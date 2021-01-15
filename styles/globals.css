@@ -135,7 +135,7 @@ a {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 5rem 5rem 6rem 6rem 5rem;
-  gap: 4rem 4rem;
+  gap: 3rem 3rem;
   grid-template-areas:
     "vue react js jQuery"
     "sass less npm css"

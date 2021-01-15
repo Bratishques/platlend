@@ -2,6 +2,7 @@ const basePath = "/images/items/";
 const techPath = '/images/techStack/'
 const frontPath = `${techPath}frontend/`
 const backPath = `${techPath}backend/`
+const casesPath =`/images/cases/`
 const hero = {
   heroText: "PLATINUM SOFTWARE DEVELOPMENT:",
   heroSubText: "LEADERS IN THE DEFI AND BLOCKCHAIN SOFTWARE SOLUTIONS",
@@ -129,7 +130,7 @@ const hero = {
       vue: `${frontPath}vue.svg`,
       react: `${frontPath}react.svg`,
       js: `${frontPath}js.svg`,
-      jQuery: `${frontPath}jQuery.svg`,
+      jQuery: `${frontPath}jquery.svg`,
       ts: `${frontPath}ts.svg`,
       'mobile-first':  `${frontPath}mobile-first.svg`,
       bem: `${frontPath}bem.svg`,
@@ -165,6 +166,20 @@ const hero = {
     'Automation Testing': {
       
     },
+  },
+  caseStudy: "CASE STUDY",
+  cases: {
+    "Asian Bank Mobile Application" : `${casesPath}asianbank.svg`,
+    "The Noah Blockchain": `${casesPath}noah.svg`,
+    "Roseon Wallet": `${casesPath}roseon.svg`,
+    "QDAO Dashboard": `${casesPath}qdao.jpg`,
+    "Noah Blockchain Wallet": `${casesPath}noahwallet.svg`,
+    "Bounty Platform": `${casesPath}bounty.svg`,
+    "Q MATRIX Affiliate Module": `${casesPath}qmatrix.svg`,
+    "Q DAO Ecosystem": `${casesPath}qdaoeco.svg`,
+    "UBAI - Online Educational Platfom": `${casesPath}ubai.svg`,
+    "Embily Mobile Banking App": `${casesPath}embily.svg`,
+    "QDAO DEFI Platform": `${casesPath}qdaodefi.png`
   }
 };
 
