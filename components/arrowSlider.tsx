@@ -147,18 +147,19 @@ const ArrowSlider = ({
           xMoved = e.touches[0].clientX - xTouchStart;
           yMoved = e.touches[0].clientY - yTouchStart
           const gridCheck = Math.ceil(children.length / itemsOnScreen);
-          const currentLeft = -100 * (scrollState - 1);
+          
+          const currentLeft = (-scrollState+1) * (100*itemsOnScreen/children.length);
+          console.log(currentLeft)
           if (yMoved > 10 || yMoved < -10) {
             console.log(yMoved)
             return
           }
           if (scrollState < gridCheck && xMoved < 0) {
-            innerRef.current.style.left =
-              String(Number(currentLeft) + Number(xMoved / 2)) + "%";
+            innerRef.current.style.transform = `translateX(${String(Number(currentLeft) + Number(xMoved*children.length/screenSize))}%)`
+              ;
           }
           if (scrollState > 1 && xMoved > 0) {
-            innerRef.current.style.left =
-              String(Number(currentLeft) + Number(xMoved / 2)) + "%";
+            innerRef.current.style.transform = `translateX(${String(Number(currentLeft) + Number(xMoved*children.length/screenSize))}%)`
           }
         }}
         onTouchEnd={(e) => {
