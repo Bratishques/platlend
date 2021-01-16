@@ -31,6 +31,12 @@ const ArrowSlider = ({
   const gridCheck = Math.ceil(children.length / itemsOnScreen);
   const innerRef = useRef<HTMLDivElement | null>();
 
+  const calc = () => {
+      return (-scrollState+1) * (itemsOnScreen/children.length) * document.getElementById(`slider${children.length}${rowsFull}`).getBoundingClientRect().width
+  }
+  
+  
+
   const colsAmount = (items) => {
     return Math.ceil(children.length / items);
   };
@@ -92,21 +98,26 @@ const ArrowSlider = ({
 
   //set the offset to the scroll state level
   useEffect(() => {
-    gsap.to(`#slider${children.length}`, {x: (-scrollState+1) * (itemsOnScreen/children.length) * document.getElementById(`slider${children.length}`).getBoundingClientRect().width, duration: 0.5})
+    innerRef.current.style.width =
+      String((colsAmount(itemsUsed) * 100) / (itemsOnScreen / itemsUsed)) + "%";
+  }, [itemsUsed, itemsOnScreen, scrollState]);
+
+  useEffect(() => {
+    console.log(document.getElementById(`slider${children.length}${rowsFull}`).getBoundingClientRect().width/3)
+    console.log(calc())
+
+    gsap.to(`#slider${children.length}${rowsFull}`, {x: calc(), duration: 0.7})
   }, [scrollState, itemsUsed, itemsOnScreen,screenSize, xTouchStart]);
 
   useEffect(() => {
     if (scrollState > gridCheck) {
-      setScrollState(gridCheck)
+      setScrollState(1)
     }
     setProgress((scrollState / gridCheck) * 100);
    
   }, [scrollState, itemsOnScreen]);
 
-  useEffect(() => {
-    innerRef.current.style.width =
-      String((colsAmount(itemsUsed) * 100) / (itemsOnScreen / itemsUsed)) + "%";
-  }, [itemsUsed, itemsOnScreen]);
+
 
   const circlesDivs = () => {
     const gridCheck = Math.ceil(children.length / itemsOnScreen)
@@ -130,7 +141,7 @@ const ArrowSlider = ({
   return (
     <div className={`h-6/12 w-full overflow-hidden`}>
       <div
-        id={`slider${children.length}`}
+        id={`slider${children.length}${rowsFull}`}
         style={{
           gridTemplateColumns: `repeat(${colsAmount(
             itemsUsed
@@ -143,24 +154,24 @@ const ArrowSlider = ({
         }}
         
         ref={innerRef}
-        className={`slider${children.length} grid grid-flow-col relative`}
+        className={`slider${children.length}${rowsFull} grid grid-flow-col relative`}
         onMouseDown={(e) => {
           setXTouchStart(e.clientX)
           setIsTouched(true);
         }}
         onMouseMove={(e) => {
           if (isTouched) {
-            const currentLeft = (-scrollState+1) * (itemsOnScreen/children.length) * document.getElementById(`slider${children.length}`).getBoundingClientRect().width;
+            const currentLeft = calc();
             xMoved = e.clientX - xTouchStart
             const gridCheck = Math.ceil(children.length / itemsOnScreen);
             if (scrollState < gridCheck && xMoved < 0) {
-              gsap.to(`#slider${children.length}`, {x: currentLeft + xMoved})
+              gsap.to(`#slider${children.length}${rowsFull}`, {x: currentLeft + xMoved})
               //innerRef.current.style.transform = `translateX(${String(Number(currentLeft) + Number(xMoved*100*itemsOnScreen/children.length/screenSize))}%)`
                 ;
             }
             if (scrollState > 1 && xMoved > 0) {
   
-              gsap.to(`#slider${children.length}`, {x: currentLeft + xMoved})
+              gsap.to(`#slider${children.length}${rowsFull}`, {x: currentLeft + xMoved})
               //innerRef.current.style.transform = `translateX(${String(Number(currentLeft) + Number(xMoved*100*itemsOnScreen/children.length/screenSize))}%)`
             }
           }
@@ -181,18 +192,18 @@ const ArrowSlider = ({
           xMoved = e.touches[0].clientX - xTouchStart;
           yMoved = e.touches[0].clientY - yTouchStart
           const gridCheck = Math.ceil(children.length / itemsOnScreen);
-          const currentLeft = (-scrollState+1) * (itemsOnScreen/children.length) * document.getElementById(`slider${children.length}`).getBoundingClientRect().width;
+          const currentLeft = calc();
           if (yMoved > 10 || yMoved < -10) {
             return
           }
           if (scrollState < gridCheck && xMoved < 0) {
-            gsap.to(`#slider${children.length}`, {x: currentLeft + xMoved})
+            gsap.to(`#slider${children.length}${rowsFull}`, {x: currentLeft + xMoved})
             //innerRef.current.style.transform = `translateX(${String(Number(currentLeft) + Number(xMoved*100*itemsOnScreen/children.length/screenSize))}%)`
               ;
           }
           if (scrollState > 1 && xMoved > 0) {
 
-            gsap.to(`#slider${children.length}`, {x: currentLeft + xMoved})
+            gsap.to(`#slider${children.length}${rowsFull}`, {x: currentLeft + xMoved})
             //innerRef.current.style.transform = `translateX(${String(Number(currentLeft) + Number(xMoved*100*itemsOnScreen/children.length/screenSize))}%)`
           }
         }}
@@ -222,12 +233,12 @@ const ArrowSlider = ({
       
       
       {buttons && (
-        <div className={`flex justify-end space-x-4`}>
+        <div className={`flex justify-end space-x-16 mt-8`}>
           <button onClick={slideLeftFunc} name="left">
-            Scroll left
+            <img src={"/images/arrow-left.svg"}/>
           </button>
           <button onClick={slideRightFunc} name="right">
-            Scroll right
+          <img src={"/images/arrow-right.svg"}/>
           </button>
         </div>
       )}

@@ -1,6 +1,10 @@
 module.exports = {
   purge: ["./components/**/*.{js,ts,jsx,tsx}", "./pages/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    fontFamily: {
+      main: ['Lexend Deca', "sans-serif"],
+      titles: ['Blinker', "sans-serif" ]
+    },
     filter: {
       "tech-hover": "invert(53%) sepia(68%) saturate(2878%) hue-rotate(567deg) brightness(104%) contrast(97%) drop-shadow(0px 0px 17px rgba(0, 102, 255, 0.8))",
       'grayed': "grayscale(100%)"
@@ -28,13 +32,13 @@ module.exports = {
       },
       spacing: {
         "95%": "95%",
-        7.5: "7.5rem",
-        6.6: "6.6rem",
-        3.3: "3.3rem",
+        "7.5r": "7.5rem",
+        "6.6r": "6.6rem",
+        "3.3r": "3.3rem",
         "95vh": "95vh",
         "22r": "22rem",
         "34r": "34rem",
-        'min100': "-100px",
+        'min100px': "-100px",
         "100px" : "100px"
       },
       colors: {

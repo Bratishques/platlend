@@ -32,7 +32,7 @@ export default function Home({ localization }) {
         </Head>
         
 
-        <main className={`w-full`}>
+        <main className={`w-full font-main`}>
           <section
             id="hero-section"
             style={{
@@ -54,18 +54,18 @@ export default function Home({ localization }) {
               }}
             />
             <div
-              className={`absolute top-64 px-32 text-white text-center lg:text-left z-10`}
+              className={`absolute top-64 px-12 md:px-32 text-white text-center lg:text-left z-10`}
             >
-              <h1 className={`text-5xl md:text-8xl leading-tight mb-12`}>
+              <h1 className={`text-6xl md:text-8xl w-full leading-tight mb-12 font-titles font-bold`}>
                 {t("heroText")}
               </h1>
-              <h2 className={`text-4xl md:text-7xl leading-tight`}>
+              <h2 className={`text-5xl md:text-7xl w-full leading-tight font-titles font-semibold`}>
                 {t("heroSubText")}
               </h2>
             </div>
             <img
               className={`bottom-0 w-full absolute z-10`}
-              src="/images/deliver-software-preface.png"
+              src={screenSize <= breakpoints.md ? `/images/deliver-software-mobile.png` : `/images/deliver-software-preface.png`}
             ></img>
           </section>
           <section
@@ -75,7 +75,7 @@ export default function Home({ localization }) {
               className={`w-full md:w-8/12 flex items-center flex-col text-white text-center`}
             >
               <img src={`/images/logo-squares.svg`} className={`mb-16`}></img>
-              <h2 className={`text-7xl mb-12`}>WHO WE ARE</h2>
+              <h2 className={`text-7xl mb-12 font-titles font-bold`}>WHO WE ARE</h2>
               <p className={`text-3xl text-left leading-normal mb-12`}>
                 Platinum Software Development company provides unmatched
                 solutions for the clients. We give real business value through
@@ -93,17 +93,17 @@ export default function Home({ localization }) {
                 help you to achieve what you want.
               </p>
               <div className={`flex justify-between items-center w-full`}>
-                <p>CEO of Platinum Software Development company</p>
+                <p className={`text-2xl text-left`}>CEO of Platinum Software Development company</p>
                 <img src={`/images/one-sign.gif`} className={`h-36`}></img>
               </div>
             </div>
           </section>
           <section
-            className={`w-full px-8 md:px-24 bg-primary-bg flex flex-col pt-36 items-center`}
+            className={`w-full px-4 md:px-24 bg-primary-bg flex flex-col pt-36 items-center`}
           >
             {/* Divider */}
             <div
-              className={`self-center w-1/4 h-2 bg-glowy-blue shadow-blue-glow`}
+              className={`self-center w-1/2 md:w-1/4 h-2 bg-glowy-blue shadow-blue-glow`}
             >
               <br />
             </div>
@@ -112,7 +112,7 @@ export default function Home({ localization }) {
               <div className={`mb-32 w-95% flex flex-wrap`}>
                 <div className={`md:w-6/12 w-full text-white`}>
                   <h2
-                    className={`text-4xl md:text-7xl mb-12 md:text-shadow-blue-offset text-shadow-none`}
+                    className={`text-4xl md:text-7xl mb-12 md:text-shadow-blue-offset text-shadow-none font-bold`}
                   >
                     WHY PLATINUM Q DAO ENGINEERING?
                   </h2>
@@ -221,7 +221,7 @@ export default function Home({ localization }) {
           >
             <div className={`w-95%`}>
               <h2
-                className={`text-7xl mb-12 text-shadow-blue-offset md:text-left`}
+                className={`text-center text-6xl md:text-7xl mb-12 text-shadow-blue-offset md:text-left font-bold`}
               >
                 WE OFFER
               </h2>
@@ -229,7 +229,7 @@ export default function Home({ localization }) {
                 <div
                   className={`grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-8`}
                 >
-                  {offerings.map((item, i) => {
+                  {offerings.map((item) => {
                     return (
                       <Offering
                         title={item.title}
@@ -264,16 +264,17 @@ export default function Home({ localization }) {
             </div>
           </section>
           {/* TECH STACK */}
-          <section className={`w-full bg-primary-bg flex justify-center`}>
+          <section className={`pt-24 w-full bg-primary-bg flex justify-center`}>
             <div className={`px-6 w-full md:w-10/12 lg:w-18 flex flex-col`}>
-              <h2 className={`w-full text-center text-7xl mb-12 text-shadow-blue-offset text-white`}>
+              <h2 className={`w-full text-6xl md:text-7xl text-center mb-12 text-shadow-blue-offset text-white font-bold`}>
                 TECHNOLOGY STACK
             </h2>
             <TechGrid techStack={t('techStack')} stacks={t('stacks')}/>
             </div>
           </section>
-          <section className={`w-full bg-primary-bg flex justify-center items-center text-white flex-col md:px-24 px-12 h-full`}>
-            <h2  className={`text-7xl mb-12 text-shadow-blue-offset text-left align-start w-full`}>
+          {/* CASE STUDIES */}
+          <section className={`pb-48 w-full bg-primary-bg flex justify-center items-center text-white flex-col md:px-24 px-12 h-full`}>
+            <h2  className={`text-7xl mb-12 text-shadow-blue-offset text-left align-start w-full font-bold`}>
               {t("caseStudy")}
             </h2>
             <ArrowSlider
@@ -294,18 +295,22 @@ export default function Home({ localization }) {
                   <img
                   draggable={false}
                   src={`${a[1]}`}
-                  className={`mb-12 md:w-22r md:h-34r h-22r w-64  rounded-full object-cover filter-grayed`}
+                  className={`mb-12 md:w-22r md:h-34r h-22r w-64  rounded-full object-cover md:filter-grayed`}
                   alt={`${a[0]}`}
                   />
                   
-                  <h2 className={`text-4xl`}
+                  <h2 className={`text-4xl font-titles font-semibold leading-normal`}
                   >{a[0]}</h2>
                 </div>
                 )
               })}
             </ArrowSlider>
           </section>
-          <section className={`w-full bg-primary-bg flex justify-center px-12 md:px-24 text-white`}>
+           {/* TESTIMONIALS*/}
+          <section className={`w-full bg-primary-bg flex flex-col justify-center px-12 md:px-24 text-white`}>
+            <h2 className={`w-full text-6xl md:text-7xl text-center mb-12 text-shadow-blue-offset text-white font-bold`}>
+              TESTIMONIALS
+            </h2>
               <ArrowSlider
               itemsDesktop={2}
               itemsTablet={1}
@@ -328,7 +333,7 @@ export default function Home({ localization }) {
 
                   <div className={`w-full bg-primary-bg relative pt-100px `}>
                   <div key={`${testimonal[0]}`}className={`bg-testimonial-card w-full flex flex-col items-center px-12 md:px-24 h-full pb-16 border-glowy-blue border-2 shadow-blue-glow`}>
-                  <img src={`${testimonalData.photo}`} className={`relative object-contain rounded-full z-10 mt-min100 border-glowy-blue border-2 shadow-blue-glow`} draggable={false}/> 
+                  <img src={`${testimonalData.photo}`} className={`relative object-contain rounded-full z-10 mt-min100px border-glowy-blue border-2 shadow-blue-glow`} draggable={false}/> 
                     <h3 className={`text-5xl mt-8 mb-8 text-center`}>
                       {testimonal[0]}
                     </h3>
@@ -340,11 +345,37 @@ export default function Home({ localization }) {
                     <p className={`text-2xl  text-center mb-12`}>
                       {testimonalData.text}
                     </p>
-                    <img src={`${testimonalData.firm}`} className={`relative bottom-0 max-h-7.5`}/>
+                    <img src={`${testimonalData.firm}`} className={`relative bottom-0 max-h-7.5r`} draggable={false}/>
                     </div>
                   </div>)
                 })}
               </ArrowSlider>
+          </section >
+          {/* OUR CLIENTS*/}
+          <section className={`w-full bg-primary-bg flex flex-col justify-center px-12 md:px-24 text-white`}>
+          <h2 className={`w-full text-6xl md:text-7xl text-center mb-12 text-shadow-blue-offset text-white font-bold`}>
+            {t("ourClients")}
+          </h2>
+          <ArrowSlider
+          itemsDesktop={6}
+          itemsTablet={6}
+          itemsMobile={6}
+          rowsFull={3}
+          rowsMobile={6}
+          progressBar={true}
+          buttons={true}
+          >
+          {t("clients").map((client) => {
+            return (
+              <div key={`${client.link}`} className = {` flex justify-center`}>
+                <a target={`blank`} href={`${client.link}`} className={`h-72 md:h-96 flex`} draggable={`false`}>
+                <img src={`${client.image}`} draggable="false" className={`object-contain`}/>
+                </a>
+              </div>
+            )
+            
+          })}
+          </ArrowSlider>
           </section>
         </main>
       </div>

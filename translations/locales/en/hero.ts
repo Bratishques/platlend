@@ -4,6 +4,7 @@ const frontPath = `${techPath}frontend/`
 const backPath = `${techPath}backend/`
 const testimonialsPath = `/images/testimonials/`
 const casesPath =`/images/cases/`
+const clientsPath = `/images/clients/`
 const hero = {
   heroText: "PLATINUM SOFTWARE DEVELOPMENT:",
   heroSubText: "LEADERS IN THE DEFI AND BLOCKCHAIN SOFTWARE SOLUTIONS",
@@ -219,7 +220,56 @@ const hero = {
       firm: `${testimonialsPath}s.png`,
       photo: `${testimonialsPath}flavius-burca.png`
     }
-  }
+  },
+  ourClients: "OUR CLIENTS",
+  clients: [
+    {
+      link: "https://www.lotusenergy.io/",
+      image: `${clientsPath}lotus.jpg`
+    },
+    {
+      link: "https://www.ana.co.jp/en/jp/amc/reference/tukau/skycoin/ticket-purchase.html",
+      image: `${clientsPath}ana.jpg`
+    },
+    {
+      link: "https://acd-coin.com/",
+      image: `${clientsPath}acd.jpg`
+    },
+    {
+      link: "http://mindol.net/",
+      image: `${clientsPath}mindol.jpg`
+    },
+    {
+      link: "https://z-popdream.io/",
+      image: `${clientsPath}z-pop-dream.jpg`
+    },
+    {
+      link: "https://crypterium.com/",
+      image: `${clientsPath}crypterium.jpg`
+    },
+    {
+      link: "https://noahcity.org/en",
+      image: `${clientsPath}noah.jpg`
+    },
+    {
+      link: "https://swissborg.com/",
+      image: `${clientsPath}soccoin.jpg`
+    },
+    {
+      link: "https://www.hugedomains.com/domain_profile.cfm?d=soccoin&e=com",
+      image: `${clientsPath}welltrado.jpg`
+    },
+    {
+      link: "https://vectorspace.ai/",
+      image: `${clientsPath}vectorspace.jpg`
+    },
+    {
+      link: "https://fundrequest.io/requests?phase=open",
+      image: `${clientsPath}fundrequest.jpg`
+    },
+
+  ]
+    
 };
 
 export default hero;

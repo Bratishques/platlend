@@ -2,6 +2,7 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import ScreenSizeContext from "../context/screenSizeContext";
 import SidebarContext from "../context/sidebarContext";
 import useTranslation from "../hooks/useTranslation";
+import { locales } from "../translations/config";
 import breakpoints from "../utils/breakpoints";
 import HeaderLink from "./headerLink";
 
@@ -33,9 +34,16 @@ const Header = ({ ctx }) => {
     <HeaderLink text={"About us"} link={""} />,
     <HeaderLink text={"Our other services"} link={""} dropdown={services} />,
     <HeaderLink text={"Blog"} link={""} />,
-    <HeaderLink text={"Link"} link={""} />,
-    <HeaderLink text={"en"} link={"/en"} />,
-    <HeaderLink text={"ja"} link={"/ja"} />,
+    <HeaderLink text={"Contact us"} link={""} />,
+    <HeaderLink text={"en"} link={"/en"} dropdown={
+      locales.map((a) => {
+        return{
+          text: a,
+          link: `/${a}`
+        }
+      })
+    } />,
+
   ];
 
   useEffect(() => {
@@ -45,8 +53,6 @@ const Header = ({ ctx }) => {
       window.removeEventListener("scroll", scrollListener);
     };
   }, []);
-
-  console.log(services);
   return (
     <div id="header-wrap" className={`w-full absolute flex justify-end`}>
       <div
@@ -55,7 +61,7 @@ const Header = ({ ctx }) => {
           scrollState === 2
             ? "bg-primary-bg border-b-2 border-glowy-blue shadow-blue-glow"
             : "bg-transparent"
-        } h-7.5 flex justify-center transition-opacity duration-300 ${
+        } h-7.5r flex justify-center transition-opacity duration-300 ${
           scrollState === 2 ? "fixed" : "relative"
         } ${scrollState === 1 && "opacity-0"} z-40`}
       >
