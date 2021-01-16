@@ -352,8 +352,8 @@ export default function Home({ localization }) {
               </ArrowSlider>
           </section >
           {/* OUR CLIENTS*/}
-          <section className={`w-full bg-primary-bg flex flex-col justify-center px-12 md:px-24 text-white`}>
-          <h2 className={`w-full text-6xl md:text-7xl text-center mb-12 text-shadow-blue-offset text-white font-bold`}>
+          <section className={`w-full bg-primary-bg flex flex-col justify-center px-12 md:px-24 text-white py-24`}>
+          <h2 className={`w-full text-6xl md:text-7xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}>
             {t("ourClients")}
           </h2>
           <ArrowSlider
@@ -367,9 +367,9 @@ export default function Home({ localization }) {
           >
           {t("clients").map((client) => {
             return (
-              <div key={`${client.link}`} className = {` flex justify-center`}>
-                <a target={`blank`} href={`${client.link}`} className={`h-72 md:h-96 flex`} draggable={`false`}>
-                <img src={`${client.image}`} draggable="false" className={`object-contain`}/>
+              <div key={`${client.link}`} className = {`group flex justify-center`}>
+                <a target={`blank`} href={`${client.link}`} className={`h-72 md:h-96 flex group-hover: `} draggable={`false`}>
+                <img src={`${client.image}`} draggable="false" className={`object-cover border-glowy-blue border-2 opacity-50 group-hover:opacity-100`}/>
                 </a>
               </div>
             )

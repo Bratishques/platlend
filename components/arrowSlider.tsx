@@ -98,7 +98,7 @@ const ArrowSlider = ({
     if (isTouched) {
       innerRef.current.style.transition = "none";
     } else {
-      innerRef.current.style.transition = "";
+      innerRef.current.style.transition = "all 0.5s ease-in-out";
     }
   }, [isTouched]);
 
@@ -110,9 +110,8 @@ const ArrowSlider = ({
 
   useEffect(() => {
     console.log(document.getElementById(`slider${children.length}${rowsFull}`).getBoundingClientRect().width/3)
-    console.log(calc())
-
-    gsap.to(`#slider${children.length}${rowsFull}`, {x: calc(), duration: 0.7})
+    document.getElementById(`slider${children.length}${rowsFull}`).style.transform = `translate3d(${calc()}px, 0px, 0px)`
+    //gsap.to(`#slider${children.length}${rowsFull}`, {x: calc(), duration: 0.7})
   }, [scrollState, itemsUsed, itemsOnScreen,screenSize, xTouchStart]);
 
   useEffect(() => {
@@ -171,13 +170,13 @@ const ArrowSlider = ({
             xMoved = e.clientX - xTouchStart
             const gridCheck = Math.ceil(children.length / itemsOnScreen);
             if (scrollState < gridCheck && xMoved < 0) {
-              gsap.to(`#slider${children.length}${rowsFull}`, {x: currentLeft + xMoved})
+              document.getElementById(`slider${children.length}${rowsFull}`).style.transform = `translate3d(${calc() + xMoved}px, 0px, 0px)`
               //innerRef.current.style.transform = `translateX(${String(Number(currentLeft) + Number(xMoved*100*itemsOnScreen/children.length/screenSize))}%)`
                 ;
             }
             if (scrollState > 1 && xMoved > 0) {
-  
-              gsap.to(`#slider${children.length}${rowsFull}`, {x: currentLeft + xMoved})
+              document.getElementById(`slider${children.length}${rowsFull}`).style.transform = `translate3d(${calc() + xMoved}px, 0px, 0px)`
+              //gsap.to(`#slider${children.length}${rowsFull}`, {x: currentLeft + xMoved})
               //innerRef.current.style.transform = `translateX(${String(Number(currentLeft) + Number(xMoved*100*itemsOnScreen/children.length/screenSize))}%)`
             }
           }
