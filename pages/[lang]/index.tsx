@@ -367,8 +367,8 @@ export default function Home({ localization }) {
           >
           {t("clients").map((client) => {
             return (
-              <div key={`${client.link}`} className = {`group relative w-full flex justify-center md:p-12 p-8 md:px-24`}>
-                <a target={`blank`} href={`${client.link}`} className={`h-80 md:h-96 w-3/4 md:w-full transition-transform transform duration-500 aboslute hover:z-20 hover:scale-125 flex hover:shadow-blue-glow `} draggable={`false`}>
+              <div key={`${client.link}`} className = {`group relative w-full flex justify-center md:p-12 p-4 md:px-24`}>
+                <a target={`blank`} href={`${client.link}`} className={`md:h-96 h-72 w-full transition-transform transform duration-500 aboslute hover:z-20 hover:scale-125 flex hover:shadow-blue-glow `} draggable={`false`}>
                 <img src={`${client.image}`} draggable="false" className={`object-cover border-glowy-blue border-2 opacity-50 group-hover:opacity-100`}/>
                 </a>
               </div>
