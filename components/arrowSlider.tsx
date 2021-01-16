@@ -32,7 +32,13 @@ const ArrowSlider = ({
   const innerRef = useRef<HTMLDivElement | null>();
 
   const calc = () => {
+    if (itemsUsed > 1) {
+      return (-scrollState+1) * (children.length/Math.ceil(children.length/itemsOnScreen)/itemsOnScreen) * (itemsOnScreen/children.length) * document.getElementById(`slider${children.length}${rowsFull}`).getBoundingClientRect().width
+    }
+    else {
       return (-scrollState+1) * (itemsOnScreen/children.length) * document.getElementById(`slider${children.length}${rowsFull}`).getBoundingClientRect().width
+    }
+  
   }
   
   
