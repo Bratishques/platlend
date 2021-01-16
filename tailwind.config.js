@@ -61,10 +61,11 @@ module.exports = {
   variants: {
     filter: ["hover", "responsive", "group-hover"],
     extend: {
-      scale: ["active", "group-hover"],
+      scale: ["active", "group-hover", "hover"],
       width: ["group-hover"],
       height: [`group-hover`],
       translate: ["active", "group-hover"],
+      zIndex: ["hover"]
     },
   },
   plugins: [

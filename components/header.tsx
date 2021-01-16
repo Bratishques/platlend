@@ -100,11 +100,13 @@ const Header = ({ ctx }) => {
               sidebarData.setSidebarOpen();
             }}
           >
+            <div className={`rounded-full ${sidebarOpen ? "bg-gray-400" : ""} p-4`}>
             <svg viewBox="0 0 100 70" width="20" height="20">
-              <rect width="100" height="15"></rect>
-              <rect y="30" width="100" height="15"></rect>
-              <rect y="60" width="100" height="15"></rect>
+              <rect width="100" height="15" fill={`${sidebarOpen ? "black" : "white"}`}></rect>
+              <rect y="30" width="100" height="15" fill={`${sidebarOpen ? "black" : "white"}`}></rect>
+              <rect y="60" width="100" height="15" fill={`${sidebarOpen ? "black" : "white"}`}></rect>
             </svg>
+            </div>
           </button>
         ) : (
           ""
