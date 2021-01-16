@@ -267,6 +267,19 @@ const hero = {
       link: "https://fundrequest.io/requests?phase=open",
       image: `${clientsPath}fundrequest.jpg`
     },
+    {
+      link: "https://fundrequest.io/requests?phase=open",
+      image: `${clientsPath}fundrequest.jpg`
+    },
+    {
+      link: "https://fundrequest.io/requests?phase=open",
+      image: `${clientsPath}fundrequest.jpg`
+    },
+    {
+      link: "https://fundrequest.io/requests?phase=open",
+      image: `${clientsPath}fundrequest.jpg`
+    },
+  
 
   ]
     

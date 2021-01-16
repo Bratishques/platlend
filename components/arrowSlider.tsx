@@ -33,10 +33,10 @@ const ArrowSlider = ({
 
   const calc = () => {
     if (itemsUsed > 1) {
-      return (-scrollState+1) * (children.length/Math.ceil(children.length/itemsOnScreen)/itemsOnScreen) * (itemsOnScreen/children.length) * document.getElementById(`slider${children.length}${rowsFull}`).getBoundingClientRect().width
+      return (-scrollState+1) * document.getElementById(`slider-body${children.length}${rowsFull}`).getBoundingClientRect().width
     }
     else {
-      return (-scrollState+1) * (itemsOnScreen/children.length) * document.getElementById(`slider${children.length}${rowsFull}`).getBoundingClientRect().width
+      return (-scrollState+1) * document.getElementById(`slider-body${children.length}${rowsFull}`).getBoundingClientRect().width
     }
   
   }
@@ -109,7 +109,8 @@ const ArrowSlider = ({
   }, [itemsUsed, itemsOnScreen, scrollState]);
 
   useEffect(() => {
-    console.log(document.getElementById(`slider${children.length}${rowsFull}`).getBoundingClientRect().width/3)
+    console.log(document.getElementById(`slider-body${children.length}${rowsFull}`).getBoundingClientRect().width)
+    console.log(calc())
     document.getElementById(`slider${children.length}${rowsFull}`).style.transform = `translate3d(${calc()}px, 0px, 0px)`
     //gsap.to(`#slider${children.length}${rowsFull}`, {x: calc(), duration: 0.7})
   }, [scrollState, itemsUsed, itemsOnScreen,screenSize, xTouchStart]);
@@ -144,7 +145,9 @@ const ArrowSlider = ({
   }
 
   return (
-    <div className={`h-6/12 w-full overflow-hidden`}>
+    <div 
+    id={`slider-body${children.length}${rowsFull}`}
+    className={`h-6/12 w-full overflow-hidden`}>
       <div
         id={`slider${children.length}${rowsFull}`}
         style={{
