@@ -202,13 +202,14 @@ const ArrowSlider = ({
             return
           }
           if (scrollState < gridCheck && xMoved < 0) {
-            gsap.to(`#slider${children.length}${rowsFull}`, {x: currentLeft + xMoved})
+            document.getElementById(`slider${children.length}${rowsFull}`).style.transform = `translate3d(${calc() + xMoved}px, 0px, 0px)`
+            //gsap.to(`#slider${children.length}${rowsFull}`, {x: currentLeft + xMoved})
             //innerRef.current.style.transform = `translateX(${String(Number(currentLeft) + Number(xMoved*100*itemsOnScreen/children.length/screenSize))}%)`
               ;
           }
           if (scrollState > 1 && xMoved > 0) {
-
-            gsap.to(`#slider${children.length}${rowsFull}`, {x: currentLeft + xMoved})
+            document.getElementById(`slider${children.length}${rowsFull}`).style.transform = `translate3d(${calc() + xMoved}px, 0px, 0px)`
+            //gsap.to(`#slider${children.length}${rowsFull}`, {x: currentLeft + xMoved})
             //innerRef.current.style.transform = `translateX(${String(Number(currentLeft) + Number(xMoved*100*itemsOnScreen/children.length/screenSize))}%)`
           }
         }}
