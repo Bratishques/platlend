@@ -441,10 +441,10 @@ export default function Home({ localization }) {
           <div className={`flex relative justify-between border-2 border-glowy-blue w-12/12 md:w-6/12 shadow-blue-glow bg-testimonial-card p-12 px-24`}>
           <div className={`w-full`}>
           <h5 className={`font-titles text-5xl mb-14 font-semibold`}>Subscribe to our news:</h5>
-          <form className={`w-full`}>
-            <input placeholder={`Email`} className={`relative bg-transparent border-b-2 border-footer-gray py-2 text-3xl w-2/3 z-30`}/>
-            <button role="submit" className={`group w-1/3 text-2xl text-center pl-6`}>Subscribe
-            <div className={`group-hover:animate-subscribe-button w-full h-0.5 bg-white mt-2`}></div>
+          <form className={`w-full flex items-center`}>
+            <input placeholder={`Email`} className={`h-16 relative bg-transparent border-b-2 border-footer-gray py-3 text-3xl w-2/3 z-30`}/>
+            <button role="submit" className={`flex flex-col text-3xl items-center group w-1/3 text-2xl text-center pl-6 mt-2 relative z-30`}>Subscribe
+            <div className={`group-hover:animate-subscribe-button w-full h-0.5 bg-white mt-4`}></div>
             </button>
 
           </form>

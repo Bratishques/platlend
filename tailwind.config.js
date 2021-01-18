@@ -24,7 +24,7 @@ module.exports = {
     extend: {
       animation: {
         "appear-tech": "appear 1s ease-in-out",
-        'subscribe-button': 'stretch 0.5s ease-in-out'
+        'subscribe-button': 'stretch 0.7s ease-in-out'
       },
       keyframes: {
         appear: {
