@@ -7,7 +7,8 @@ module.exports = {
     },
     filter: {
       "tech-hover": "invert(53%) sepia(68%) saturate(2878%) hue-rotate(567deg) brightness(104%) contrast(97%) drop-shadow(0px 0px 17px rgba(0, 102, 255, 0.8))",
-      'grayed': "grayscale(100%)"
+      'grayed': "grayscale(100%)",
+      "blur-15": "blur(15px)"
     },
     minHeight: {
       40: "10rem",
@@ -22,31 +23,41 @@ module.exports = {
     },
     extend: {
       animation: {
-        "appear-tech": "appear 1s ease-in-out"
+        "appear-tech": "appear 1s ease-in-out",
+        'subscribe-button': 'stretch 0.5s ease-in-out'
       },
       keyframes: {
         appear: {
           "0%": {opacity: "0"},
           "100%": {opacity: "1"}
+        },
+        stretch: {
+          "0%": {width: "100%"},
+          "50%": {width: "10%"},
+          "100%": {width: "100%"}
         }
       },
       spacing: {
+        "2px": "2px",
         "95%": "95%",
         "7.5r": "7.5rem",
         "6.6r": "6.6rem",
         "3.3r": "3.3rem",
+        "3.5r": "3.5rem",
         "95vh": "95vh",
         "22r": "22rem",
         "34r": "34rem",
         'min100px': "-100px",
-        "100px" : "100px"
+        "100px" : "100px",
+        "90vw": "90vw"
       },
       colors: {
         "primary-bg": "#111",
         "glowy-blue": "#0066FF",
         subtext: "#c7c7c7",
         "offer-cards-hover": "#151515",
-        "testimonial-card": "rgba(0, 102, 255, 0.2)"
+        "testimonial-card": "rgba(0, 102, 255, 0.2)",
+        "footer-gray": "#727272"
       },
       maxWidth: {
         96: "96rem",
@@ -65,7 +76,8 @@ module.exports = {
       width: ["group-hover"],
       height: [`group-hover`],
       translate: ["active", "group-hover"],
-      zIndex: ["hover"]
+      zIndex: ["hover"],
+      animation: ["group-hover"]
     },
   },
   plugins: [

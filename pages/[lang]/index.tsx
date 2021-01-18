@@ -12,7 +12,6 @@ import {
 } from "../../context/languageContext";
 import useTranslation from "../../hooks/useTranslation";
 import TechGrid from "../../components/techGrid";
-import { relative } from "path";
 
 
 export default function Home({ localization }) {
@@ -221,7 +220,7 @@ export default function Home({ localization }) {
           >
             <div className={`w-95%`}>
               <h2
-                className={`text-center text-6xl md:text-7xl mb-12 text-shadow-blue-offset md:text-left font-bold`}
+                className={`w-full font-titles text-6xl md:text-8xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}
               >
                 WE OFFER
               </h2>
@@ -266,7 +265,7 @@ export default function Home({ localization }) {
           {/* TECH STACK */}
           <section className={`pt-24 w-full bg-primary-bg flex justify-center`}>
             <div className={`px-6 w-full md:w-10/12 lg:w-18 flex flex-col`}>
-              <h2 className={`w-full text-6xl md:text-7xl text-center mb-12 text-shadow-blue-offset text-white font-bold`}>
+              <h2 className={`w-full font-titles text-6xl md:text-8xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}>
                 TECHNOLOGY STACK
             </h2>
             <TechGrid techStack={t('techStack')} stacks={t('stacks')}/>
@@ -274,7 +273,7 @@ export default function Home({ localization }) {
           </section>
           {/* CASE STUDIES */}
           <section className={`pb-48 w-full bg-primary-bg flex justify-center items-center text-white flex-col md:px-24 px-12 h-full`}>
-            <h2  className={`text-7xl mb-12 text-shadow-blue-offset text-left align-start w-full font-bold`}>
+            <h2  className={`w-full font-titles text-6xl md:text-8xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}>
               {t("caseStudy")}
             </h2>
             <ArrowSlider
@@ -308,7 +307,7 @@ export default function Home({ localization }) {
           </section>
            {/* TESTIMONIALS*/}
           <section className={`w-full bg-primary-bg flex flex-col justify-center px-12 md:px-24 text-white`}>
-            <h2 className={`w-full text-6xl md:text-7xl text-center mb-12 text-shadow-blue-offset text-white font-bold`}>
+            <h2 className={`w-full font-titles text-6xl md:text-8xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}>
               TESTIMONIALS
             </h2>
               <ArrowSlider
@@ -353,7 +352,7 @@ export default function Home({ localization }) {
           </section >
           {/* OUR CLIENTS*/}
           <section className={`w-full bg-primary-bg flex flex-col justify-center px-12 md:px-24 text-white py-24`}>
-          <h2 className={`w-full text-6xl md:text-7xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}>
+          <h2 className={`w-full font-titles text-6xl md:text-8xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}>
             {t("ourClients")}
           </h2>
           <ArrowSlider
@@ -364,18 +363,94 @@ export default function Home({ localization }) {
           rowsMobile={6}
           progressBar={true}
           buttons={true}
+          classes={"max-w-90vw"}
           >
           {t("clients").map((client) => {
             return (
               <div key={`${client.link}`} className = {`group relative w-full flex justify-center md:p-12 p-4 md:px-24`}>
-                <a target={`blank`} href={`${client.link}`} className={`md:h-96 h-72 w-full transition-transform transform duration-500 aboslute hover:z-20 hover:scale-125 flex hover:shadow-blue-glow `} draggable={`false`}>
-                <img src={`${client.image}`} draggable="false" className={`object-cover border-glowy-blue border-2 opacity-50 group-hover:opacity-100`}/>
+                <a target={`blank`} href={`${client.link}`} className={`md:h-96 h-72 w-full transition-transform transform duration-500 aboslute hover:z-20 hover:scale-125 flex justify-center `} draggable={`false`}>
+                <img src={`${client.image}`} draggable="false" className={`hover:shadow-blue-glow object-cover border-glowy-blue border-2 opacity-50 group-hover:opacity-100`}/>
                 </a>
               </div>
             )
             
           })}
           </ArrowSlider>
+          </section>
+          <section className={`w-full bg-primary-bg flex flex-col items-center justify-center px-12 md:px-24 text-white py-24`}>
+          <h2 className={`w-full font-titles text-6xl md:text-8xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}>
+          {t("media")} </h2>
+          <ArrowSlider
+          itemsDesktop={3}
+          itemsTablet={2}
+          itemsMobile={1}
+          rowsFull={1}
+          rowsMobile={1}
+          progressBar={false}
+          buttons={false}
+          circles={true}
+          >
+          {t('mediaArr').map((article) => {
+            return(
+              <div className={`px-6 py-6 w-full h-full pb-24`}>
+              <div key={`${article.title}`} className={`relative w-full h-full text-white p-2`}>
+                <div className={`w-full h-96 bg-testimonial-card border-glowy-blue border-2 shadow-blue-glow rounded-2xl py-12 px-12`}>
+                <img className={"h-3.5r mb-12"} src={article.image}/>
+                <h3 className={`text-3xl`}>
+                {article.title}
+                </h3>
+                </div>
+                <div className={`absolute top-0 left-0 border-4 border-glowy-blue w-full h-full filter-blur-15`}>
+
+                </div>
+              </div>
+              </div>
+            )
+          })}
+          </ArrowSlider>
+          </section>
+          <section className={`w-full bg-primary-bg flex flex-col items-center justify-center px-12 md:px-24 text-white py-24`}>
+          <h2 className={`w-full font-titles text-6xl md:text-8xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}>
+          RECOGNITIONS AND PARTNERSHIPS
+          </h2>
+          </section>
+          <section className={`w-full bg-primary-bg justify-center px-12 md:px-24 text-white py-24`}>
+            <h2 className={`w-full text-6xl md:text-8xl mb-8 text-white font-bold`}>
+            Let’s Make Something Together
+            </h2>
+            <a href={"https://www.platinum.fund/en/contact-us"} target={`blank`} className={`w-full text-5xl md:text-8xl text-white font-normal`}>
+            Click here to say <span className={`text-glowy-blue underline`}>HELLO</span>
+            </a>
+          </section>
+          <section className={`w-full bg-primary-bg flex flex-col md:flex-row gap-4 text-white pt-24`}>
+          <div className={`flex relative justify-between border-2 border-glowy-blue w-12/12 md:w-6/12  shadow-blue-glow bg-testimonial-card p-12 px-24`}>
+            <div>
+          <h5 className={`font-titles text-5xl mb-14 font-semibold`}>Address:</h5>
+          <h5  className={`text-4xl mb-8`}>Estonia:</h5>
+          <p className={`text-footer-gray`}>Panane tn 67-170 Lasnamäe linnaosa
+          <br/>
+          Tallinn, Harju maakond, 13619
+          </p>
+          </div>
+          <div className={` pt-24`}>
+          <a className={`font-titles text-4xl underline font-semibold`}>LEGAL DOCUMENTS</a>
+          </div>
+          
+          <div className={`absolute top-0 left-0 border-4 border-glowy-blue w-full h-full filter-blur-15`}/>
+          </div>
+          <div className={`flex relative justify-between border-2 border-glowy-blue w-12/12 md:w-6/12 shadow-blue-glow bg-testimonial-card p-12 px-24`}>
+          <div className={`w-full`}>
+          <h5 className={`font-titles text-5xl mb-14 font-semibold`}>Subscribe to our news:</h5>
+          <form className={`w-full`}>
+            <input placeholder={`Email`} className={`relative bg-transparent border-b-2 border-footer-gray py-2 text-3xl w-2/3 z-30`}/>
+            <button role="submit" className={`group w-1/3 text-2xl text-center pl-6`}>Subscribe
+            <div className={`group-hover:animate-subscribe-button w-full h-0.5 bg-white mt-2`}></div>
+            </button>
+
+          </form>
+          </div>
+          <div className={`absolute top-0 left-0 border-4 border-glowy-blue w-full h-full filter-blur-15`}/>
+          </div>
           </section>
         </main>
       </div>

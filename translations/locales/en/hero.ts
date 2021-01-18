@@ -5,6 +5,7 @@ const backPath = `${techPath}backend/`
 const testimonialsPath = `/images/testimonials/`
 const casesPath =`/images/cases/`
 const clientsPath = `/images/clients/`
+const mediaPath = `/images/media/`
 const hero = {
   heroText: "PLATINUM SOFTWARE DEVELOPMENT:",
   heroSubText: "LEADERS IN THE DEFI AND BLOCKCHAIN SOFTWARE SOLUTIONS",
@@ -279,8 +280,33 @@ const hero = {
       link: "https://fundrequest.io/requests?phase=open",
       image: `${clientsPath}fundrequest.jpg`
     },
-  
-
+  ],
+  media: "MEDIA",
+  mediaArr: [
+    {
+      title: "This company demystifies blockchain development for enterprises",
+      image: `${mediaPath}logo-cointelegraph.svg`
+    },
+    {
+      title: "Top 20 Promising Blockchain Projects in 2020",
+      image: `${mediaPath}logo-hn.svg`
+    },
+    {
+      title: "Почему DPoS станет основой демократических выборов на блокчейне",
+      image: `${mediaPath}hub.svg`
+    },
+    {
+      title: "This company demystifies blockchain development for enterprises",
+      image: `${mediaPath}logo-cointelegraph.svg`
+    },
+    {
+      title: "Top 20 Promising Blockchain Projects in 2020",
+      image: `${mediaPath}logo-hn.svg`
+    },
+    {
+      title: "Почему DPoS станет основой демократических выборов на блокчейне",
+      image: `${mediaPath}hub.svg`
+    },
   ]
     
 };

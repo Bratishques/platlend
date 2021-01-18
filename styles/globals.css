@@ -16,6 +16,10 @@ body {
   font-size: 10px;
 }
 
+input:focus {
+  outline: none;
+}
+
 @media (max-width: 1200px) {
   body, html {
     font-size: 8px;

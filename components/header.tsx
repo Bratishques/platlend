@@ -2,7 +2,7 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import ScreenSizeContext from "../context/screenSizeContext";
 import SidebarContext from "../context/sidebarContext";
 import useTranslation from "../hooks/useTranslation";
-import { locales } from "../translations/config";
+import { languageNames, locales } from "../translations/config";
 import breakpoints from "../utils/breakpoints";
 import HeaderLink from "./headerLink";
 
@@ -11,7 +11,7 @@ const Header = ({ ctx }) => {
   const sidebarData = useContext(SidebarContext);
   const sidebarOpen = sidebarData.sidebarOpen;
   const screenSize = useContext(ScreenSizeContext);
-  const { t } = useTranslation(ctx);
+  const { t, locale } = useTranslation(ctx);
   const services = t("services");
 
   const scrollListener = useCallback(() => {
@@ -35,10 +35,10 @@ const Header = ({ ctx }) => {
     <HeaderLink text={"Our other services"} link={""} dropdown={services} />,
     <HeaderLink text={"Blog"} link={""} />,
     <HeaderLink text={"Contact us"} link={""} />,
-    <HeaderLink text={"en"} link={"/en"} dropdown={
+    <HeaderLink text={`${languageNames[locale]}`} link={"/en"} dropdown={
       locales.map((a) => {
         return{
-          text: a,
+          text: languageNames[a],
           link: `/${a}`
         }
       })

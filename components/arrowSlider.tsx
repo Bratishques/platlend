@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import { useContext, useEffect, useRef, useState } from "react";
 import ScreenSizeContext from "../context/screenSizeContext";
 import breakpoints from "../utils/breakpoints";
-import { gsap } from "gsap";
 
 const ArrowSlider = ({
   children,
@@ -13,7 +12,8 @@ const ArrowSlider = ({
   itemsMobile = itemsDesktop,
   buttons = true,
   circles = false,
-  progressBar = true
+  progressBar = true,
+  classes=""
 }) => {
   const screenSize = useContext(ScreenSizeContext);
   const [itemsUsed, setItemsUsed] = useState(rowsFull);
@@ -30,13 +30,14 @@ const ArrowSlider = ({
   let yMoved = 0
   const gridCheck = Math.ceil(children.length / itemsOnScreen);
   const innerRef = useRef<HTMLDivElement | null>();
+  const outerRef = useRef<HTMLDivElement | null>();
 
   const calc = () => {
     if (itemsUsed > 1) {
-      return (-scrollState+1) * document.getElementById(`slider-body${children.length}${rowsFull}`).getBoundingClientRect().width
+      return (-scrollState+1) * outerRef.current.getBoundingClientRect().width
     }
     else {
-      return (-scrollState+1) * document.getElementById(`slider-body${children.length}${rowsFull}`).getBoundingClientRect().width
+      return (-scrollState+1) * outerRef.current.getBoundingClientRect().width
     }
   
   }
@@ -109,9 +110,7 @@ const ArrowSlider = ({
   }, [itemsUsed, itemsOnScreen, scrollState]);
 
   useEffect(() => {
-    console.log(document.getElementById(`slider-body${children.length}${rowsFull}`).getBoundingClientRect().width)
-    console.log(calc())
-    document.getElementById(`slider${children.length}${rowsFull}`).style.transform = `translate3d(${calc()}px, 0px, 0px)`
+    innerRef.current.style.transform = `translate3d(${calc()}px, 0px, 0px)`
     //gsap.to(`#slider${children.length}${rowsFull}`, {x: calc(), duration: 0.7})
   }, [scrollState, itemsUsed, itemsOnScreen,screenSize, xTouchStart]);
 
@@ -134,7 +133,7 @@ const ArrowSlider = ({
         onClick={() => {
           setScrollState(i)
         }}
-        className={`w-8 h-8 bg-white transition-all rounded-full ${scrollState===i ? "opacity-100" : "opacity-50"}`}>
+        className={`w-6 h-6 bg-white transition-all rounded-full ${scrollState===i ? "opacity-100" : "opacity-50"}`}>
 
         </div>
       )
@@ -146,10 +145,9 @@ const ArrowSlider = ({
 
   return (
     <div 
-    id={`slider-body${children.length}${rowsFull}`}
-    className={`h-6/12 w-full overflow-hidden`}>
+    ref={outerRef}
+    className={`h-full w-full overflow-hidden ${classes}`}>
       <div
-        id={`slider${children.length}${rowsFull}`}
         style={{
           gridTemplateColumns: `repeat(${colsAmount(
             itemsUsed
@@ -173,12 +171,12 @@ const ArrowSlider = ({
             xMoved = e.clientX - xTouchStart
             const gridCheck = Math.ceil(children.length / itemsOnScreen);
             if (scrollState < gridCheck && xMoved < 0) {
-              document.getElementById(`slider${children.length}${rowsFull}`).style.transform = `translate3d(${calc() + xMoved}px, 0px, 0px)`
+              innerRef.current.style.transform = `translate3d(${calc() + xMoved}px, 0px, 0px)`
               //innerRef.current.style.transform = `translateX(${String(Number(currentLeft) + Number(xMoved*100*itemsOnScreen/children.length/screenSize))}%)`
                 ;
             }
             if (scrollState > 1 && xMoved > 0) {
-              document.getElementById(`slider${children.length}${rowsFull}`).style.transform = `translate3d(${calc() + xMoved}px, 0px, 0px)`
+              innerRef.current.style.transform = `translate3d(${calc() + xMoved}px, 0px, 0px)`
               //gsap.to(`#slider${children.length}${rowsFull}`, {x: currentLeft + xMoved})
               //innerRef.current.style.transform = `translateX(${String(Number(currentLeft) + Number(xMoved*100*itemsOnScreen/children.length/screenSize))}%)`
             }
@@ -252,7 +250,7 @@ const ArrowSlider = ({
         </div>
       )}
       {circles && (
-        <div className={`flex justify-center space-x-4`}>
+        <div className={`flex justify-center space-x-8`}>
         {circlesDivs()}
       </div>
       )
