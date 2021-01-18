@@ -494,7 +494,7 @@ export default function Home({ localization }) {
               className={`flex relative justify-between border-2 border-glowy-blue w-12/12 md:w-6/12  shadow-blue-glow bg-testimonial-card p-12 px-24`}
             >
               <div>
-                <h5 className={`font-titles text-5xl mb-14 font-semibold`}>
+                <h5 className={`font-titles text-5xl mb-16 font-semibold`}>
                   Address:
                 </h5>
                 <h5 className={`text-4xl mb-8`}>Estonia:</h5>
@@ -504,7 +504,7 @@ export default function Home({ localization }) {
                   Tallinn, Harju maakond, 13619
                 </p>
               </div>
-              <div className={` pt-24`}>
+              <div className={` pt-28`}>
                 <a className={`font-titles text-4xl underline font-semibold`}>
                   LEGAL DOCUMENTS
                 </a>

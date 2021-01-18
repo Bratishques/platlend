@@ -28,7 +28,7 @@ const Header = ({ ctx }) => {
   }, []);
 
   const links = [
-    <HeaderLink text={"Q Defi Rating"} link={""} />,
+    <HeaderLink key={"Q Defi Rating"} text={"Q Defi Rating"} link={""}/>,
     <HeaderLink text={"NFT"} link={""} />,
     <HeaderLink text={"Careers"} link={""} />,
     <HeaderLink text={"About us"} link={""} />,
