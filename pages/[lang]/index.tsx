@@ -13,23 +13,19 @@ import {
 import useTranslation from "../../hooks/useTranslation";
 import TechGrid from "../../components/techGrid";
 
-
 export default function Home({ localization }) {
   const { t } = useTranslation(localization);
   const screenSize = useContext(ScreenSizeContext);
   const offerings = t("offerings");
   console.log(screenSize);
-  
+
   return (
     <LanguageContextProvider localization={localization}>
-    
       <div>
-     
         <Head>
           <title>Plat Land</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        
 
         <main className={`w-full font-main`}>
           <section
@@ -55,16 +51,24 @@ export default function Home({ localization }) {
             <div
               className={`absolute top-64 px-12 md:px-32 text-white text-center lg:text-left z-10`}
             >
-              <h1 className={`text-6xl md:text-8xl w-full leading-tight mb-12 font-titles font-bold`}>
+              <h1
+                className={`text-6xl md:text-8xl w-full leading-tight mb-12 font-titles font-bold`}
+              >
                 {t("heroText")}
               </h1>
-              <h2 className={`text-5xl md:text-7xl w-full leading-tight font-titles font-semibold`}>
+              <h2
+                className={`text-5xl md:text-7xl w-full leading-tight font-titles font-semibold`}
+              >
                 {t("heroSubText")}
               </h2>
             </div>
             <img
               className={`bottom-0 w-full absolute z-10`}
-              src={screenSize <= breakpoints.md ? `/images/deliver-software-mobile.png` : `/images/deliver-software-preface.png`}
+              src={
+                screenSize <= breakpoints.md
+                  ? `/images/deliver-software-mobile.png`
+                  : `/images/deliver-software-preface.png`
+              }
             ></img>
           </section>
           <section
@@ -74,7 +78,9 @@ export default function Home({ localization }) {
               className={`w-full md:w-8/12 flex items-center flex-col text-white text-center`}
             >
               <img src={`/images/logo-squares.svg`} className={`mb-16`}></img>
-              <h2 className={`text-7xl mb-12 font-titles font-bold`}>WHO WE ARE</h2>
+              <h2 className={`text-7xl mb-12 font-titles font-bold`}>
+                WHO WE ARE
+              </h2>
               <p className={`text-3xl text-left leading-normal mb-12`}>
                 Platinum Software Development company provides unmatched
                 solutions for the clients. We give real business value through
@@ -92,7 +98,9 @@ export default function Home({ localization }) {
                 help you to achieve what you want.
               </p>
               <div className={`flex justify-between items-center w-full`}>
-                <p className={`text-2xl text-left`}>CEO of Platinum Software Development company</p>
+                <p className={`text-2xl text-left`}>
+                  CEO of Platinum Software Development company
+                </p>
                 <img src={`/images/one-sign.gif`} className={`h-36`}></img>
               </div>
             </div>
@@ -240,77 +248,87 @@ export default function Home({ localization }) {
                   })}
                 </div>
               ) : (
-                  <ArrowSlider
-                    rowsFull={3}
-                    rowsMobile={2}
-                    itemsDesktop={2}
-                    buttons={false}
-                    circles={false}
-                    progressBar={true}
-                  >
-                    {offerings.map((item, i) => {
-                      return (
-                        <Offering
-                          title={item.title}
-                          items={item.items}
-                          icon={item.icon}
-                          key={`${item.title}`}
-                        />
-                      );
-                    })}
-                  </ArrowSlider>
-                )}
+                <ArrowSlider
+                  rowsFull={3}
+                  rowsMobile={2}
+                  itemsDesktop={2}
+                  buttons={false}
+                  circles={false}
+                  progressBar={true}
+                >
+                  {offerings.map((item, i) => {
+                    return (
+                      <Offering
+                        title={item.title}
+                        items={item.items}
+                        icon={item.icon}
+                        key={`${item.title}`}
+                      />
+                    );
+                  })}
+                </ArrowSlider>
+              )}
             </div>
           </section>
           {/* TECH STACK */}
           <section className={`pt-24 w-full bg-primary-bg flex justify-center`}>
             <div className={`px-6 w-full md:w-10/12 lg:w-18 flex flex-col`}>
-              <h2 className={`w-full font-titles text-6xl md:text-8xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}>
+              <h2
+                className={`w-full font-titles text-6xl md:text-8xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}
+              >
                 TECHNOLOGY STACK
-            </h2>
-            <TechGrid techStack={t('techStack')} stacks={t('stacks')}/>
+              </h2>
+              <TechGrid techStack={t("techStack")} stacks={t("stacks")} />
             </div>
           </section>
           {/* CASE STUDIES */}
-          <section className={`pb-48 w-full bg-primary-bg flex justify-center items-center text-white flex-col md:px-24 px-12 h-full`}>
-            <h2  className={`w-full font-titles text-6xl md:text-8xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}>
+          <section
+            className={`pb-48 w-full bg-primary-bg flex justify-center items-center text-white flex-col md:px-24 px-12 h-full`}
+          >
+            <h2
+              className={`w-full font-titles text-6xl md:text-8xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}
+            >
               {t("caseStudy")}
             </h2>
             <ArrowSlider
-            rowsFull={1}
-            rowsMobile={1}
-            itemsDesktop={4}
-            itemsTablet={3}
-            itemsMobile={2}
-            progressBar={true}
-            buttons={true}
+              rowsFull={1}
+              rowsMobile={1}
+              itemsDesktop={4}
+              itemsTablet={3}
+              itemsMobile={2}
+              progressBar={true}
+              buttons={true}
             >
               {Object.entries(t("cases")).map((a, i) => {
                 return (
-                  <div
-                  className={`lg:px-24 md:px-16 px-2`}
-                  key={`${a[0]}`}
-                  >
-                  <img
-                  draggable={false}
-                  src={`${a[1]}`}
-                  className={`mb-12 md:w-22r md:h-34r h-22r w-64  rounded-full object-cover md:filter-grayed`}
-                  alt={`${a[0]}`}
-                  />
-                  
-                  <h2 className={`text-4xl font-titles font-semibold leading-normal`}
-                  >{a[0]}</h2>
-                </div>
-                )
+                  <div className={`lg:px-24 md:px-16 px-2`} key={`${a[0]}`}>
+                    <img
+                      draggable={false}
+                      src={`${a[1]}`}
+                      className={`mb-12 md:w-22r md:h-34r h-22r w-64  rounded-full object-cover md:filter-grayed`}
+                      alt={`${a[0]}`}
+                    />
+
+                    <h2
+                      className={`text-4xl font-titles font-semibold leading-normal`}
+                    >
+                      {a[0]}
+                    </h2>
+                  </div>
+                );
               })}
             </ArrowSlider>
           </section>
-           {/* TESTIMONIALS*/}
-          <section className={`w-full bg-primary-bg flex flex-col justify-center px-12 md:px-24 text-white`}>
-            <h2 className={`w-full font-titles text-6xl md:text-8xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}>
+          {/* TESTIMONIALS*/}
+          <section
+            className={`w-full bg-primary-bg flex flex-col justify-center px-12 md:px-24 text-white`}
+          >
+            <h2
+              className={`w-full font-titles text-6xl md:text-8xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}
+            >
               TESTIMONIALS
             </h2>
-              <ArrowSlider
+            <ArrowSlider
               itemsDesktop={2}
               itemsTablet={1}
               itemsMobile={1}
@@ -318,139 +336,211 @@ export default function Home({ localization }) {
               rowsMobile={1}
               progressBar={true}
               buttons={true}
-              >
-                {Object.entries(t("testimonials")).map((testimonal, i) => {
-                  interface TestimonalData {
-                    photo: string;
-                    text: string;
-                    role?: string;
-                    firm?: string;
-                  }
-                  const testimonalData = testimonal[1] as TestimonalData
+            >
+              {Object.entries(t("testimonials")).map((testimonal, i) => {
+                interface TestimonalData {
+                  photo: string;
+                  text: string;
+                  role?: string;
+                  firm?: string;
+                }
+                const testimonalData = testimonal[1] as TestimonalData;
 
-                  return (
-
+                return (
                   <div className={`w-full bg-primary-bg relative pt-100px `}>
-                  <div key={`${testimonal[0]}`}className={`bg-testimonial-card w-full flex flex-col items-center px-12 md:px-24 h-full pb-16 border-glowy-blue border-2 shadow-blue-glow`}>
-                  <img src={`${testimonalData.photo}`} className={`relative object-contain rounded-full z-10 mt-min100px border-glowy-blue border-2 shadow-blue-glow`} draggable={false}/> 
-                    <h3 className={`text-5xl mt-8 mb-8 text-center`}>
-                      {testimonal[0]}
-                    </h3>
-                    {
-                    <p className={`text-2xl text-center mb-8 h-6`}>
-                      {testimonalData.role && testimonalData.role}
-                    </p>
-                    }
-                    <p className={`text-2xl  text-center mb-12`}>
-                      {testimonalData.text}
-                    </p>
-                    <img src={`${testimonalData.firm}`} className={`relative bottom-0 max-h-7.5r`} draggable={false}/>
+                    <div
+                      key={`${testimonal[0]}`}
+                      className={`bg-testimonial-card w-full flex flex-col items-center px-12 md:px-24 h-full pb-16 border-glowy-blue border-2 shadow-blue-glow`}
+                    >
+                      <img
+                        src={`${testimonalData.photo}`}
+                        className={`relative object-contain rounded-full z-10 mt-min100px border-glowy-blue border-2 shadow-blue-glow`}
+                        draggable={false}
+                      />
+                      <h3 className={`text-5xl mt-8 mb-8 text-center`}>
+                        {testimonal[0]}
+                      </h3>
+                      {
+                        <p className={`text-2xl text-center mb-8 h-6`}>
+                          {testimonalData.role && testimonalData.role}
+                        </p>
+                      }
+                      <p className={`text-2xl  text-center mb-12`}>
+                        {testimonalData.text}
+                      </p>
+                      <img
+                        src={`${testimonalData.firm}`}
+                        className={`relative bottom-0 max-h-7.5r`}
+                        draggable={false}
+                      />
                     </div>
-                  </div>)
-                })}
-              </ArrowSlider>
-          </section >
+                  </div>
+                );
+              })}
+            </ArrowSlider>
+          </section>
           {/* OUR CLIENTS*/}
-          <section className={`w-full bg-primary-bg flex flex-col justify-center px-12 md:px-24 text-white py-24`}>
-          <h2 className={`w-full font-titles text-6xl md:text-8xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}>
-            {t("ourClients")}
-          </h2>
-          <ArrowSlider
-          itemsDesktop={6}
-          itemsTablet={6}
-          itemsMobile={6}
-          rowsFull={3}
-          rowsMobile={6}
-          progressBar={true}
-          buttons={true}
-          classes={"max-w-90vw"}
+          <section
+            className={`w-full bg-primary-bg flex flex-col justify-center px-12 md:px-24 text-white py-24`}
           >
-          {t("clients").map((client) => {
-            return (
-              <div key={`${client.link}`} className = {`group relative w-full flex justify-center md:p-12 p-4 md:px-24`}>
-                <a target={`blank`} href={`${client.link}`} className={`md:h-96 h-72 w-full transition-transform transform duration-500 aboslute hover:z-20 hover:scale-125 flex justify-center `} draggable={`false`}>
-                <img src={`${client.image}`} draggable="false" className={`hover:shadow-blue-glow object-cover border-glowy-blue border-2 opacity-50 group-hover:opacity-100`}/>
-                </a>
-              </div>
-            )
-            
-          })}
-          </ArrowSlider>
-          </section>
-          <section className={`w-full bg-primary-bg flex flex-col items-center justify-center px-12 md:px-24 text-white py-24`}>
-          <h2 className={`w-full font-titles text-6xl md:text-8xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}>
-          {t("media")} </h2>
-          <ArrowSlider
-          itemsDesktop={3}
-          itemsTablet={2}
-          itemsMobile={1}
-          rowsFull={1}
-          rowsMobile={1}
-          progressBar={false}
-          buttons={false}
-          circles={true}
-          >
-          {t('mediaArr').map((article) => {
-            return(
-              <div className={`px-6 py-6 w-full h-full pb-24`}>
-              <div key={`${article.title}`} className={`relative w-full h-full text-white p-2`}>
-                <div className={`w-full h-96 bg-testimonial-card border-glowy-blue border-2 shadow-blue-glow rounded-2xl py-12 px-12`}>
-                <img className={"h-3.5r mb-12"} src={article.image}/>
-                <h3 className={`text-3xl`}>
-                {article.title}
-                </h3>
-                </div>
-                <div className={`absolute top-0 left-0 border-4 border-glowy-blue w-full h-full filter-blur-15`}>
-
-                </div>
-              </div>
-              </div>
-            )
-          })}
-          </ArrowSlider>
-          </section>
-          <section className={`w-full bg-primary-bg flex flex-col items-center justify-center px-12 md:px-24 text-white py-24`}>
-          <h2 className={`w-full font-titles text-6xl md:text-8xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}>
-          RECOGNITIONS AND PARTNERSHIPS
-          </h2>
-          </section>
-          <section className={`w-full bg-primary-bg justify-center px-12 md:px-24 text-white py-24`}>
-            <h2 className={`w-full text-6xl md:text-8xl mb-8 text-white font-bold`}>
-            Let’s Make Something Together
+            <h2
+              className={`w-full font-titles text-6xl md:text-8xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}
+            >
+              {t("ourClients")}
             </h2>
-            <a href={"https://www.platinum.fund/en/contact-us"} target={`blank`} className={`w-full text-5xl md:text-8xl text-white font-normal`}>
-            Click here to say <span className={`text-glowy-blue underline`}>HELLO</span>
+            <ArrowSlider
+              itemsDesktop={6}
+              itemsTablet={6}
+              itemsMobile={6}
+              rowsFull={3}
+              rowsMobile={6}
+              progressBar={true}
+              buttons={true}
+              classes={"max-w-90vw"}
+            >
+              {t("clients").map((client) => {
+                return (
+                  <div
+                    key={`${client.link}`}
+                    className={`group relative w-full flex justify-center md:p-12 p-4 md:px-24`}
+                  >
+                    <a
+                      target={`blank`}
+                      href={`${client.link}`}
+                      className={`md:h-96 h-72 w-full transition-transform transform duration-500 aboslute hover:z-20 hover:scale-125 flex justify-center `}
+                      draggable={`false`}
+                    >
+                      <img
+                        src={`${client.image}`}
+                        draggable="false"
+                        className={`hover:shadow-blue-glow object-cover border-glowy-blue border-2 opacity-50 group-hover:opacity-100`}
+                      />
+                    </a>
+                  </div>
+                );
+              })}
+            </ArrowSlider>
+          </section>
+          <section
+            className={`w-full bg-primary-bg flex flex-col items-center justify-center px-12 md:px-24 text-white py-24`}
+          >
+            <h2
+              className={`w-full font-titles text-6xl md:text-8xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}
+            >
+              {t("media")}{" "}
+            </h2>
+            <ArrowSlider
+              itemsDesktop={3}
+              itemsTablet={2}
+              itemsMobile={1}
+              rowsFull={1}
+              rowsMobile={1}
+              progressBar={false}
+              buttons={false}
+              circles={true}
+            >
+              {t("mediaArr").map((article) => {
+                return (
+                  <div className={`px-6 py-6 w-full h-full pb-24`}>
+                    <div
+                      key={`${article.title}`}
+                      className={`relative w-full h-full text-white p-2`}
+                    >
+                      <div
+                        className={`w-full h-96 bg-testimonial-card border-glowy-blue border-2 shadow-blue-glow rounded-2xl py-12 px-12`}
+                      >
+                        <img className={"h-3.5r mb-12"} src={article.image} />
+                        <h3 className={`text-3xl`}>{article.title}</h3>
+                      </div>
+                      <div
+                        className={`absolute top-0 left-0 border-4 border-glowy-blue w-full h-full filter-blur-15`}
+                      ></div>
+                    </div>
+                  </div>
+                );
+              })}
+            </ArrowSlider>
+          </section>
+          <section
+            className={`w-full bg-primary-bg flex flex-col items-center justify-center px-12 md:px-24 text-white py-24`}
+          >
+            <h2
+              className={`w-full font-titles text-6xl md:text-8xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}
+            >
+              RECOGNITIONS AND PARTNERSHIPS
+            </h2>
+          </section>
+          <section
+            className={`w-full bg-primary-bg justify-center px-12 md:px-24 text-white py-24`}
+          >
+            <h2
+              className={`w-full text-6xl md:text-8xl mb-8 text-white font-bold`}
+            >
+              Let’s Make Something Together
+            </h2>
+            <a
+              href={"https://www.platinum.fund/en/contact-us"}
+              target={`blank`}
+              className={`w-full text-5xl md:text-8xl text-white font-normal`}
+            >
+              Click here to say{" "}
+              <span className={`text-glowy-blue underline`}>HELLO</span>
             </a>
           </section>
-          <section className={`w-full bg-primary-bg flex flex-col md:flex-row gap-4 text-white pt-24`}>
-          <div className={`flex relative justify-between border-2 border-glowy-blue w-12/12 md:w-6/12  shadow-blue-glow bg-testimonial-card p-12 px-24`}>
-            <div>
-          <h5 className={`font-titles text-5xl mb-14 font-semibold`}>Address:</h5>
-          <h5  className={`text-4xl mb-8`}>Estonia:</h5>
-          <p className={`text-footer-gray`}>Panane tn 67-170 Lasnamäe linnaosa
-          <br/>
-          Tallinn, Harju maakond, 13619
-          </p>
-          </div>
-          <div className={` pt-24`}>
-          <a className={`font-titles text-4xl underline font-semibold`}>LEGAL DOCUMENTS</a>
-          </div>
-          
-          <div className={`absolute top-0 left-0 border-4 border-glowy-blue w-full h-full filter-blur-15`}/>
-          </div>
-          <div className={`flex relative justify-between border-2 border-glowy-blue w-12/12 md:w-6/12 shadow-blue-glow bg-testimonial-card p-12 px-24`}>
-          <div className={`w-full`}>
-          <h5 className={`font-titles text-5xl mb-14 font-semibold`}>Subscribe to our news:</h5>
-          <form className={`w-full flex items-center`}>
-            <input placeholder={`Email`} className={`h-16 relative bg-transparent border-b-2 border-footer-gray py-3 text-3xl w-2/3 z-30`}/>
-            <button role="submit" className={`flex flex-col text-3xl items-center group w-1/3 text-2xl text-center pl-6 mt-2 relative z-30`}>Subscribe
-            <div className={`group-hover:animate-subscribe-button w-full h-0.5 bg-white mt-4`}></div>
-            </button>
+          <section
+            className={`w-full bg-primary-bg flex flex-col md:flex-row gap-4 text-white pt-24`}
+          >
+            <div
+              className={`flex relative justify-between border-2 border-glowy-blue w-12/12 md:w-6/12  shadow-blue-glow bg-testimonial-card p-12 px-24`}
+            >
+              <div>
+                <h5 className={`font-titles text-5xl mb-14 font-semibold`}>
+                  Address:
+                </h5>
+                <h5 className={`text-4xl mb-8`}>Estonia:</h5>
+                <p className={`text-footer-gray`}>
+                  Panane tn 67-170 Lasnamäe linnaosa
+                  <br />
+                  Tallinn, Harju maakond, 13619
+                </p>
+              </div>
+              <div className={` pt-24`}>
+                <a className={`font-titles text-4xl underline font-semibold`}>
+                  LEGAL DOCUMENTS
+                </a>
+              </div>
 
-          </form>
-          </div>
-          <div className={`absolute top-0 left-0 border-4 border-glowy-blue w-full h-full filter-blur-15`}/>
-          </div>
+              <div
+                className={`absolute top-0 left-0 border-4 border-glowy-blue w-full h-full filter-blur-15`}
+              />
+            </div>
+            <div
+              className={`flex relative justify-between border-2 border-glowy-blue w-12/12 md:w-6/12 shadow-blue-glow bg-testimonial-card p-12 px-24`}
+            >
+              <div className={`w-full`}>
+                <h5 className={`font-titles text-5xl mb-14 font-semibold`}>
+                  Subscribe to our news:
+                </h5>
+                <form className={`w-full flex items-center`}>
+                  <input
+                    placeholder={`Email`}
+                    className={`h-16 relative bg-transparent border-b-2 border-footer-gray py-3 text-3xl w-2/3 z-30`}
+                  />
+                  <button
+                    role="submit"
+                    className={`flex flex-col text-3xl items-center group w-1/3 text-2xl text-center pl-6 mt-2 relative z-30`}
+                  >
+                    Subscribe
+                    <div
+                      className={`group-hover:animate-subscribe-button w-full h-0.5 bg-white mt-4`}
+                    ></div>
+                  </button>
+                </form>
+              </div>
+              <div
+                className={`absolute top-0 left-0 border-4 border-glowy-blue w-full h-full filter-blur-15`}
+              />
+            </div>
           </section>
         </main>
       </div>

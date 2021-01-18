@@ -35,15 +35,16 @@ const Header = ({ ctx }) => {
     <HeaderLink text={"Our other services"} link={""} dropdown={services} />,
     <HeaderLink text={"Blog"} link={""} />,
     <HeaderLink text={"Contact us"} link={""} />,
-    <HeaderLink text={`${languageNames[locale]}`} link={"/en"} dropdown={
-      locales.map((a) => {
-        return{
+    <HeaderLink
+      text={`${languageNames[locale]}`}
+      link={"/en"}
+      dropdown={locales.map((a) => {
+        return {
           text: languageNames[a],
-          link: `/${a}`
-        }
-      })
-    } />,
-
+          link: `/${a}`,
+        };
+      })}
+    />,
   ];
 
   useEffect(() => {
@@ -100,12 +101,28 @@ const Header = ({ ctx }) => {
               sidebarData.setSidebarOpen();
             }}
           >
-            <div className={`rounded-full ${sidebarOpen ? "bg-gray-400" : ""} p-4`}>
-            <svg viewBox="0 0 100 70" width="20" height="20">
-              <rect width="100" height="15" fill={`${sidebarOpen ? "black" : "white"}`}></rect>
-              <rect y="30" width="100" height="15" fill={`${sidebarOpen ? "black" : "white"}`}></rect>
-              <rect y="60" width="100" height="15" fill={`${sidebarOpen ? "black" : "white"}`}></rect>
-            </svg>
+            <div
+              className={`rounded-full ${sidebarOpen ? "bg-gray-400" : ""} p-4`}
+            >
+              <svg viewBox="0 0 100 70" width="20" height="20">
+                <rect
+                  width="100"
+                  height="15"
+                  fill={`${sidebarOpen ? "black" : "white"}`}
+                ></rect>
+                <rect
+                  y="30"
+                  width="100"
+                  height="15"
+                  fill={`${sidebarOpen ? "black" : "white"}`}
+                ></rect>
+                <rect
+                  y="60"
+                  width="100"
+                  height="15"
+                  fill={`${sidebarOpen ? "black" : "white"}`}
+                ></rect>
+              </svg>
             </div>
           </button>
         ) : (

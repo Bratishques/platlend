@@ -2,13 +2,14 @@ module.exports = {
   purge: ["./components/**/*.{js,ts,jsx,tsx}", "./pages/**/*.{js,ts,jsx,tsx}"],
   theme: {
     fontFamily: {
-      main: ['Lexend Deca', "sans-serif"],
-      titles: ['Blinker', "sans-serif" ]
+      main: ["Lexend Deca", "sans-serif"],
+      titles: ["Blinker", "sans-serif"],
     },
     filter: {
-      "tech-hover": "invert(53%) sepia(68%) saturate(2878%) hue-rotate(567deg) brightness(104%) contrast(97%) drop-shadow(0px 0px 17px rgba(0, 102, 255, 0.8))",
-      'grayed': "grayscale(100%)",
-      "blur-15": "blur(15px)"
+      "tech-hover":
+        "invert(53%) sepia(68%) saturate(2878%) hue-rotate(567deg) brightness(104%) contrast(97%) drop-shadow(0px 0px 17px rgba(0, 102, 255, 0.8))",
+      grayed: "grayscale(100%)",
+      "blur-15": "blur(15px)",
     },
     minHeight: {
       40: "10rem",
@@ -24,18 +25,18 @@ module.exports = {
     extend: {
       animation: {
         "appear-tech": "appear 1s ease-in-out",
-        'subscribe-button': 'stretch 0.7s ease-in-out'
+        "subscribe-button": "stretch 0.7s ease-in-out",
       },
       keyframes: {
         appear: {
-          "0%": {opacity: "0"},
-          "100%": {opacity: "1"}
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
         },
         stretch: {
-          "0%": {width: "100%"},
-          "50%": {width: "10%"},
-          "100%": {width: "100%"}
-        }
+          "0%": { width: "100%" },
+          "50%": { width: "10%" },
+          "100%": { width: "100%" },
+        },
       },
       spacing: {
         "2px": "2px",
@@ -47,9 +48,9 @@ module.exports = {
         "95vh": "95vh",
         "22r": "22rem",
         "34r": "34rem",
-        'min100px': "-100px",
-        "100px" : "100px",
-        "90vw": "90vw"
+        min100px: "-100px",
+        "100px": "100px",
+        "90vw": "90vw",
       },
       colors: {
         "primary-bg": "#111",
@@ -57,7 +58,7 @@ module.exports = {
         subtext: "#c7c7c7",
         "offer-cards-hover": "#151515",
         "testimonial-card": "rgba(0, 102, 255, 0.2)",
-        "footer-gray": "#727272"
+        "footer-gray": "#727272",
       },
       maxWidth: {
         96: "96rem",
@@ -65,7 +66,7 @@ module.exports = {
       },
       width: {
         "4/5": "80%",
-        "51.9r": "51.9rem"
+        "51.9r": "51.9rem",
       },
     },
   },
@@ -77,7 +78,7 @@ module.exports = {
       height: [`group-hover`],
       translate: ["active", "group-hover"],
       zIndex: ["hover"],
-      animation: ["group-hover"]
+      animation: ["group-hover"],
     },
   },
   plugins: [
@@ -89,6 +90,6 @@ module.exports = {
       textUnset: true, // whether to generate utilities to unset text properties
       componentPrefix: "c-", // the prefix to use for text style classes
     }),
-    require('tailwindcss-filters'),
+    require("tailwindcss-filters"),
   ],
 };
