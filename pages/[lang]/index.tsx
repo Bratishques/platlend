@@ -18,6 +18,7 @@ export default function Home({ localization }) {
   const { t } = useTranslation(localization);
   const screenSize = useContext(ScreenSizeContext);
   const offerings = t("offerings");
+  const socialPath = `/images/social/`;
 
   return (
     <LanguageContextProvider localization={localization}>
@@ -53,7 +54,7 @@ export default function Home({ localization }) {
               }}
             />
             <div
-              className={`absolute top-64 px-12 md:px-32 text-white text-center lg:text-left z-10`}
+              className={`absolute top-56 px-12 md:px-32 text-white text-center lg:text-left z-20`}
             >
               <h1
                 className={`text-6xl md:text-8xl w-full leading-tight mb-12 font-titles font-bold`}
@@ -61,10 +62,41 @@ export default function Home({ localization }) {
                 {t("heroText")}
               </h1>
               <h2
-                className={`text-5xl md:text-7xl w-full leading-tight font-titles font-semibold`}
+                className={`text-5xl md:text-7xl mb-12 w-full leading-tight font-titles font-semibold`}
               >
                 {t("heroSubText")}
               </h2>
+              <div
+                className={`relative px-48 lg:px-0 md:flex hidden items-center w-full lg:w-1/3 h-12 justify-between`}
+              >
+                <a className={`hover:filter-tech-hover`} href="">
+                  <img src={`${socialPath}telegram-light.svg`} />
+                </a>
+                <a href="">
+                  <img
+                    className={`hover:filter-tech-hover`}
+                    src={`${socialPath}medium.svg`}
+                  />
+                </a>
+                <a href="">
+                  <img
+                    className={`hover:filter-tech-hover`}
+                    src={`${socialPath}facebook.svg`}
+                  />
+                </a>
+                <a href="">
+                  <img
+                    className={`hover:filter-tech-hover`}
+                    src={`${socialPath}twitter.svg`}
+                  />
+                </a>
+                <a href="">
+                  <img
+                    className={`hover:filter-tech-hover`}
+                    src={`${socialPath}line.svg`}
+                  />
+                </a>
+              </div>
             </div>
             <img
               className={`bottom-0 w-full absolute z-10`}
@@ -572,7 +604,7 @@ export default function Home({ localization }) {
                     role="submit"
                     className={`flex flex-col text-2xl md:text-3xl items-center group w-1/3 text-center sm:pl-6 mt-2 relative z-30`}
                     onSubmit={(e) => {
-                      e.preventDefault()
+                      e.preventDefault();
                     }}
                   >
                     Subscribe

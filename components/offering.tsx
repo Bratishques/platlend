@@ -18,7 +18,7 @@ const Offering = ({
         <img src={`${icon}`} className={`p-2 relative z-30`} />
       </div>
       <h4
-        className={`md:text-3xl text-4xl min-h-56 tracking-wide font-titles font-semibold`}
+        className={`md:text-3xl text-4xl h-24 tracking-wide font-titles font-semibold`}
       >
         {title}
       </h4>
