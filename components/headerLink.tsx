@@ -75,6 +75,7 @@ const HeaderLink = ({ dropdown = [], text, link }) => {
 HeaderLink.propTypes = {
   text: PropTypes.string,
   link: PropTypes.string,
+  dropdown: PropTypes.array,
 };
 
 export default HeaderLink;

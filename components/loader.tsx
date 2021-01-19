@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const Loader = ({ children }) => {
   return (
     <div
@@ -6,6 +8,10 @@ const Loader = ({ children }) => {
       {children}
     </div>
   );
+};
+
+Loader.propTypes = {
+  children: PropTypes.node,
 };
 
 export default Loader;

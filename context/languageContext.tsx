@@ -3,6 +3,7 @@ import defaultStrings from "../translations/locales/en";
 import { useRouter } from "next/router";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import locales from "../translations/locales";
+import PropTypes from "prop-types";
 
 const LanguageContext = React.createContext({
   localization: {
@@ -10,7 +11,7 @@ const LanguageContext = React.createContext({
     translations: defaultStrings.hero, //Useless
     namespace: "common", //Useless
   },
-  setLocale: (state) => {},
+  setLocale: (state: any) => {},
 });
 
 export const LanguageContextProvider = ({ localization, children }) => {
@@ -55,7 +56,6 @@ export const getLocalizationProps = (ctx, namespace) => {
   const locale: any = locales[lang];
   const strings: any = locale[namespace];
   const translations = {
-    heroText: locales[lang].heroText,
     ...strings,
   };
   return {
@@ -63,4 +63,13 @@ export const getLocalizationProps = (ctx, namespace) => {
     translations,
     namespace,
   };
+};
+
+LanguageContextProvider.propTypes = {
+  children: PropTypes.node,
+  localization: PropTypes.shape({
+    locale: PropTypes.string,
+    translations: PropTypes.object,
+    namespace: PropTypes.string,
+  }),
 };

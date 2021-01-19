@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import LanguageContext from "../context/languageContext";
 import defaultStrings from "../translations/locales/en";
 
 export default function useTranslation(localization) {

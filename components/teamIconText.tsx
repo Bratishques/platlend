@@ -11,9 +11,13 @@ const TeamIconText = ({ title, text, icon = "" }) => {
         <img src={`${icon}`}></img>
       </div>
       <div
-        className={`ml-4 border-b-4 border-black w-full group-hover:border-blue-500 text-white `}
+        className={`ml-4 border-b-2 border-footer-gray w-full group-hover:border-blue-500 text-white `}
       >
-        <h4 className={`text-4xl leading-loose font-bold`}>{title}</h4>
+        <h4
+          className={`text-4xl font-titles leading-loose font-semibold tracking-wide`}
+        >
+          {title}
+        </h4>
         <p
           className={`text-3xl leading-normal pb-12 mt-4 min-h-40 text-subtext`}
         >
@@ -27,6 +31,7 @@ const TeamIconText = ({ title, text, icon = "" }) => {
 TeamIconText.propTypes = {
   title: PropTypes.string,
   text: PropTypes.string,
+  icon: PropTypes.string,
 };
 
 export default TeamIconText;

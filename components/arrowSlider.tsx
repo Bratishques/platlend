@@ -158,7 +158,6 @@ const ArrowSlider = ({
         }}
         onMouseMove={(e) => {
           if (isTouched) {
-            const currentLeft = calc();
             xMoved = e.clientX - xTouchStart;
             const gridCheck = Math.ceil(children.length / itemsOnScreen);
             if (scrollState < gridCheck && xMoved < 0) {
@@ -190,17 +189,20 @@ const ArrowSlider = ({
           xMoved = e.touches[0].clientX - xTouchStart;
           yMoved = e.touches[0].clientY - yTouchStart;
           const gridCheck = Math.ceil(children.length / itemsOnScreen);
-          const currentLeft = calc();
           if (yMoved > 10 || yMoved < -10) {
             return;
           }
           if (scrollState < gridCheck && xMoved < 0) {
-            innerRef.current.style.transform = `translate3d(${calc() + xMoved}px, 0px, 0px)`;
+            innerRef.current.style.transform = `translate3d(${
+              calc() + xMoved
+            }px, 0px, 0px)`;
             //gsap.to(`#slider${children.length}${rowsFull}`, {x: currentLeft + xMoved})
             //innerRef.current.style.transform = `translateX(${String(Number(currentLeft) + Number(xMoved*100*itemsOnScreen/children.length/screenSize))}%)`
           }
           if (scrollState > 1 && xMoved > 0) {
-            innerRef.current.style.transform = `translate3d(${calc() + xMoved}px, 0px, 0px)`;
+            innerRef.current.style.transform = `translate3d(${
+              calc() + xMoved
+            }px, 0px, 0px)`;
             //gsap.to(`#slider${children.length}${rowsFull}`, {x: currentLeft + xMoved})
             //innerRef.current.style.transform = `translateX(${String(Number(currentLeft) + Number(xMoved*100*itemsOnScreen/children.length/screenSize))}%)`
           }
@@ -251,8 +253,13 @@ ArrowSlider.propTypes = {
   rowsMobile: PropTypes.number,
   rowsFull: PropTypes.number,
   itemsOnScreen: PropTypes.number,
+  itemsDesktop: PropTypes.number,
+  itemsTablet: PropTypes.number,
+  itemsMobile: PropTypes.number,
   buttons: PropTypes.bool,
   circles: PropTypes.bool,
+  progressBar: PropTypes.bool,
+  classes: PropTypes.string,
 };
 
 export default ArrowSlider;

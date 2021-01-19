@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import ScreenSizeContext from "../context/screenSizeContext";
 import breakpoints from "../utils/breakpoints";
+import PropTypes from "prop-types";
 
 const TechGrid = ({ techStack, stacks }) => {
   const [displayed, setDisplayed] = useState(0);
@@ -73,6 +74,11 @@ const TechGrid = ({ techStack, stacks }) => {
       </div>
     </div>
   );
+};
+
+TechGrid.propTypes = {
+  stacks: PropTypes.object,
+  techStack: PropTypes.array,
 };
 
 export default TechGrid;

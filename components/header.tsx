@@ -1,18 +1,21 @@
 import { useCallback, useContext, useEffect, useState } from "react";
+import { getLocalizationProps } from "../context/languageContext";
 import ScreenSizeContext from "../context/screenSizeContext";
 import SidebarContext from "../context/sidebarContext";
 import useTranslation from "../hooks/useTranslation";
 import { languageNames, locales } from "../translations/config";
 import breakpoints from "../utils/breakpoints";
 import HeaderLink from "./headerLink";
+import PropTypes from "prop-types";
 
 const Header = ({ ctx }) => {
   const [scrollState, setScrollState] = useState(0);
   const sidebarData = useContext(SidebarContext);
   const sidebarOpen = sidebarData.sidebarOpen;
   const screenSize = useContext(ScreenSizeContext);
-  const { t, locale } = useTranslation(ctx);
-  const services = t("services");
+  const headerContext = getLocalizationProps(ctx, "header");
+  const { t, locale } = useTranslation(headerContext);
+  const links = t("links");
 
   const scrollListener = useCallback(() => {
     const position = window.scrollY;
@@ -27,14 +30,7 @@ const Header = ({ ctx }) => {
     }
   }, []);
 
-  const links = [
-    <HeaderLink key={"Q Defi Rating"} text={"Q Defi Rating"} link={""}/>,
-    <HeaderLink text={"NFT"} link={""} />,
-    <HeaderLink text={"Careers"} link={""} />,
-    <HeaderLink text={"About us"} link={""} />,
-    <HeaderLink text={"Our other services"} link={""} dropdown={services} />,
-    <HeaderLink text={"Blog"} link={""} />,
-    <HeaderLink text={"Contact us"} link={""} />,
+  const langSwitch = (
     <HeaderLink
       text={`${languageNames[locale]}`}
       link={"/en"}
@@ -44,8 +40,8 @@ const Header = ({ ctx }) => {
           link: `/${a}`,
         };
       })}
-    />,
-  ];
+    />
+  );
 
   useEffect(() => {
     window.addEventListener("scroll", scrollListener);
@@ -72,9 +68,17 @@ const Header = ({ ctx }) => {
           }}
           className={`fixed flex flex-col bg-primary-bg h-screen w-full transition-all duration-500 z-20 flex flex-col justify-center align-center overflow-y-scroll`}
         >
-          {links.map((a) => {
-            return a;
+          {links.map((link) => {
+            return (
+              <HeaderLink
+                key={link.text}
+                link={link.link}
+                text={link.text}
+                dropdown={link.dropdown ? link.dropdown : []}
+              />
+            );
           })}
+          {langSwitch}
         </div>
         <div className={`w-85 h-full flex justify-between`}>
           <div className={` flex items-center`}>
@@ -87,9 +91,17 @@ const Header = ({ ctx }) => {
               <div
                 className={`relative w-full flex items-center justify-between py-3 h-full`}
               >
-                {links.map((a) => {
-                  return a;
+                {links.map((link) => {
+                  return (
+                    <HeaderLink
+                      key={link.text}
+                      link={link.link}
+                      text={link.text}
+                      dropdown={link.dropdown ? link.dropdown : []}
+                    />
+                  );
                 })}
+                {langSwitch}
               </div>
             </div>
           )}
@@ -131,6 +143,10 @@ const Header = ({ ctx }) => {
       </div>
     </div>
   );
+};
+
+Header.propTypes = {
+  ctx: PropTypes.object,
 };
 
 export default Header;

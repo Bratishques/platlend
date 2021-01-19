@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
 const ScreenSizeContext = React.createContext(1400);
 
@@ -22,6 +23,10 @@ const ScreenSizeProvider = ({ children }) => {
       {children}
     </ScreenSizeContext.Provider>
   );
+};
+
+ScreenSizeProvider.propTypes = {
+  children: PropTypes.node,
 };
 
 export default ScreenSizeContext;

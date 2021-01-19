@@ -12,12 +12,12 @@ import {
 } from "../../context/languageContext";
 import useTranslation from "../../hooks/useTranslation";
 import TechGrid from "../../components/techGrid";
+import PropTypes from "prop-types";
 
 export default function Home({ localization }) {
   const { t } = useTranslation(localization);
   const screenSize = useContext(ScreenSizeContext);
   const offerings = t("offerings");
-  console.log(screenSize);
 
   return (
     <LanguageContextProvider localization={localization}>
@@ -29,7 +29,6 @@ export default function Home({ localization }) {
 
         <main className={`w-full font-main`}>
           <section
-            id="hero-section"
             style={{
               backgroundImage: `url("/images/hero-back.jpg")`,
             }}
@@ -37,8 +36,13 @@ export default function Home({ localization }) {
           >
             <Header ctx={localization} />
             <div
-              id="ellipse-div"
-              className={`w-1/3 h-3/4 bg-auto top-64 `}
+              className={`absolute w-full h-2px bg-glowy-blue shadow-blue-glow top-7.5r animate-horizontal-grow`}
+            ></div>
+            <div
+              className={`absolute left-37.5r w-2px h-full bg-glowy-blue shadow-blue-glow animate-vertical-grow transform origin-bottom bottom-0`}
+            ></div>
+            <div
+              className={`w-1/3 h-3/4 bg-auto top-64 animate-circle-grow`}
               style={{
                 background: `url('/images/half-ellipse.svg')`,
                 backgroundRepeat: "no-repeat",
@@ -75,13 +79,18 @@ export default function Home({ localization }) {
             className={`w-full py-36 px-8 flex justify-center bg-primary-bg`}
           >
             <div
-              className={`w-full md:w-8/12 flex items-center flex-col text-white text-center`}
+              className={`w-full md:w-3/4 flex items-center flex-col text-white text-center px-12 md:px-24`}
             >
-              <img src={`/images/logo-squares.svg`} className={`mb-16`}></img>
-              <h2 className={`text-7xl mb-12 font-titles font-bold`}>
+              <img
+                src={`/images/logo-squares.svg`}
+                className={`mb-16 w-32`}
+              ></img>
+              <h2
+                className={`w-full font-titles text-6xl md:text-8xl text-center mb-24 md:text-shadow-blue-offset text-white font-bold`}
+              >
                 WHO WE ARE
               </h2>
-              <p className={`text-3xl text-left leading-normal mb-12`}>
+              <p className={`text-3xl text-justify leading-3.2h mb-12`}>
                 Platinum Software Development company provides unmatched
                 solutions for the clients. We give real business value through
                 engineering-based solutions model that offers innovative and
@@ -94,8 +103,8 @@ export default function Home({ localization }) {
                 company into the successful future and beyond!
                 <br />
                 <br />
-                Do not wait for miracles, just come to us "IT Wizards" who will
-                help you to achieve what you want.
+                Do not wait for miracles, just come to us &quot;IT Wizards&quot;
+                who will help you to achieve what you want.
               </p>
               <div className={`flex justify-between items-center w-full`}>
                 <p className={`text-2xl text-left`}>
@@ -150,15 +159,21 @@ export default function Home({ localization }) {
             {/* ROW 1 */}
             <div className={`flex w-95% flex-col md:flex-row mb-48`}>
               <div className={`md:w-6/12 w-95% flex md:justify-start`}>
-                <div className={`md:w-95%`}>
+                <div className={`relative mb-18`}>
+                  <div
+                    className={`absolute hidden lg:block w-30r h-30r border-8 top-min6.5r border-glowy-blue left-min6.5r `}
+                  ></div>
+                  <div
+                    className={`absolute hidden lg:block w-15.6r h-15.6r border-8 bottom-min5.5r border-glowy-blue right-min5.5r`}
+                  ></div>
                   <img
-                    className={`md:mb-0 object-contain border-glowy-blue border-2 mb-24`}
+                    className={`relative min-w-30r z-20 md:mb-0 object-contain border-glowy-blue border-2 mb-24`}
                     src={`/images/image9.jpg`}
-                  ></img>
+                  />
                 </div>
               </div>
               <div
-                className={`md:w-6/12 flex flex-col w-95% md:justify-around md:items-center md:ml-16 ml-0`}
+                className={`md:w-6/12 flex flex-col w-95% md:justify-around md:items-center md:ml-8 ml-0`}
               >
                 <TeamIconText
                   title={`Experienced`}
@@ -175,9 +190,12 @@ export default function Home({ localization }) {
             {/* ROW 2 */}
             <div className={`flex w-95% flex-col md:flex-row-reverse mb-48`}>
               <div className={`md:w-6/12 w-95% flex md:justify-end `}>
-                <div className={`w-95%`}>
+                <div className={`relative`}>
+                  <div
+                    className={`absolute hidden lg:block w-30r h-30r border-8 bottom-min10r border-glowy-blue left-min10r `}
+                  ></div>
                   <img
-                    className={`border-glowy-blue border-2 mb-24 md:mb-0 object-contain`}
+                    className={`relative border-glowy-blue border-2 mb-24 md:mb-0 object-contain z-20`}
                     src={`/images/image10.jpg`}
                   ></img>
                 </div>
@@ -200,9 +218,15 @@ export default function Home({ localization }) {
             {/* ROW 3*/}
             <div className={`flex w-95% flex-col md:flex-row mb-48`}>
               <div className={`md:w-6/12 w-95% flex md:justify-start`}>
-                <div className={`w-95%`}>
+                <div className={`relative`}>
+                  <div
+                    className={`absolute hidden lg:block w-30r h-30r border-8 bottom-min9.3r border-glowy-blue left-16 `}
+                  ></div>
+                  <div
+                    className={`absolute hidden lg:block w-15.6r h-15.6r border-8 top-16 border-glowy-blue right-min10.6r`}
+                  ></div>
                   <img
-                    className={`mb-24 md:mb-0 object-contain border-glowy-blue border-2`}
+                    className={`mb-24 md:mb-0 object-contain border-glowy-blue border-2 z-20 relative`}
                     src={`/images/image11.jpg`}
                   ></img>
                 </div>
@@ -256,7 +280,7 @@ export default function Home({ localization }) {
                   circles={false}
                   progressBar={true}
                 >
-                  {offerings.map((item, i) => {
+                  {offerings.map((item) => {
                     return (
                       <Offering
                         title={item.title}
@@ -299,15 +323,19 @@ export default function Home({ localization }) {
               progressBar={true}
               buttons={true}
             >
-              {Object.entries(t("cases")).map((a, i) => {
+              {Object.entries(t("cases")).map((a) => {
                 return (
                   <div className={`lg:px-24 md:px-16 px-2`} key={`${a[0]}`}>
-                    <img
-                      draggable={false}
-                      src={`${a[1]}`}
-                      className={`mb-12 md:w-22r md:h-34r h-22r w-64  rounded-full object-cover md:filter-grayed`}
-                      alt={`${a[0]}`}
-                    />
+                    <div
+                      className={`mb-12 md:w-22r md:h-34r h-22r w-64 overflow-hidden  rounded-full`}
+                    >
+                      <img
+                        draggable={false}
+                        src={`${a[1]}`}
+                        className={`w-full h-full transition-all duration-500  hover:filter-none transform hover:scale-125 object-cover md:filter-grayed`}
+                        alt={`${a[0]}`}
+                      />
+                    </div>
 
                     <h2
                       className={`text-4xl font-titles font-semibold leading-normal`}
@@ -321,7 +349,7 @@ export default function Home({ localization }) {
           </section>
           {/* TESTIMONIALS*/}
           <section
-            className={`w-full bg-primary-bg flex flex-col justify-center px-12 md:px-24 text-white`}
+            className={`w-full bg-primary-bg flex flex-col justify-center px-12 text-white md:px-56`}
           >
             <h2
               className={`w-full font-titles text-6xl md:text-8xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}
@@ -337,7 +365,7 @@ export default function Home({ localization }) {
               progressBar={true}
               buttons={true}
             >
-              {Object.entries(t("testimonials")).map((testimonal, i) => {
+              {Object.entries(t("testimonials")).map((testimonal) => {
                 interface TestimonalData {
                   photo: string;
                   text: string;
@@ -347,17 +375,21 @@ export default function Home({ localization }) {
                 const testimonalData = testimonal[1] as TestimonalData;
 
                 return (
-                  <div className={`w-full bg-primary-bg relative pt-100px `}>
+                  <div
+                    key={`${testimonal[0]}`}
+                    className={`w-full bg-primary-bg relative pt-100px px-6 `}
+                  >
                     <div
-                      key={`${testimonal[0]}`}
                       className={`bg-testimonial-card w-full flex flex-col items-center px-12 md:px-24 h-full pb-16 border-glowy-blue border-2 shadow-blue-glow`}
                     >
                       <img
                         src={`${testimonalData.photo}`}
-                        className={`relative object-contain rounded-full z-10 mt-min100px border-glowy-blue border-2 shadow-blue-glow`}
+                        className={`relative object-contain rounded-full  z-10 mt-min100px border-glowy-blue border-2 shadow-photo-shadow`}
                         draggable={false}
                       />
-                      <h3 className={`text-5xl mt-8 mb-8 text-center`}>
+                      <h3
+                        className={`text-4xl mt-24 mb-4 font-titles  text-center`}
+                      >
                         {testimonal[0]}
                       </h3>
                       {
@@ -441,16 +473,18 @@ export default function Home({ localization }) {
             >
               {t("mediaArr").map((article) => {
                 return (
-                  <div className={`px-6 py-6 w-full h-full pb-24`}>
-                    <div
-                      key={`${article.title}`}
-                      className={`relative w-full h-full text-white p-2`}
-                    >
+                  <div
+                    key={`${article.title}`}
+                    className={`px-3 py-6 w-full h-full pb-16`}
+                  >
+                    <div className={`relative w-full h-full text-white p-2`}>
                       <div
-                        className={`w-full h-96 bg-testimonial-card border-glowy-blue border-2 shadow-blue-glow rounded-2xl py-12 px-12`}
+                        className={`w-full bg-testimonial-card border-glowy-blue border-2 shadow-blue-glow rounded-2xl py-12 px-16 font-titles`}
                       >
                         <img className={"h-3.5r mb-12"} src={article.image} />
-                        <h3 className={`text-3xl`}>{article.title}</h3>
+                        <h3 className={`text-4xl h-64 font-semibold`}>
+                          {article.title}
+                        </h3>
                       </div>
                       <div
                         className={`absolute top-0 left-0 border-4 border-glowy-blue w-full h-full filter-blur-15`}
@@ -474,7 +508,7 @@ export default function Home({ localization }) {
             className={`w-full bg-primary-bg justify-center px-12 md:px-24 text-white py-24`}
           >
             <h2
-              className={`w-full text-6xl md:text-8xl mb-8 text-white font-bold`}
+              className={`w-full text-6xl md:text-9xl mb-8 text-white font-bold`}
             >
               Let’s Make Something Together
             </h2>
@@ -491,7 +525,7 @@ export default function Home({ localization }) {
             className={`w-full bg-primary-bg flex flex-col md:flex-row gap-4 text-white pt-24`}
           >
             <div
-              className={`flex relative justify-between border-2 border-glowy-blue w-12/12 md:w-6/12  shadow-blue-glow bg-testimonial-card p-12 px-24`}
+              className={`flex relative justify-between border-2 border-glowy-blue w-12/12 md:w-6/12  shadow-blue-glow bg-testimonial-card p-12 px-12 md:px-24`}
             >
               <div>
                 <h5 className={`font-titles text-5xl mb-16 font-semibold`}>
@@ -504,8 +538,11 @@ export default function Home({ localization }) {
                   Tallinn, Harju maakond, 13619
                 </p>
               </div>
-              <div className={` pt-28`}>
-                <a className={`font-titles text-4xl underline font-semibold`}>
+              <div className={`pt-28`}>
+                <a
+                  href={``}
+                  className={`font-titles text-2xl md:text-4xl underline font-semibold`}
+                >
                   LEGAL DOCUMENTS
                 </a>
               </div>
@@ -515,20 +552,28 @@ export default function Home({ localization }) {
               />
             </div>
             <div
-              className={`flex relative justify-between border-2 border-glowy-blue w-12/12 md:w-6/12 shadow-blue-glow bg-testimonial-card p-12 px-24`}
+              className={`flex relative justify-between border-2 border-glowy-blue w-12/12 md:w-6/12 shadow-blue-glow bg-testimonial-card p-12 px-12 md:px-24`}
             >
               <div className={`w-full`}>
-                <h5 className={`font-titles text-5xl mb-14 font-semibold`}>
+                <h5
+                  className={`font-titles text-3xl md:text-5xl mb-10 font-semibold`}
+                >
                   Subscribe to our news:
                 </h5>
-                <form className={`w-full flex items-center`}>
+                <form
+                  className={`w-full flex sm:items-center flex-col sm:flex-row`}
+                >
                   <input
                     placeholder={`Email`}
-                    className={`h-16 relative bg-transparent border-b-2 border-footer-gray py-3 text-3xl w-2/3 z-30`}
+                    type={`Email`}
+                    className={`h-16 relative sm:mb-0 mb-6 bg-transparent border-b-2 border-footer-gray py-3 text-2xl md:text-3xl w-2/3 z-30`}
                   />
                   <button
                     role="submit"
-                    className={`flex flex-col text-3xl items-center group w-1/3 text-2xl text-center pl-6 mt-2 relative z-30`}
+                    className={`flex flex-col text-2xl md:text-3xl items-center group w-1/3 text-center sm:pl-6 mt-2 relative z-30`}
+                    onSubmit={(e) => {
+                      e.preventDefault()
+                    }}
                   >
                     Subscribe
                     <div
@@ -536,20 +581,55 @@ export default function Home({ localization }) {
                     ></div>
                   </button>
                 </form>
+                <p className={`text-footer-gray pt-8`}>
+                  This information is completely confidential.
+                  <br />
+                  We do not distribute your email.
+                </p>
               </div>
               <div
                 className={`absolute top-0 left-0 border-4 border-glowy-blue w-full h-full filter-blur-15`}
               />
             </div>
           </section>
+          <footer className={`w-full pt-8 bg-primary-bg`}>
+            <div
+              className={`bg-testimonial-card shadow-blue-glow h-7.5r border-2 border-glowy-blue flex items-center justify-center`}
+            >
+              <div
+                className={`flex items-center justify-between w-3/4 text-white text-xl`}
+              >
+                <div>
+                  <a>Telegram</a>
+                </div>
+                <div>
+                  <a>Medium</a>
+                </div>
+                <div>
+                  <a>Facebook</a>
+                </div>
+                <div>
+                  <a>Twitter</a>
+                </div>
+                <div>
+                  <a>Line</a>
+                </div>
+              </div>
+            </div>
+          </footer>
         </main>
       </div>
     </LanguageContextProvider>
   );
 }
 
+Home.propTypes = {
+  localization: PropTypes.object,
+};
+
 export const getStaticProps = async (ctx) => {
   const localization = getLocalizationProps(ctx, "hero");
+
   return {
     props: {
       localization,

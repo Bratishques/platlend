@@ -10,6 +10,7 @@ module.exports = {
         "invert(53%) sepia(68%) saturate(2878%) hue-rotate(567deg) brightness(104%) contrast(97%) drop-shadow(0px 0px 17px rgba(0, 102, 255, 0.8))",
       grayed: "grayscale(100%)",
       "blur-15": "blur(15px)",
+      none: "none",
     },
     minHeight: {
       40: "10rem",
@@ -21,11 +22,15 @@ module.exports = {
     },
     boxShadow: {
       "blue-glow": "0 0.2rem 0.5rem rgba(0, 102, 255, 0.35)",
+      "photo-shadow": "0 0 1rem #0066FF",
     },
     extend: {
       animation: {
         "appear-tech": "appear 1s ease-in-out",
         "subscribe-button": "stretch 0.7s ease-in-out",
+        "circle-grow": "grow 3s ease-in-out",
+        "horizontal-grow": "width-grow 3s ease-in-out",
+        "vertical-grow": "height-grow 3s ease-in-out",
       },
       keyframes: {
         appear: {
@@ -37,6 +42,21 @@ module.exports = {
           "50%": { width: "10%" },
           "100%": { width: "100%" },
         },
+        grow: {
+          "0%": { height: "0%" },
+          "100%": { height: "75%" },
+        },
+        "height-grow": {
+          "0%": { height: "0%" },
+          "100%": { height: "100%" },
+        },
+        "width-grow": {
+          "0%": { width: "0%" },
+          "100%": { width: "100%" },
+        },
+      },
+      lineHeight: {
+        "3.2h": "3.2vh",
       },
       spacing: {
         "2px": "2px",
@@ -51,6 +71,14 @@ module.exports = {
         min100px: "-100px",
         "100px": "100px",
         "90vw": "90vw",
+        "37.5r": "37.5rem",
+        "30r": "30rem",
+        "min6.5r": "-6.5rem",
+        "15.6r": "15.6rem",
+        "min5.5r": "-5.5rem",
+        min10r: "-10rem",
+        "min9.3r": "-9.3rem",
+        "min10.6r": "-10.6rem",
       },
       colors: {
         "primary-bg": "#111",

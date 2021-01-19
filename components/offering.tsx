@@ -17,12 +17,20 @@ const Offering = ({
         ></div>
         <img src={`${icon}`} className={`p-2 relative z-30`} />
       </div>
-      <h4 className={`md:text-3xl text-4xl min-h-56`}>{title}</h4>
+      <h4
+        className={`md:text-3xl text-4xl min-h-56 tracking-wide font-titles font-semibold`}
+      >
+        {title}
+      </h4>
       <div
         className={`md:text-xl text-2xl leading-normal h-40 flex flex-col justify-between`}
       >
         {items.map((a) => {
-          return <p className={``}>{a}</p>;
+          return (
+            <p key={a} className={``}>
+              {a}
+            </p>
+          );
         })}
       </div>
     </div>
