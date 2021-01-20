@@ -61,7 +61,7 @@ const HeaderLink = ({ dropdown = [], text, link }) => {
           onMouseLeave={() => {
             setIsDropped(false);
           }}
-          className={` absolute lg:p-6 lg:px-24 bg-glowy-blue px-24 mt-16 flex flex-col align-center z-30`}
+          className={` absolute lg:p-6 lg:px-24 bg-dropdown px-24 mt-16 flex flex-col align-center z-30`}
         >
           {dropdown.map((a) => {
             return <HeaderLink text={a.text} link={a.link} key={`${a.text}`} />;

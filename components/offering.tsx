@@ -6,10 +6,10 @@ const Offering = ({
 }) => {
   return (
     <div
-      className={`group hover:bg-offer-cards-hover hover:border-offer-cards-hover transition-all duration-300 -w-full h-full py-12 px-8 text-white border-glowy-blue border-2 rounded-lg w-full`}
+      className={`group hover:bg-offer-cards-hover hover:border-offer-cards-hover transition-all duration-300 -w-full h-full py-8 px-6 text-white border-glowy-blue border-2 rounded-lg w-full`}
     >
       <div
-        className={`relative mb-8 h-20 w-20 flex justify-center items-center`}
+        className={`relative mb-8 h-24 w-24 flex justify-center items-center`}
       >
         <div
           className={`absolute transition-all group-hover:bg-glowy-blue transform h-1 w-1 translate-y-16 -translate-x-16 group-hover:h-full group-hover:w-full rounded-full group-hover:scale-125
@@ -18,12 +18,12 @@ const Offering = ({
         <img src={`${icon}`} className={`p-2 relative z-30`} />
       </div>
       <h4
-        className={`md:text-3xl text-4xl h-24 tracking-wide font-titles font-semibold`}
+        className={`text-3xl  leading-none h-24 tracking-wide font-titles font-semibold`}
       >
         {title}
       </h4>
       <div
-        className={`md:text-xl text-2xl leading-normal h-40 flex flex-col justify-between`}
+        className={`md:text-xl text-1.4r leading-normal h-40 mb-4 flex flex-col justify-between`}
       >
         {items.map((a) => {
           return (

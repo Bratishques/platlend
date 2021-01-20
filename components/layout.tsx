@@ -2,6 +2,8 @@ import Footer from "./footer";
 import PropTypes from "prop-types";
 
 const Layout = ({ children }) => {
+  
+
   return (
     <div>
       {children}

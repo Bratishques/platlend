@@ -8,7 +8,7 @@ const clientsPath = `/images/clients/`;
 const mediaPath = `/images/media/`;
 const hero = {
   heroText: "PLATINUM SOFTWARE DEVELOPMENT:",
-  heroSubText: "LEADERS IN THE DEFI AND BLOCKCHAIN SOFTWARE SOLUTIONS",
+  heroSubText: "Leaders In The DEFI And Blockchain Software Solutions",
   offerings: [
     {
       title: "Mobile App Development",

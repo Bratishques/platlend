@@ -13,12 +13,18 @@ import {
 import useTranslation from "../../hooks/useTranslation";
 import TechGrid from "../../components/techGrid";
 import PropTypes from "prop-types";
+import ContactButton from "../../components/contactButton";
+import SidebarContext from "../../context/sidebarContext";
 
 export default function Home({ localization }) {
   const { t } = useTranslation(localization);
   const screenSize = useContext(ScreenSizeContext);
+  const {modalOpen, setModalOpen} = useContext(SidebarContext)
   const offerings = t("offerings");
   const socialPath = `/images/social/`;
+  const openModal = () => {
+    setModalOpen()
+  }
 
   return (
     <LanguageContextProvider localization={localization}>
@@ -28,12 +34,17 @@ export default function Home({ localization }) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <main className={`w-full font-main`}>
+        <main className={`w-full flex flex-col bg-primary-bg m-auto font-main`}>
+          <div 
+          onClick={setModalOpen}
+          className={`${modalOpen ? `fixed` : `hidden`} self-center w-full h-screen bg-primary-bg z-50`}>
+
+          </div>
           <section
             style={{
               backgroundImage: `url("/images/hero-back.jpg")`,
             }}
-            className={`relative h-95vh md:h-screen w-full`}
+            className={`relative flex flex-col h-95vh md:h-screen w-full`}
           >
             <Header ctx={localization} />
             <div
@@ -54,20 +65,23 @@ export default function Home({ localization }) {
               }}
             />
             <div
-              className={`absolute top-56 px-12 md:px-32 text-white text-center lg:text-left z-20`}
+              className={`absolute self-center flex flex-col items-center top-48 px-12 md:px-32 text-white text-center`}
             >
               <h1
-                className={`text-6xl md:text-8xl w-full leading-tight mb-12 font-titles font-bold`}
+                className={`text-6xl md:text-5.5r w-full leading-tight mb-2 font-titles font-bold`}
               >
                 {t("heroText")}
               </h1>
               <h2
-                className={`text-5xl md:text-7xl mb-12 w-full leading-tight font-titles font-semibold`}
+                className={`text-3r mb-4 w-full leading-tight font-titles font-semibold`}
               >
                 {t("heroSubText")}
               </h2>
+              <div className={`relative z-20 max-w-60r pt-12 w-full text-white`}>
+              <ContactButton text={`TALK TO OUR TEAM`} action={openModal}/>
+              </div>
               <div
-                className={`relative px-48 lg:px-0 md:flex hidden items-center w-full lg:w-1/3 h-12 justify-between`}
+                className={`relative px-48 lg:px-0 hidden items-center w-full lg:w-1/3 h-12 justify-between`}
               >
                 <a className={`hover:filter-tech-hover`} href="">
                   <img src={`${socialPath}telegram-light.svg`} />
@@ -107,22 +121,23 @@ export default function Home({ localization }) {
               }
             ></img>
           </section>
+          {/* WHO WE ARE */}
           <section
             className={`w-full py-36 px-8 flex justify-center bg-primary-bg`}
           >
             <div
-              className={`w-full md:w-3/4 flex items-center flex-col text-white text-center px-12 md:px-24`}
+              className={`w-full md:w-3/4 flex items-center flex-col text-white text-center px-12`}
             >
               <img
                 src={`/images/logo-squares.svg`}
                 className={`mb-16 w-32`}
               ></img>
               <h2
-                className={`w-full font-titles text-6xl md:text-8xl text-center mb-24 md:text-shadow-blue-offset text-white font-bold`}
+                className={`w-full font-titles text-6xl md:text-7xl text-center mb-24 md:text-shadow-blue-offset text-white font-bold`}
               >
                 WHO WE ARE
               </h2>
-              <p className={`text-3xl text-justify leading-3.2h mb-12`}>
+              <p className={`text-1.8r text-justify leading-3.2h mb-12`}>
                 Platinum Software Development company provides unmatched
                 solutions for the clients. We give real business value through
                 engineering-based solutions model that offers innovative and
@@ -138,16 +153,20 @@ export default function Home({ localization }) {
                 Do not wait for miracles, just come to us &quot;IT Wizards&quot;
                 who will help you to achieve what you want.
               </p>
-              <div className={`flex justify-between items-center w-full`}>
+              <div className={`flex justify-between items-center w-full mb-16`}>
                 <p className={`text-2xl text-left`}>
                   CEO of Platinum Software Development company
                 </p>
                 <img src={`/images/one-sign.gif`} className={`h-36`}></img>
               </div>
+              <div className={`max-w-41.7r w-full`}>
+              <ContactButton text={`TALK TO OUR TEAM`} action={openModal}/>
+              </div>
             </div>
           </section>
+          {/*Pictures section */}
           <section
-            className={`w-full px-4 md:px-24 bg-primary-bg flex flex-col pt-36 items-center`}
+            className={`self-center bg-primary-bg flex flex-col items-center w-95w`}
           >
             {/* Divider */}
             <div
@@ -156,16 +175,16 @@ export default function Home({ localization }) {
               <br />
             </div>
             {/* Divider */}
-            <div className={`flex flex-wrap pt-64 justify-center `}>
-              <div className={`mb-32 w-95% flex flex-wrap`}>
+            <div className={`flex flex-wrapxe pt-32 justify-center mb-64`}>
+              <div className={`mb-32 w-95% flex flex-wrap-reverse`}>
                 <div className={`md:w-6/12 w-full text-white`}>
                   <h2
-                    className={`text-4xl md:text-7xl mb-12 md:text-shadow-blue-offset text-shadow-none font-bold`}
+                    className={`text-3.2r font-titles leading-none md:text-7xl mb-12 md:text-shadow-blue-offset text-shadow-none font-bold`}
                   >
                     WHY PLATINUM Q DAO ENGINEERING?
                   </h2>
                   <p
-                    className={`text-4xl text-left leading-normal mb-12 pr-12`}
+                    className={`text-2.2r text-left leading-relaxed mb-32 pr-24 tracking-wider`}
                   >
                     Our strength is our employees, with vast experience in
                     executing numerous projects in diverse technology and
@@ -176,22 +195,25 @@ export default function Home({ localization }) {
                     We help you to discover, develop, and deliver the right
                     technology for the right task.
                   </p>
+                  <div className={`max-w-41.7r w-full`}>
+              <ContactButton text={`TALK TO OUR TEAM`} action={openModal}/>
+              </div>
                 </div>
 
                 <div
-                  className={`md:w-6/12 w-95% flex justify-center md:justify-end`}
+                  className={`md:w-6/12 w-95% flex justify-center md:justify-end md:mb-0 mb-16`}
                 >
                   <img
-                    className={`md:max-w-56 w-full`}
+                    className={`md:max-w-56 self-center border-2 border-glowy-blue`}
                     src={`/images/image12.jpg`}
                   />
                 </div>
               </div>
             </div>
             {/* ROW 1 */}
-            <div className={`flex w-95% flex-col md:flex-row mb-48`}>
-              <div className={`md:w-6/12 w-95% flex md:justify-start`}>
-                <div className={`relative mb-18`}>
+            <div className={`flex w-95% flex-col md:flex-row mb-80`}>
+              <div className={`md:w-6/12 flex md:justify-start`}>
+                <div className={`relative w-auto mb-18`}>
                   <div
                     className={`absolute hidden lg:block w-30r h-30r border-8 top-min6.5r border-glowy-blue left-min6.5r `}
                   ></div>
@@ -204,8 +226,9 @@ export default function Home({ localization }) {
                   />
                 </div>
               </div>
+              {/*Icons 1 */}
               <div
-                className={`md:w-6/12 flex flex-col w-95% md:justify-around md:items-center md:ml-8 ml-0`}
+                className={`md:w-6/12 flex flex-col md:justify-around md:items-center md:ml-8 ml-0 pr-16 `}
               >
                 <TeamIconText
                   title={`Experienced`}
@@ -217,6 +240,9 @@ export default function Home({ localization }) {
                   text={`Our team is based in 19 countries. Therefore, we don't have barriers or shortcomings that come with outsourcing.`}
                   icon={`/images/ArtDesign3.svg`}
                 />
+              <div className={`max-w-41.7r pt-12 self-center md:self-end w-full text-white`}>
+              <ContactButton text={`TALK TO OUR TEAM`} action={openModal}/>
+              </div>
               </div>
             </div>
             {/* ROW 2 */}
@@ -245,12 +271,15 @@ export default function Home({ localization }) {
                   text={`We incorporate your team into the process to meet your goals.`}
                   icon={`/images/ArtDesign5.svg`}
                 />
+                <div className={`max-w-41.7r pt-12 self-center md:self-end w-full text-white`}>
+              <ContactButton text={`GET THE EXCLUSIVE OFFER`} action={openModal}/>
+              </div>
               </div>
             </div>
             {/* ROW 3*/}
             <div className={`flex w-95% flex-col md:flex-row mb-48`}>
               <div className={`md:w-6/12 w-95% flex md:justify-start`}>
-                <div className={`relative`}>
+                <div className={`relative w-auto`}>
                   <div
                     className={`absolute hidden lg:block w-30r h-30r border-8 bottom-min9.3r border-glowy-blue left-16 `}
                   ></div>
@@ -264,7 +293,7 @@ export default function Home({ localization }) {
                 </div>
               </div>
               <div
-                className={`md:w-6/12 flex flex-col w-95% md:justify-around md:items-center md:ml-16 ml-0`}
+                className={`md:w-6/12 flex flex-col w-95% md:justify-around md:items-center md:ml-40 ml-0`}
               >
                 <TeamIconText
                   title={`Effective & Efficient`}
@@ -276,21 +305,24 @@ export default function Home({ localization }) {
                   text={`As a new-age company, we move with agility throughout.`}
                   icon={`/images/ArtDesign6.svg`}
                 />
+                <div className={`max-w-41.7r pt-12 self-center md:self-end w-full text-white`}>
+              <ContactButton text={`ORDER NOW`} action={openModal}/>
+              </div>
               </div>
             </div>
           </section>
           <section
-            className={`min-h-screen w-full bg-primary-bg text-white py-20 px-10 flex justify-center`}
+            className={`min-h-screen w-full bg-primary-bg text-white py-20 flex justify-center flex-col items-center`}
           >
             <div className={`w-95%`}>
               <h2
-                className={`w-full font-titles text-6xl md:text-8xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}
+                className={`w-full font-titles text-6xl md:text-7xl text-center mb-12 text-shadow-blue-offset text-white font-bold md:text-left`}
               >
                 WE OFFER
               </h2>
               {screenSize >= breakpoints.sm ? (
                 <div
-                  className={`grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-8`}
+                  className={`grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-8 mb-12`}
                 >
                   {offerings.map((item) => {
                     return (
@@ -324,13 +356,17 @@ export default function Home({ localization }) {
                   })}
                 </ArrowSlider>
               )}
+              
             </div>
+            <div className={`max-w-41.7r self-center pt-12 w-full text-white`}>
+              <ContactButton text={`ORDER NOW`} action={openModal}/>
+              </div>
           </section>
           {/* TECH STACK */}
           <section className={`pt-24 w-full bg-primary-bg flex justify-center`}>
             <div className={`px-6 w-full md:w-10/12 lg:w-18 flex flex-col`}>
               <h2
-                className={`w-full font-titles text-6xl md:text-8xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}
+                className={`w-full font-titles text-6xl md:text-7xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}
               >
                 TECHNOLOGY STACK
               </h2>
@@ -342,7 +378,7 @@ export default function Home({ localization }) {
             className={`pb-48 w-full bg-primary-bg flex justify-center items-center text-white flex-col md:px-24 px-12 h-full`}
           >
             <h2
-              className={`w-full font-titles text-6xl md:text-8xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}
+              className={`w-full font-titles text-6xl md:text-7xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}
             >
               {t("caseStudy")}
             </h2>
@@ -369,22 +405,23 @@ export default function Home({ localization }) {
                       />
                     </div>
 
-                    <h2
-                      className={`text-4xl font-titles font-semibold leading-normal`}
+                    <h3
+                      className={`text-3xl font-titles font-semibold leading-normal`}
                     >
                       {a[0]}
-                    </h2>
+                    </h3>
                   </div>
                 );
               })}
             </ArrowSlider>
+
           </section>
           {/* TESTIMONIALS*/}
           <section
-            className={`w-full bg-primary-bg flex flex-col justify-center px-12 text-white md:px-56`}
+            className={`w-full bg-primary-bg flex flex-col justify-center px-12 text-white md:px-40`}
           >
             <h2
-              className={`w-full font-titles text-6xl md:text-8xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}
+              className={`w-full font-titles text-6xl md:text-7xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}
             >
               TESTIMONIALS
             </h2>
@@ -409,7 +446,7 @@ export default function Home({ localization }) {
                 return (
                   <div
                     key={`${testimonal[0]}`}
-                    className={`w-full bg-primary-bg relative pt-100px px-6 `}
+                    className={`w-full bg-primary-bg relative pt-100px px-4 `}
                   >
                     <div
                       className={`bg-testimonial-card w-full flex flex-col items-center px-12 md:px-24 h-full pb-16 border-glowy-blue border-2 shadow-blue-glow`}
@@ -420,7 +457,7 @@ export default function Home({ localization }) {
                         draggable={false}
                       />
                       <h3
-                        className={`text-4xl mt-24 mb-4 font-titles  text-center`}
+                        className={`text-2.4r mt-24 mb-4 font-titles  text-center`}
                       >
                         {testimonal[0]}
                       </h3>
@@ -448,7 +485,7 @@ export default function Home({ localization }) {
             className={`w-full bg-primary-bg flex flex-col justify-center px-12 md:px-24 text-white py-24`}
           >
             <h2
-              className={`w-full font-titles text-6xl md:text-8xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}
+              className={`w-full font-titles text-6xl md:text-7xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}
             >
               {t("ourClients")}
             </h2>
@@ -484,12 +521,16 @@ export default function Home({ localization }) {
                 );
               })}
             </ArrowSlider>
+            <div className={`max-w-41.7r self-center pt-12 w-full text-white`}>
+              <ContactButton text={`ORDER NOW`} action={openModal}/>
+              </div>
           </section>
+           {/* MEDIA */}
           <section
             className={`w-full bg-primary-bg flex flex-col items-center justify-center px-12 md:px-24 text-white py-24`}
           >
             <h2
-              className={`w-full font-titles text-6xl md:text-8xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}
+              className={`w-full font-titles text-6xl md:text-7xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}
             >
               {t("media")}{" "}
             </h2>
@@ -514,7 +555,7 @@ export default function Home({ localization }) {
                         className={`w-full bg-testimonial-card border-glowy-blue border-2 shadow-blue-glow rounded-2xl py-12 px-16 font-titles`}
                       >
                         <img className={"h-3.5r mb-12"} src={article.image} />
-                        <h3 className={`text-4xl h-64 font-semibold`}>
+                        <h3 className={`text-3xl md:text-2.2r h-64 font-semibold`}>
                           {article.title}
                         </h3>
                       </div>
@@ -531,7 +572,7 @@ export default function Home({ localization }) {
             className={`w-full bg-primary-bg flex flex-col items-center justify-center px-12 md:px-24 text-white py-24`}
           >
             <h2
-              className={`w-full font-titles text-6xl md:text-8xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}
+              className={`w-full font-titles text-6xl md:text-7xl text-center mb-24 text-shadow-blue-offset text-white font-bold`}
             >
               RECOGNITIONS AND PARTNERSHIPS
             </h2>
@@ -540,14 +581,14 @@ export default function Home({ localization }) {
             className={`w-full bg-primary-bg justify-center px-12 md:px-24 text-white py-24`}
           >
             <h2
-              className={`w-full text-6xl md:text-9xl mb-8 text-white font-bold`}
+              className={`w-full text-5r md:text-7xl text-white font-bold`}
             >
               Let’s Make Something Together
             </h2>
             <a
               href={"https://www.platinum.fund/en/contact-us"}
               target={`blank`}
-              className={`w-full text-5xl md:text-8xl text-white font-normal`}
+              className={`w-full text-5r md:text-7xl text-white font-normal`}
             >
               Click here to say{" "}
               <span className={`text-glowy-blue underline`}>HELLO</span>
@@ -560,11 +601,11 @@ export default function Home({ localization }) {
               className={`flex relative justify-between border-2 border-glowy-blue w-12/12 md:w-6/12  shadow-blue-glow bg-testimonial-card p-12 px-12 md:px-24`}
             >
               <div>
-                <h5 className={`font-titles text-5xl mb-16 font-semibold`}>
+                <h5 className={`font-titles text-2.6r mb-12 font-semibold`}>
                   Address:
                 </h5>
-                <h5 className={`text-4xl mb-8`}>Estonia:</h5>
-                <p className={`text-footer-gray`}>
+                <h5 className={`text-1.8r mb-8`}>Estonia:</h5>
+                <p className={`text-footer-gray text-1.2r`}>
                   Panane tn 67-170 Lasnamäe linnaosa
                   <br />
                   Tallinn, Harju maakond, 13619
@@ -573,7 +614,7 @@ export default function Home({ localization }) {
               <div className={`pt-28`}>
                 <a
                   href={``}
-                  className={`font-titles text-2xl md:text-4xl underline font-semibold`}
+                  className={`relative z-20 tracking-wider font-titles text-1.8r md:text-4xl underline font-normal`}
                 >
                   LEGAL DOCUMENTS
                 </a>
@@ -588,7 +629,7 @@ export default function Home({ localization }) {
             >
               <div className={`w-full`}>
                 <h5
-                  className={`font-titles text-3xl md:text-5xl mb-10 font-semibold`}
+                  className={`font-titles text-2.6r md:text-5xl mb-10 font-semibold`}
                 >
                   Subscribe to our news:
                 </h5>
@@ -598,11 +639,11 @@ export default function Home({ localization }) {
                   <input
                     placeholder={`Email`}
                     type={`Email`}
-                    className={`h-16 relative sm:mb-0 mb-6 bg-transparent border-b-2 border-footer-gray py-3 text-2xl md:text-3xl w-2/3 z-30`}
+                    className={`h-16 relative sm:mb-0 mb-6 bg-transparent border-b-2 border-footer-gray py-3 text-2xl w-2/3 z-30`}
                   />
                   <button
                     role="submit"
-                    className={`flex flex-col text-2xl md:text-3xl items-center group w-1/3 text-center sm:pl-6 mt-2 relative z-30`}
+                    className={`flex flex-col text-2xl items-center group w-1/3 text-center sm:pl-12 mt-2 relative z-30`}
                     onSubmit={(e) => {
                       e.preventDefault();
                     }}
@@ -613,7 +654,7 @@ export default function Home({ localization }) {
                     ></div>
                   </button>
                 </form>
-                <p className={`text-footer-gray pt-8`}>
+                <p className={`text-footer-gray pt-8 text-1.2r`}>
                   This information is completely confidential.
                   <br />
                   We do not distribute your email.

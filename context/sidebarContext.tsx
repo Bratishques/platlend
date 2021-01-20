@@ -4,10 +4,13 @@ import PropTypes from "prop-types";
 const SidebarContext = React.createContext({
   sidebarOpen: false,
   setSidebarOpen: () => {},
+  modalOpen: false,
+  setModalOpen: () => {}
 });
 
 const SidebarContextProvider = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false)
   const openSidebar = () => {
     setSidebarOpen(!sidebarOpen);
     const mainTag = document.querySelector("html");
@@ -19,11 +22,16 @@ const SidebarContextProvider = ({ children }) => {
       mainTag.style.overflow = "";
     }
   };
+  const openModal = () => {
+    setModalOpen(!modalOpen)
+  }
   return (
     <SidebarContext.Provider
       value={{
         sidebarOpen,
         setSidebarOpen: openSidebar,
+        modalOpen,
+        setModalOpen: openModal
       }}
     >
       {children}

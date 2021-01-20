@@ -1,6 +1,24 @@
 module.exports = {
   purge: ["./components/**/*.{js,ts,jsx,tsx}", "./pages/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    fontSize: {
+      "1.2r": "1.2rem",
+      "1.4r": "1.4rem",
+      "2xl": "1.5rem",
+      "1.8r": "1.8rem",
+      "3xl": "2rem",
+      "1.8r": "1.8rem",
+      "2.2r": "2.2rem",
+      "2.4r": "2.4rem",
+      "2.6r": "2.6rem",
+      "3r": "3rem",
+      "3.2r": "3.2rem",
+      "6xl": "4rem",
+      "5r": "5rem",
+      "5.5r": '5.5rem',
+      "7xl": "6rem",
+      "9xl": "8rem"
+    },
     fontFamily: {
       main: ["Lexend Deca", "sans-serif"],
       titles: ["Blinker", "sans-serif"],
@@ -11,10 +29,13 @@ module.exports = {
       grayed: "grayscale(100%)",
       "blur-15": "blur(15px)",
       none: "none",
+      "button-filter": "drop-shadow(0px 0px 6px #FF6932)"
     },
     minHeight: {
       40: "10rem",
       56: "6rem",
+      "60r": "60rem",
+      "7.8r": "7.8rem",
     },
     textShadow: {
       "blue-offset": "0.5rem 0.3rem 0 rgba(0, 102, 255, 0.7)",
@@ -23,6 +44,7 @@ module.exports = {
     boxShadow: {
       "blue-glow": "0 0.2rem 0.5rem rgba(0, 102, 255, 0.35)",
       "photo-shadow": "0 0 1rem #0066FF",
+      "button-shadow": "2rem 3rem -1rem rgba(255, 105, 50, 0.15)"
     },
     extend: {
       animation: {
@@ -65,6 +87,8 @@ module.exports = {
         "6.6r": "6.6rem",
         "3.3r": "3.3rem",
         "3.5r": "3.5rem",
+        "4.6r": "4.6rem",
+        "7.8r": "7.8rem",
         "95vh": "95vh",
         "22r": "22rem",
         "34r": "34rem",
@@ -87,14 +111,19 @@ module.exports = {
         "offer-cards-hover": "#151515",
         "testimonial-card": "rgba(0, 102, 255, 0.2)",
         "footer-gray": "#727272",
+        "dropdown": "rgba(0, 102, 255, 0.85)",
+        "button-orange": "#FF6932"
       },
       maxWidth: {
         96: "96rem",
         56: "56rem",
+        "41.7r": "41.7rem",
+        "60r": "60rem",
       },
       width: {
         "4/5": "80%",
         "51.9r": "51.9rem",
+        "95w": "95vw"
       },
     },
   },
