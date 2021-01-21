@@ -14,7 +14,7 @@ const Header = ({ ctx }) => {
   const sidebarOpen = sidebarData.sidebarOpen;
   const screenSize = useContext(ScreenSizeContext);
   const headerContext = getLocalizationProps(ctx, "header");
-  const { t, locale } = useTranslation(headerContext);
+  const { t} = useTranslation(headerContext);
   const links = t("links");
 
   const scrollListener = useCallback(() => {
@@ -32,7 +32,7 @@ const Header = ({ ctx }) => {
 
   const langSwitch = (
     <HeaderLink
-      text={`${languageNames[locale]}`}
+      text={`${languageNames[ctx.locale]}`}
       link={"/en"}
       dropdown={locales.map((a) => {
         return {
