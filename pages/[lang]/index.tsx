@@ -251,7 +251,7 @@ export default function Home({ localization }) {
               </div>
             </div>
             {/* ROW 2 */}
-            <div className={`flex w-95% flex-col md:flex-row-reverse mb-48`}>
+            <div className={`flex w-95% flex-col md:flex-row-reverse mb-80`}>
               <div className={`md:w-6/12 w-95% flex md:justify-end `}>
                 <div className={`relative`}>
                   <div
