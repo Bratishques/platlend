@@ -240,7 +240,7 @@ export default function Home({ localization }) {
                   text={`Our team is based in 19 countries. Therefore, we don't have barriers or shortcomings that come with outsourcing.`}
                   icon={`/images/ArtDesign3.svg`}
                 />
-              <div className={`max-w-41.7r pt-12 self-center md:self-end w-full text-white`}>
+              <div className={`max-w-41.7r md:ml-11.6r pt-12 self-center md:self-start w-full text-white`}>
               <ContactButton text={`TALK TO OUR TEAM`} action={openModal}/>
               </div>
               </div>
@@ -271,7 +271,7 @@ export default function Home({ localization }) {
                   text={`We incorporate your team into the process to meet your goals.`}
                   icon={`/images/ArtDesign5.svg`}
                 />
-                <div className={`max-w-41.7r pt-12 self-center md:self-end w-full text-white`}>
+                <div className={`max-w-41.7r md:ml-11.6r pt-12 self-center md:self-start w-full text-white`}>
               <ContactButton text={`GET THE EXCLUSIVE OFFER`} action={openModal}/>
               </div>
               </div>
@@ -305,7 +305,7 @@ export default function Home({ localization }) {
                   text={`As a new-age company, we move with agility throughout.`}
                   icon={`/images/ArtDesign6.svg`}
                 />
-                <div className={`max-w-41.7r pt-12 self-center md:self-end w-full text-white`}>
+                <div className={`max-w-41.7r md:ml-11.6r pt-12 self-center md:self-start w-full text-white`}>
               <ContactButton text={`ORDER NOW`} action={openModal}/>
               </div>
               </div>
