@@ -90,6 +90,9 @@ module.exports = {
         "4.6r": "4.6rem",
         "7.8r": "7.8rem",
         "11.6r": "11.6rem",
+        "min13r": "-13rem",
+        "min20r": "-20rem",
+        "30r": "30rem",
         "95vh": "95vh",
         "22r": "22rem",
         "34r": "34rem",
@@ -120,6 +123,7 @@ module.exports = {
         56: "56rem",
         "41.7r": "41.7rem",
         "60r": "60rem",
+        "53.3r": "53.3rem"
       },
       width: {
         "4/5": "80%",
