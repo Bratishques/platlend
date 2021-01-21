@@ -78,7 +78,7 @@ export default function Home({ localization }) {
                 {t("heroSubText")}
               </h2>
               <div className={`relative z-20 max-w-60r pt-12 w-full text-white`}>
-              <ContactButton text={`TALK TO OUR TEAM`} action={openModal}/>
+              <ContactButton textclass={`text-1.6r uppercase font-bold py-8`} text={`Contact us now and get free consultation for DEFI app development`} action={openModal}/>
               </div>
               <div
                 className={`relative px-48 lg:px-0 hidden items-center w-full lg:w-1/3 h-12 justify-between`}

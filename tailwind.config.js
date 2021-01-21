@@ -5,6 +5,7 @@ module.exports = {
       "1.2r": "1.2rem",
       "1.4r": "1.4rem",
       "2xl": "1.5rem",
+      "1.6r": "1.6rem",
       "1.8r": "1.8rem",
       "3xl": "2rem",
       "1.8r": "1.8rem",
